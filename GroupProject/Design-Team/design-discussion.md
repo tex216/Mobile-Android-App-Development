@@ -3,7 +3,7 @@ Team 109 Deliberable 1
 
 # Design 1
 by Zhengning Han
-![zhan92 design image](/images/zhan92.png)
+![zhan92 design image](./images/zhan92.png)
 ### Pros
 
 ### Cons
