@@ -9,6 +9,8 @@ by Zhengning Han
 ### Cons
 
 # Design 2
+by Teng Xue
+![txue34 design image](./images/txue34.png)
 ### Pros
 
 ### Cons
