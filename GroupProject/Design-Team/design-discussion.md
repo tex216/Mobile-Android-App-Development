@@ -1,5 +1,5 @@
 CS 6300 
-Team 109 Deliberable 1
+Team 109 Deliverable 1
 
 # Design 1
 by Zhengning Han
@@ -44,8 +44,19 @@ by Edmond Truong
 1. Instead of using directed association relationship between App and the other classes, can represent using aggregation relationship.
 
 # Team Design
+![team109 design image](./images/team109.png)
 ### Commonalities
+1. Many of the classes, e.g. System, Job, are common to all of our individual designs.
+1. We agreed on the existence of relationships between the classes.
+1. The attributes and operations of each class are similar to our individual designs.
 
 ### Differences
+1. We differed in how we represent currentJob e.g. using a boolean isCurrentJob in the Job class vs. having a child class CurrentJob. We decided to go with a boolean because current job and job offers do not differ in attributes so we didn't think it was necessary to have a child class specifically to represent these at this point. 
+1. We differed in the type of relationship between the classes e.g. composition vs. aggregation between System and Job class. We also added more details on the relationship lines to indicate the name of the relationship e.g. compareJobOffers, getAllJobOffers. Since System is the entry class which is responsible for creating instances of Jobs, we felt that System consists of Jobs, so it's a composition relationship. We also added details to the relationship lines to make things easier to read.
+1. We decoupled the frontend aspects of the design from our UML diagram. This is to keep the frontend and the backend independent so the backend will not drive the frontend implementation or vice versa.
 
 # Summary
+1. When there are multiple options available, we should consider whether the difference is simply due to design choice or if it will have important implications downstream during implementation.
+1. Gained a better understanding of how to represent relationships between classes after discussing with the team.
+1. It was easier to meet and discuss this live over video call vs. trying to discuss and complete the assignment asynchronously.
+1. Not expecting to know all the answers coming into team discussions, learning along the way and being flexible about changes.
