@@ -4,7 +4,7 @@
 
 ## 1 Use Case Diagram
 
-![Use Case Model](\images\UseCaseModel.png)
+![Use Case Model](./images/UseCaseModel.png)
 
 ## 2 Use Case Descriptions
 
