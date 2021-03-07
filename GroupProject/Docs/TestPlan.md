@@ -52,10 +52,12 @@ Pass user inputs from GUI to backend | <ol><li>Open current job details screen</
 Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 -- | ------- | ----- | --------------- | ------------- | --------------
 2.3.1 |View Main Menu | <ol><li>Initialize app</li></ol> | User is presented with main menu where he/she can enter current job, add job offers, adjust comparison settings, or compare job offers | - | -
-2.3.2 | Enter current job details and cancel without saving | <ol><li>Initialize app</li><li>Navigate to current job screen</li><li>Complete current job details form</li><li>Exit screen and return to main menu without saving</li><li>Navigate back to current job screen</li></ol> | Current job details remains unchanged from User actions | - | -
-2.3.3 | Enter current job details and save | <ol><li>Initialize app</li><li>Navigate to current job screen</li><li>Complete current job details form</li><li>Save and exit screen</li><li>Navigate back to current job details screen</li></ol> | <ul><li>User cannot edit current job since no current job has been entered</li><li>Current job details reflect user inputs</li></ul> | - | -
+2.3.2 | Enter current job details and cancel without saving | <ol><li>Initialize app</li><li>Navigate to current job screen and see a list of empty details according to the requirements</li><li>Complete current job details form</li><li>Exit screen and return to main menu without saving</li><li>Navigate back to current job screen</li></ol> | Current job details remains unchanged from User actions | - | -
+2.3.3 | Enter current job details and save | <ol><li>Initialize app</li><li>Navigate to current job screen</li><li>Complete current job details form</li><li>Save and exit screen</li><li>Navigate back to current job details screen</li></ol> | <ul><li>User cannot edit current job since no current job has been entered</li><li>DB should have a new record for current job</li><li>Current job details reflect user inputs</li></ul> | - | -
 2.3.4 | Edit current job | <ol><li>Complete steps in 2.3.3</li><li>Navigate to current job offer screen</li><li>Update current job offer & save</li><li>Exit current job screen, navigate back to main menu, and return to current job screen</li></ol> | <ul><li>User cannot edit current job if not already entered</li><li>Current job details will reflect most recent changes made by User</li></ul> | - | -
-2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+2.3.5 | Enter job offer without saving | <ol><li>Initialize app</li><li>Navigate to job offer screen</li><li>Complete job offer details listed in the requirements</li><li>Exit screen without saving</li><li>Check the DB</li></ol> | DB should not have any new records due to User actions | - | -
+
+
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
