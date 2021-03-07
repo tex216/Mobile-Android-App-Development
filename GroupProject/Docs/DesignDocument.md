@@ -46,8 +46,7 @@ The "Display Ranked List of Jobs" component will provide the JobOffersToCompare 
 *Describe the low-level design for each of the system components identified in the previous section. For each component, you should provide details in the following UML diagrams to show its internal structure.*
 
 ### 3.1 Class Diagram
-
-*In the case of an OO design, the internal structure of a software component would typically be expressed as a UML class diagram that represents the static class structure for the component and their relationships.*
+![class diagram](./images/class_diagram.png)
 
 ### 3.2 Other Diagrams
 
