@@ -38,8 +38,11 @@ When the user chooses to compare jobs, the "Display Ranked List of Jobs" UI comp
 The "Display Ranked List of Jobs" component will provide the JobOffersToCompare interface to the "Compare Jobs" component based on what the user has selected. The "Compare Jobs" component then requires the Jobs interface provided by the Jobs component to get the details of the selected jobs and provide these information via the SelectedJobs interface. The "Display Selected Jobs for Comparison" component then displays the SelectedJobs to the user. 
 
 ### 2.2 Deployment Diagram
+![deployment diagram](./images/deployment_diagram.png)
 
-*This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
+Our app is written in Java. It uses Android SDK tools to compile classes, resources and package the code along with any required data. Android depends on Linux OS for essential operating services such as security management, process management, network stack etc. The Linux kernel plays the role of an abstraction layer between the hardware and the software stack.
+\
+When the app is activated by the user, it is firstly initialized by creating a new project in Android Studio 3.0+ and created a JobOfferComparison.apk file. The MainActivity.java class is where the app is built and prompted to run with the help of an emulator. For the front end of the application, AndroidManifest.xml is created to outline the layout of the application’s user interface and describes the main characteristics of the project to express each of its modules. After the deployment in the Android 3.0+ execution environment, the results are finally displayed to the user that imported from the Android SQLite datebase by retriving respective metadata requested by the user.
 
 ## 3 Low-Level Design
 
