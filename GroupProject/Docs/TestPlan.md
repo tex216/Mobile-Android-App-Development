@@ -61,7 +61,9 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 2.3.1 | Adjust comparison settings | <ol><li>Initialize app</li><li>Navigate to comparison settings screen</li><li>Update weights with valid values and save</li><li>Return to main menu and navigate back to comparison settings screen</li></ol> | <ul><li>User cannot save settings if values are invalid (i.e., negative)</li><li>When returning to comparison settings screen, values reflect User changes</li></ul> | - | -
 2.4.0 | Check if compare job offers is disabled when appropriate pt. 1 | <ol><li>Initialize app</li><li>Enter and save a valid current job</li></ol> | Compare job offers should remain disabled throughout the entire procedure | - | -
 2.4.1 | Check if compare job offers is disabled when appropriate pt. 2 | <ol><li>Initialize app</li><li>Enter and save a valid job offer</li></ol> | Compare job offers should remain disabled throughout the entire procedure | - | -
+2.4.2 | See list of job offers | <ol><li>Initialize app</li><li>Enter and save a valid current job</li><li>Enter and save a valid job offer</li><li>Navigate to compare job offers screen</li></ol> | <ul><li>Compare job offer screen in main menu should be disabled until both current job and a job offer are saved</li<li>User should see a list of jobs when selecting compare job offer screen. This will is expected after both jobs are entered</li></li>Current job is clearly indicated</li><li>Jobs should be ranked by best to worst (i.e., by job score descending)</li></ul> | - | -
 
-2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+
+
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
