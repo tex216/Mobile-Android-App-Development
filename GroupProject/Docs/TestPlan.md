@@ -8,6 +8,17 @@
 
 *This section should provide details about your unit-, integration-, system-, and regression-testing strategies. In particular, it should discuss which activities you will perform as part of your testing process, and who will perform such activities.*
 
+Testing will be completed at three levels: unit, integration, and system. Each level will focus on a specific area, the idea being that levels are orthogonal and come together to create a comprehensive test coverage.
+* Unit focuses on methods and valid values
+* Integration will be conducted to ensure modules interact appropriately
+* System will test the UX and provide a second line to ensuring all requirements are met that were not captured by other levers
+
+Testing procedures will follow the spirit of the test plan cases outlined below.
+
+Primary testing duties will be given to the Quality Engineer, but the team will support where / if needed.
+
+Regression testing will be conducted after every release to ensure no feature regression.
+
 ### 1.2 Test Selection
 
 *Here you should discuss how you are going to select your test cases, that is, which black-box and/or white-box techniques you will use. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
@@ -41,6 +52,7 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 1.1.2 | Throw error for invalid addJob() details pt. 1 | Execute addJob() with text in details that expect integer or float values | Error thrown | - | -
 1.1.3 | Throw error for invalid addJob() details pt. 2 | Execute addJob() with negative values in details that expect integer or float values | Error thrown | - | -
 1.2 | Throw error for invalid updateComparisonSettingsWeight() | Execute updateComparisonSettingsWeight() with one or more negative values | Error thrown | - | -
+1.3.1 | Calculate correct jobScore() | Execute score() with these values: Index = 50, Commute Time = 0.5, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26 | Returned score is 239,500 | - | -
 
 
 ### 2.2 Integration Tests
