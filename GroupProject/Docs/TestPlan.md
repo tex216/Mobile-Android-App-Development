@@ -35,17 +35,19 @@ Bugs and enhancements will be created as a Git issue. Git issues will be priorit
 
 ### 2.1 Unit Tests
 
-Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
-------- | ----- | --------------- | ------------- | --------------
-Placeholder | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
+-- | ------- | ----- | --------------- | ------------- | --------------
+1.1.1 | Throw error for incomplete addJob() | <ol><li>Execute addJob() with partially complete payload</li></ol> | Error thrown | - | -
+1.1.2 | Throw error for invalid addJob() details pt. 1 | <ol><li>Execute addJob() with text in details that expect integer or float values </li></ol> | Error thrown | - | -
+1.1.3 | Throw error for invalid addJob() details pt. 2 | <ol><li>Execute addJob() with negative values in details that expect integer or float values </li></ol> | Error thrown | - | -
 
 ### 2.2 Integration Tests
 
-Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
-------- | ----- | --------------- | ------------- | --------------
-Save Job Offer to DB | <ol><li>Prepare addJob() payload with new job offer</li><li>Execute addJob() with Job Offer details</li></ol> | New job offer is inserted in DB with a valid and unique jobId | TBD | TBD
-Fetch Job Offer from DB | <ol><li>Prepare getAllJobOffers() payload</li><li>Execute getAllJobOffers()</li></ol> | All records in DB are returned | TBD | TBD
-Pass user inputs from GUI to backend | <ol><li>Open current job details screen</li><li>Enter current job details</li><li>Save current job details</li><li>Inspect if inputs are passed</li></ol> | User inputs from GUI are successfully passed to backend | TBD | TBD
+Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
+-- | ------- | ----- | --------------- | ------------- | --------------
+2.1 | Save Job Offer to DB | <ol><li>Prepare addJob() payload with new job offer</li><li>Execute addJob() with Job Offer details</li></ol> | New job offer is inserted in DB with a valid and unique jobId | TBD | TBD
+2.2 | Fetch Job Offer from DB | <ol><li>Prepare getAllJobOffers() payload</li><li>Execute getAllJobOffers()</li></ol> | All records in DB are returned | TBD | TBD
+2.3 | Pass user inputs from GUI to backend | <ol><li>Open current job details screen</li><li>Enter current job details</li><li>Save current job details</li><li>Inspect if inputs are passed</li></ol> | User inputs from GUI are successfully passed to backend | TBD | TBD
 
 ### 2.3 System Tests
 
@@ -63,8 +65,3 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 2.4.0 | Check if compare job offers is disabled when appropriate pt. 1 | <ol><li>Initialize app</li><li>Enter and save a valid current job</li></ol> | Compare job offers should remain disabled throughout the entire procedure | - | -
 2.4.1 | Check if compare job offers is disabled when appropriate pt. 2 | <ol><li>Initialize app</li><li>Enter and save a valid job offer</li></ol> | Compare job offers should remain disabled throughout the entire procedure | - | -
 2.4.2 | See list of job offers | <ol><li>Initialize app</li><li>Enter and save a valid current job</li><li>Enter and save a valid job offer</li><li>Navigate to compare job offers screen</li></ol> | <ul><li>Compare job offer screen in main menu should be disabled until both current job and a job offer are saved</li<li>User should see a list of jobs when selecting compare job offer screen. This will is expected after both jobs are entered</li></li>Current job is clearly indicated</li><li>Jobs should be ranked by best to worst (i.e., by job score descending)</li></ul> | - | -
-
-
-
-2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
-2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
