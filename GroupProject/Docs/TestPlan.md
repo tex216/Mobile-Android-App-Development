@@ -1,8 +1,6 @@
 # Test Plan
 
-*This is the template for your test plan. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
-**Author**: \<person or team name\>
+**Author**: Team 109
 
 ## 1 Testing Strategy
 
