@@ -26,9 +26,19 @@ Bugs and enhancements will be created as a Git issue. Git issues will be priorit
 
 *Describe any testing technology you intend to use or build (e.g., JUnit, Selenium).*
 
-* JUnit for unit tests
-* Android Studio emulator for integration and system tests
+* JUnit for unit tests.
+* Android Studio emulator for integration and system tests.
 
 ## 2 Test Cases
 
 *This section should be the core of this document. You should provide a table of test cases, one per row. For each test case, the table should provide its purpose, the steps necessary to perform the test, the expected result, the actual result (to be filled later), pass/fail information (to be filled later), and any additional information you think is relevant.*
+
+### 2.1 Unit Tests
+
+Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
+- | - | - | - | -
+Placeholder | <ul><li>Task 1</li><li>Task 2</li></ul> | - | - | -
+
+### 2.2 Integration Tests
+
+### 2.3 System Tests
