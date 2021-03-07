@@ -46,4 +46,108 @@
 
 ## 4 User Interface Design
 *For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
+<section mockups>
+    <table class="gui">
+        <tr>
+            <th>
+                Requirements
+            </th>
+            <th>
+                Mockups
+            </th>
+        </tr>
+        <tr>
+            <td class="description_width">
+                When the app is started, the user is presented with the main menu, which allows the user to (1) enter or edit current job details, (2) enter job offers, (3) adjust the comparison settings, or (4) compare job offers
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/main_menu.png" alt="main_menu"/>
+                </figure>
+            </td>
+        </tr>
+        <tr>
+            <td class="description_width">
+                When the user clicks on the ENTER/EDIT CURRENT JOB or the ENTER JOB OFFERS button, the user will be presented the same Enter job details screen.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/enter_job_details1.png" alt="enter_job_details1"/>
+                    <img src="./images/enter_job_details2.png" alt="enter_job_details2"/>
+                </figure>
+            </td>
+        </tr>
+            <tr>
+            <td class="description_width">
+                If the user has previously entered a current job and is now editing it, the job details previously entered will be pre-populated.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/edit_current_job1.png" alt="edit_current_job1"/>
+                    <img src="./images/edit_current_job2.png" alt="edit_current_job2"/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width">
+                When the user clicks on the ADJUST COMPARISON SETTINGS button, the user will be presented the Adjust comparison settings screen with the current weight pre-populated.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/adjust_comparison_settings.png" alt="adjust_comparison_settings"/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width">
+                After the user saves or cancels entering a job offer, the user will be presented with the options to either ENTER ANOTHER OFFER, RETURN TO MAIN MENU or COMPARE WITH CURRENT JOB. If the user is entering or editing a current job, the user will not be presented these screens and will be directed back to the main menu automatically.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/after_entering_job_offers.png" alt="after_entering_job_offers"/>
+                    <img src="./images/cancel_entering_job_offers.png" alt="cancel_entering_job_offers"/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width">
+                When the user clicks on the COMPARE JOB OFFERS button, the user will be presented the Ranked list of jobs screen with the current job and list of jobs offers in descending job score. The user can select two jobs to compare, selected jobs will be highlighted in gray.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/ranked_list_of_jobs.png" alt="ranked_list_of_jobs"/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width">
+                After the user checks 2 jobs and click on the COMPARE button, the user will be presented with this screen. The table will display the job details for the selected jobs. The user will  have the option to MAKE ANOTHER COMPARISON or RETURN TO MAIN MENU.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/compare_jobs.png" alt="compare_jobs"/>
+                </figure>
+            </td>
+        </tr>
+    </table>
+</section>
 
+<style>
+    table.gui td { 
+        width: 250px;
+    }
+    table.gui .description_width { 
+        width: 400px;
+        text-align: left;
+    }
+    figure {
+        width: 600px;
+    }
+    img {
+        width: 250px;
+    }
+</style>
