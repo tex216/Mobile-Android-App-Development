@@ -1,8 +1,6 @@
 # Test Plan
 
-*This is the template for your test plan. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
-**Author**: \<person or team name\>
+**Author**: Team 109
 
 ## 1 Testing Strategy
 
@@ -22,9 +20,14 @@
 
 *Describe how bugs and enhancement requests will be tracked.*
 
+Bugs and enhancements will be created as a Git issue. Git issues will be prioritized by their impact. Prioritization will be issues with impacts to requirements (bugs or enhancements), bugs with existing features, and nice-to-have enhancements as lowest priority.
+
 ### 1.5 Technology
 
 *Describe any testing technology you intend to use or build (e.g., JUnit, Selenium).*
+
+* JUnit for unit tests
+* Android Studio emulator for integration and system tests
 
 ## 2 Test Cases
 
