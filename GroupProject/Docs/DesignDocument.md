@@ -25,8 +25,17 @@
 *The architecture provides the high-level design view of a system and provides a basis for more detailed design work. These subsections describe the top-level components of the system you are building and their relationships.*
 
 ### 2.1 Component Diagram
+![component diagram](./images/component_diagram.png)
 
-*This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
+We will have multiple UI components for controlling the user's interactions with the application. These components will use the Activity API provided by Android.
+\
+The Persistence infrastructure component will provide the Persistence interface that allows our application to read and write from and to the database. The database will be the Android SQLite database.
+\
+Since both current job and job offers share the same attributes, the "Enter or Edit Current Job Details" component and the "Enter Job Offers" component will both inherit from a base "Enter Job" component. These components collectively will provide the JobDetails interface which is the required by the Jobs component to persist to the database.
+\
+When the user chooses to compare jobs, the "Display Ranked List of Jobs" UI component will require the RankedList, which the Rank Jobs component provides. The Rank Jobs component requires Jobs and ComparisonSettings in order to calculate the score for each job. These are provided by the Jobs component and "Comparison Settings" component respectively and they will read these information from the database.
+\
+The "Display Ranked List of Jobs" component will provide the JobOffersToCompare interface to the "Compare Jobs" component based on what the user has selected. The "Compare Jobs" component then requires the Jobs interface provided by the Jobs component to get the details of the selected jobs and provide these information via the SelectedJobs interface. The "Display Selected Jobs for Comparison" component then displays the SelectedJobs to the user. 
 
 ### 2.2 Deployment Diagram
 
