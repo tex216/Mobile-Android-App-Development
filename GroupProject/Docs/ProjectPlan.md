@@ -8,9 +8,9 @@ Our product is a simple, single-user Android job offer comparison application. T
 
 ## 2 Process Description
 
-1. Activity name: Gather requirements
-Activity description: Understand the customer needs and system limitations.
-Entrance criteria: Use cases
+1. Activity name: Gather requirements\
+Activity description: Understand the customer needs and system limitations.\
+Entrance criteria: Use cases\
 Exit criteria: Requirements
 
 1. Activity name: Analyze and design
