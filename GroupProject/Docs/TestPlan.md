@@ -37,15 +37,15 @@ Bugs and enhancements will be created as a Git issue. Git issues will be priorit
 
 Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 ------- | ----- | --------------- | ------------- | --------------
-Placeholder | <ul><ol>Task 1</ol><ol>Task 2</ol></ul> | - | - | -
+Placeholder | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
 
 ### 2.2 Integration Tests
 
 Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 ------- | ----- | --------------- | ------------- | --------------
-Save Job Offer to DB | <ul><ol>Prepare addJob() payload with new job offer</ol><ol>Execute addJob() with Job Offer details</ol></ul> | New job offer is inserted in DB with a valid and unique jobId | TBD | TBD
-Fetch Job Offer from DB | <ul><ol>Prepare getAllJobOffers() payload</ol><ol>Execute getAllJobOffers()</ol></ul> | All records in DB are returned | TBD | TBD
-Pass user inputs from GUI to backend | <ul><li>Open current job details screen</ol><ol>Enter current job details</ol><ol>Save current job details</ol><ol>Inspect if inputs are passed</ol></ul> | User inputs from GUI are successfully passed to backend | - | -
+Save Job Offer to DB | <ul><li>Prepare addJob() payload with new job offer</li><li>Execute addJob() with Job Offer details</li></ul> | New job offer is inserted in DB with a valid and unique jobId | TBD | TBD
+Fetch Job Offer from DB | <ul><li>Prepare getAllJobOffers() payload</li><li>Execute getAllJobOffers()</li></ul> | All records in DB are returned | TBD | TBD
+Pass user inputs from GUI to backend | <ul><li>Open current job details screen</li><li>Enter current job details</li><li>Save current job details</li><li>Inspect if inputs are passed</li></ul> | User inputs from GUI are successfully passed to backend | - | -
 
 ### 2.3 System Tests
 
