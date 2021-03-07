@@ -23,9 +23,13 @@ Regression testing will be conducted after every release to ensure no feature re
 
 *Here you should discuss how you are going to select your test cases, that is, which black-box and/or white-box techniques you will use. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
 
+Because of the time cost with white-box, test cases will be primarily black-box throughout all levels of testing. Tests will leverage category-partition approach to bound the scope. See overall test strategy for more details.
+
 ### 1.3 Adequacy Criterion
 
 *Define how you are going to assess the quality of your test cases. Typically, this involves some form of functional or structural coverage. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
+
+The main goal is to ensure that all app requirements are covered. As such, test cases will true back to requirements additional second order requirements derived from our understanding of the domain.
 
 ### 1.4 Bug Tracking
 
