@@ -40,7 +40,7 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 1.1.1 | Throw error for incomplete addJob() | Execute addJob() with partially complete payload | Error thrown | - | -
 1.1.2 | Throw error for invalid addJob() details pt. 1 | Execute addJob() with text in details that expect integer or float values | Error thrown | - | -
 1.1.3 | Throw error for invalid addJob() details pt. 2 | Execute addJob() with negative values in details that expect integer or float values | Error thrown | - | -
-1.1.1 | Throw error for invalid updateComparisonSettingsWeight() | Execute updateComparisonSettingsWeight() with one or more negative values | Error thrown | - | -
+1.2 | Throw error for invalid updateComparisonSettingsWeight() | Execute updateComparisonSettingsWeight() with one or more negative values | Error thrown | - | -
 
 
 ### 2.2 Integration Tests
