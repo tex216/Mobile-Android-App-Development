@@ -13,24 +13,24 @@ Activity description: Understand the customer needs and system limitations.\
 Entrance criteria: Use cases\
 Exit criteria: Requirements
 
-1. Activity name: Analyze and design
-Activity description: Analyze the requirements and abstract requirements into implementable design.
-Entrance criteria: Requirements
+1. Activity name: Analyze and design\
+Activity description: Analyze the requirements and abstract requirements into implementable design.\
+Entrance criteria: Requirements\
 Exit criteria: Design document, diagrams e.g. class diagram, deployment diagram, use case model, component diagram and test plan
 
-1. Activity name: Implement
-Activity description: Write code based on design document and diagrams, revisiting requirements where needed.
-Entrance criteria: Requirements, design document and diagrams
+1. Activity name: Implement\
+Activity description: Write code based on design document and diagrams, revisiting requirements where needed.\
+Entrance criteria: Requirements, design document and diagrams\
 Exit criteria: Application is ready for testing
 
-1. Activity name: Test and fix bugs
-Activity description: Execute white-box and black-box testing, unit and integration testing and iterate with developers to get bugs fixed.
-Entrance criteria: Test plan, Application
+1. Activity name: Test and fix bugs\
+Activity description: Execute white-box and black-box testing, unit and integration testing and iterate with developers to get bugs fixed.\
+Entrance criteria: Test plan, Application\
 Exit criteria: Pass all test cases in test plan
 
-1. Activity name: Deploy
-Activity description: Productionize the app for general consumption.
-Entrance criteria: Well-tested application
+1. Activity name: Deploy\
+Activity description: Productionize the app for general consumption.\
+Entrance criteria: Well-tested application\
 Exit criteria: User can access and use the application
 
 ## 3 Team
