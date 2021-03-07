@@ -50,7 +50,7 @@ Pass user inputs from GUI to backend | <ol><li>Open current job details screen</
 ### 2.3 System Tests
 
 Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
-------- | ----- | --------------- | ------------- | --------------
+-- | ------- | ----- | --------------- | ------------- | --------------
 2.3.1 |View Main Menu | <ol><li>Initialize app</li></ol> | User is presented with main menu where he/she can enter current job, add job offers, adjust comparison settings, or compare job offers | - | -
 
 2.3.2 | Enter current job details and cancel without saving | <ol><li>Initialize app</li><li>Navigate to current job screen</li><li>Complete current job details form</li><li>Exit screen and return to main menu without saving</li><li>Navigate back to current job screen</li></ol> | Current job details remains unchanged from User actions | - | -
