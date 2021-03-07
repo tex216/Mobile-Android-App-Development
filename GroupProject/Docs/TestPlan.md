@@ -51,4 +51,16 @@ Pass user inputs from GUI to backend | <ol><li>Open current job details screen</
 
 Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 ------- | ----- | --------------- | ------------- | --------------
-Placeholder | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+
+Enter current job details and cancel without saving | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+
+Enter current job details and save | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
+View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
