@@ -19,7 +19,3 @@ Our app should be maintainable for developers. It should be accessible for them 
 
 ## 6. Extensibility
 Our app should be extensible for the addition of new functionality or through modification of existing functionality and without impairing existing system functions. For example, currently a user is allowed to compare two jobs, but more will be allowed if necessary. 
-
-## Stability/Testability/Scalability/
-
-
