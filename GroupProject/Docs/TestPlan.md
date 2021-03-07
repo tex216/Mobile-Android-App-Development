@@ -36,7 +36,7 @@ Bugs and enhancements will be created as a Git issue. Git issues will be priorit
 ### 2.1 Unit Tests
 
 Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
-- | - | - | - | -
+------- | ----- | --------------- | ------------- | --------------
 Placeholder | <ul><li>Task 1</li><li>Task 2</li></ul> | - | - | -
 
 ### 2.2 Integration Tests
