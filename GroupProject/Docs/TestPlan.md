@@ -57,8 +57,10 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 3.1.3 | Edit current job | <ol><li>Complete steps in 3.1.2</li><li>Navigate to current job offer screen</li><li>Update current job offer & save</li><li>Exit current job screen, navigate back to main menu, and return to current job screen</li></ol> | <ul><li>User cannot edit current job if not already entered</li><li>Current job details will reflect most recent changes made by User</li></ul> | - | -
 3.2.1 | Enter job offer without saving | <ol><li>Initialize app</li><li>Navigate to job offer screen</li><li>Complete job offer details listed in the requirements</li><li>Exit screen without saving</li><li>Check the DB</li></ol> | DB should not have any new records due to User actions | - | -
 3.2.2 | Enter job offer and save | <ol><li>Initialize app</li><li>Navigate to job offer screen</li><li>Complete job offer form, save, and exit</li></ol> | <ul><li>User cannot save unless all fields are completed</li><li>DB should have a new record for job offer</li></ul> | - | -
+2.3.0 | Checked that if no weights are assigned, all factors are equal | <ol><li>Initialize app</li><li>Navigate to comparison settings screen</li></ol> | User should see all factors are equal (all weights set to 1) | - | -
+2.3.1 | Adjust comparison settings | <ol><li>Initialize app</li><li>Navigate to comparison settings screen</li><li>Update weights with valid values and save</li><li>Return to main menu and navigate back to comparison settings screen</li></ol> | <ul><li>User cannot save settings if values are invalid (i.e., negative)</li><li>When returning to comparison settings screen, values reflect User changes</li></ul> | - | -
 
-
+2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
 2.3.0 | View Main Menu | <ol><li>Task 1</li><li>Task 2</li></ol> | - | - | -
