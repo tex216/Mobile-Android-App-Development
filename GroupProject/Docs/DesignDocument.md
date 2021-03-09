@@ -1,30 +1,33 @@
 # Design Document
 
-*This is the template for your design document. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
 **Author**: Team 109
 
 ## 1 Design Considerations
 
-*The subsections below describe the issues that need to be addressed or resolved prior to or while completing the design, as well as issues that may influence the design process.*
-
 ### 1.1 Assumptions
 
-*Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
+1. We are assuming there will only be 1 user.
+1. The minimum API level for the app is API 28: Android 9.0 (Pie).
+1. There is a single system running the application so no communication or saving between devices is necessary.
+1. The user will interact with the application in a reasonable fashion e.g. the user will add a reasonable number of job offers and not 1 million.
+1. The user has all the details associated with a job and cannot enter partial information.
+1. The user does not have special needs or requirements e.g. ADA.
 
 ### 1.2 Constraints
 
-*Describe any constraints on the system that have a significant impact on the design of the system.*
+1. The application must be lightweight in performance so it can run on an Android phone.
+1. There is no external data storage and all data will be saved locally.
+
 
 ### 1.3 System Environment
 
-*Describe the hardware and software that the system must operate in and interact with.*
+1. The application will be deployed to an Android phone that has a compatible API level.
+1. The data will be stored on Android SQLite database.
+1. The application will be written in Java.
 
 ## 2 Architectural Design
 
-*The architecture provides the high-level design view of a system and provides a basis for more detailed design work. These subsections describe the top-level components of the system you are building and their relationships.*
-
-### 2.1 Component Diagram
+### 2.1 Component Diagram v1
 ![component diagram](./images/component_diagram.png)
 
 We will have multiple UI components for controlling the user's interactions with the application. These components will use the Activity API provided by Android.
@@ -37,7 +40,7 @@ When the user chooses to compare jobs, the "Display Ranked List of Jobs" UI comp
 \
 The "Display Ranked List of Jobs" component will provide the JobOffersToCompare interface to the "Compare Jobs" component based on what the user has selected. The "Compare Jobs" component then requires the Jobs interface provided by the Jobs component to get the details of the selected jobs and provide these information via the SelectedJobs interface. The "Display Selected Jobs for Comparison" component then displays the SelectedJobs to the user. 
 
-### 2.2 Deployment Diagram
+### 2.2 Deployment Diagram v1
 ![deployment diagram](./images/deployment_diagram.png)
 
 Our app is written in Java. It uses Android SDK tools to compile classes, resources and package the code along with any required data. Android depends on Linux OS for essential operating services such as security management, process management, network stack etc. The Linux kernel plays the role of an abstraction layer between the hardware and the software stack.
@@ -46,16 +49,10 @@ When the app is activated by the user, it is firstly initialized by creating a n
 
 ## 3 Low-Level Design
 
-*Describe the low-level design for each of the system components identified in the previous section. For each component, you should provide details in the following UML diagrams to show its internal structure.*
-
-### 3.1 Class Diagram
+### 3.1 Class Diagram v1
 ![class diagram](./images/class_diagram.png)
 
-### 3.2 Other Diagrams
-
-*<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
-
-## 4 User Interface Design
+## 4 User Interface Design v1
 <section mockups>
     <table class="gui">
         <tr>

@@ -2,7 +2,7 @@
 
 **Author**: Team 109
 
-## 1 Use Case Diagram
+## 1 Use Case Diagram v1
 
 ![Use Case Model](./images/UseCaseModel.png)
 
@@ -36,7 +36,7 @@
 
 3. List of Job Offers 
 - *Requirements: User can see 'a list of ranked job offers including current job', 'add job offers', 'delete job offer(s)', and 'compare two offers'*
-- *Pre-conditions: Click the 'Add Job Offers' button then enter the Job Offer GUI.*
+- *Pre-conditions: There are at least 2 jobs in the system. Click the 'Add Job Offers' button then enter the Job Offer GUI.*
 - *Post-conditions: The user must click the 'Exit' button to return the main menu.*
 - *Scenarios:*
     1. *Once the user enters the List of Job Offers GUI, the interface will show a list of ranked job offers including current job.* 
