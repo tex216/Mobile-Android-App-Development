@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCompare6300">
+<<<<<<< HEAD
         <activity android:name=".RankedList"></activity>
 
         <uses-library
@@ -29,6 +30,9 @@
         <activity
             android:name=".CompareJobActivity"
             android:label="@string/title_activity_compare_job" />
+=======
+        <activity android:name=".AdjustComparisonSettingsActivity"></activity>
+>>>>>>> 3e60a904cc14d698178c443745204612f6d53c37
         <activity android:name=".EnterCurrentJobActivity" />
         <activity android:name=".EnterJobDetailsActivity" />
         <activity android:name=".MainActivity">
