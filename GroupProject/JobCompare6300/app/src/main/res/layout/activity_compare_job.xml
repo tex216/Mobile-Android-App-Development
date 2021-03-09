@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label_compare_jobs_header"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#6e1005"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            android:text="Compare jobs"
+            android:textColor="#FFFFFFFF"
+            android:textSize="30sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fadeScrollbars="false"
+                    android:scrollbarSize="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/label_title_compare"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Title"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/value_title_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Title 1"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/value_title_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Title 2"
+                                    android:textSize="18sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/label_company_compare"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Company"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/value_company_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Company 1"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/value_company_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Company 2"
+                                    android:textSize="18sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/label_location_compare"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Location"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/value_location_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="City 1, State 1"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/value_location_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="City 2, State 2"
+                                    android:textSize="18sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/label_salary_compare"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Yearly salary"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/value_salary_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Salary 1"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/value_salary_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Salary 2"
+                                    android:textSize="18sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/label_bonus_compare"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Yearly bonus"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/value_bonus_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Bonus 1"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/value_bonus_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Bonus 2"
+                                    android:textSize="18sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/label_retirement_compare"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Retirement benefits"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/value_retirement_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Benefits 1"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/value_retirement_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:padding="20dp"
+                                    android:text="Benefits 2"
+                                    android:textSize="18sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/label_leave_time_compare"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Leave time"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/value_leave_time_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Leave time 1"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/value_leave_time_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="#FFD0C2"
+                                    android:padding="20dp"
+                                    android:text="Leave time 2"
+                                    android:textSize="18sp" />
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_return_compare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#6e1005"
+                        android:gravity="center"
+                        android:text="Return to main menu"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFFFF"
+                        android:theme="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        app:cornerRadius="50dp"
+                        app:iconSize="50dp" />
+
+                    <Button
+                        android:id="@+id/btn_another_compare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#6e1005"
+                        android:gravity="center"
+                        android:text="Make another comparison"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFFFF"
+                        android:theme="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        app:cornerRadius="50dp"
+                        app:iconSize="50dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
