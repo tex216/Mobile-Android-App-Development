@@ -23,16 +23,41 @@ public class MainActivity extends AppCompatActivity {
         adjustComparisonSettings = (Button) findViewById(R.id.btn_adjust_comp_settings);
         compareJobs = (Button) findViewById(R.id.btn_compare_job_offers);
 
+        enterCurrentJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleAddCurrentJobClick();
+            }
+        });
+
         enterJobOffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 handleAddJobOffersClick();
             }
         });
+
+        adjustComparisonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleComparisonSettingsClick();
+            }
+        });
+
     }
 
     public void handleAddJobOffersClick() {
         Intent intent = new Intent(this, EnterJobOffersActivity.class);
+        startActivity(intent);
+    }
+
+    public void handleAddCurrentJobClick() {
+        Intent intent = new Intent(this, EnterCurrentJobActivity.class);
+        startActivity(intent);
+    }
+
+    public void handleComparisonSettingsClick() {
+        Intent intent = new Intent(this, AdjustComparisonSettingsActivity.class);
         startActivity(intent);
     }
 }
