@@ -44,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        compareJobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleRankedListClick();
+            }
+        });
+
     }
 
     public void handleAddJobOffersClick() {
@@ -58,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleComparisonSettingsClick() {
         Intent intent = new Intent(this, AdjustComparisonSettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void handleRankedListClick() {
+        Intent intent = new Intent(this, RankedListActivity.class);
         startActivity(intent);
     }
 }
