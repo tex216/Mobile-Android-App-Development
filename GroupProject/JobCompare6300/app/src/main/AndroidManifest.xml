@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCompare6300">
-        <activity android:name=".EnterJobDetailsActivity"></activity>
+        <activity android:name=".EnterCurrentJobActivity"></activity>
+        <activity android:name=".EnterJobDetailsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

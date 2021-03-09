@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class EnterJobDetailsActivity extends AppCompatActivity {
+public class EnterJobOffersActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_job_details);
+        setContentView(R.layout.activity_enter_job_offers);
     }
 }
