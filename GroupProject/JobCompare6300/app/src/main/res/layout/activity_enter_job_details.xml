@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterJobDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/editTextTextPersonName11"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:backgroundTint="#6e1005"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            android:text="Enter job details"
+            android:textColor="#FFFFFFFF"
+            android:textSize="30sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Title"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/text_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Enter title"
+                        android:inputType="text"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Company"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/text_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Enter company"
+                        android:inputType="text"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="5dp"
+                        android:text="Location"
+                        android:textSize="18sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/label_city"
+                            android:layout_width="34dp"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:paddingStart="5dp"
+                            android:text="City"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/text_city"
+                            android:layout_width="148dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ems="10"
+                            android:hint="Enter city"
+                            android:inputType="text"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/label_state"
+                            android:layout_width="53dp"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:paddingStart="5dp"
+                            android:text="State"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/text_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:ems="10"
+                            android:hint="Enter state"
+                            android:inputType="text"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_cost_of_living"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Cost of living in the location"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/number_cost_of_living"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Enter cost of living index"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_remote_work"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Possibility of work remotely"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/dropdown_remote_work"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/remote_work_possibility"
+                        android:minHeight="40dp"
+                        android:spinnerMode="dropdown" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_salary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Yearly salary"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/number_salary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Enter yearly salary"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_bonus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Yearly bonus"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/number_bonus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Enter yearly bonus"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_retirement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Retirement benefits"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/number_retirement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Enter retirement benefits (percentage matched)"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/label_leave_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingStart="5dp"
+                        android:text="Leave time"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/number_leave_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Enter overall number of leave time (days)"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#FFFFFF"
+                            android:gravity="center"
+                            android:text="Cancel"
+                            android:textAlignment="center"
+                            android:textColor="#3C3F41"
+                            android:theme="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:cornerRadius="50dp"
+                            app:iconSize="50dp"
+                            app:strokeColor="#808080" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/button3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#6e1005"
+                            android:gravity="center"
+                            android:text="Save"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFFFF"
+                            android:theme="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:cornerRadius="50dp"
+                            app:iconSize="50dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
