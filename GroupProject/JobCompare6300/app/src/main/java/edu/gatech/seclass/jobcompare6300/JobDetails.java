@@ -18,6 +18,9 @@ public class JobDetails {
     @ColumnInfo(name = "CITY")
     public String CITY;
 
+    @ColumnInfo(name = "STATE")
+    public String STATE;
+
     @ColumnInfo(name = "COST_OF_LIVING_INDEX")
     public int COST_OF_LIVING_INDEX;
 
