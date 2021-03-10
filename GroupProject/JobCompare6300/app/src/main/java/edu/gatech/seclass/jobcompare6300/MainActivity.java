@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         jobDetails.PERCENTAGE_MATCHED = 6.5;
         jobDetails.WORK_REMOTE = 3;
         jobDetails.SCORE = null;
-        jobDetailsDao.insertJob();
+        jobDetailsDao.insertJob(jobDetails);
     }
 
     public void handleAddCurrentJobClick() {
