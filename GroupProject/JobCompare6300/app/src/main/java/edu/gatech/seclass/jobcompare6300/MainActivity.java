@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Button enterJobOffers;
     private Button adjustComparisonSettings;
     private Button compareJobs;
+    private DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         enterJobOffers = (Button) findViewById(R.id.btn_enter_job_offers);
         adjustComparisonSettings = (Button) findViewById(R.id.btn_adjust_comp_settings);
         compareJobs = (Button) findViewById(R.id.btn_compare_job_offers);
+        db = new DBHelper(this);
 
         enterCurrentJob.setOnClickListener(new View.OnClickListener() {
             @Override
