@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-jobcompare").build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database-jobcompare").allowMainThreadQueries().build();
 
         enterCurrentJob = (Button) findViewById(R.id.btn_enter_current_job);
         enterJobOffers = (Button) findViewById(R.id.btn_enter_job_offers);
@@ -59,8 +58,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleAddJobOffersClick() {
-        Intent intent = new Intent(this, EnterJobOffersActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, EnterJobOffersActivity.class);
+//        startActivity(intent);
+        JobDetailsDao jobDetailsDao = db.jobDetailsDao();
+        JOB_DETAILS jobDetails = new JOB_DETAILS();
+        jobDetails.TITLE = "Test Title";
+        jobDetails.COMPANY = "Test Company";
+        jobDetails.CITY = "Test City";
+        jobDetails.STATE = "Test State";
+        jobDetails.YEARLY_SALARY = 100000.00;
+        jobDetails.YEARLY_BONUS = 20000.00;
+        jobDetails.COST_OF_LIVING_INDEX = 5;
+        jobDetails.IS_CURRENT_JOB = false;
+        jobDetails.LEAVE_TIME = 3;
+        jobDetails.PERCENTAGE_MATCHED = 6.5;
+        jobDetails.WORK_REMOTE = 3;
+        jobDetails.SCORE = null;
+        jobDetailsDao.insertJob();
     }
 
     public void handleAddCurrentJobClick() {
