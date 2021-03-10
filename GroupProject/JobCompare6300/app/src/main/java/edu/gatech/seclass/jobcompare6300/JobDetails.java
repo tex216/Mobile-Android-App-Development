@@ -37,7 +37,7 @@ public class JobDetails {
     public Double PERCENTAGE_MATCHED;
 
     @ColumnInfo(name = "LEAVE_TIME")
-    public Double LEAVE_TIME;
+    public int LEAVE_TIME;
 
     @ColumnInfo(name = "IS_CURRENT_JOB")
     public Boolean IS_CURRENT_JOB;
