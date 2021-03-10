@@ -18,11 +18,11 @@
             android:gravity="center|top"
             android:orientation="vertical">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/imageView3"-->
-<!--                android:layout_width="868dp"-->
-<!--                android:layout_height="365dp"-->
-<!--                app:srcCompat="@drawable/__qssodcpafbmvvy1b" />-->
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="868dp"
+                android:layout_height="365dp"
+                app:srcCompat="@drawable/__qssodcpafbmvvy1b" />
 
             <Space
                 android:layout_width="match_parent"
@@ -37,11 +37,11 @@
                     android:layout_width="34dp"
                     android:layout_height="40dp" />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/imageView4"-->
-<!--                    android:layout_width="72dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    app:srcCompat="@drawable/checkmark_flat" />-->
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="72dp"
+                    android:layout_height="40dp"
+                    app:srcCompat="@drawable/checkmark_flat" />
 
                 <TextView
                     android:id="@+id/textView2"
