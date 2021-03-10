@@ -1,6 +1,7 @@
 package edu.gatech.seclass.jobcompare6300;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,17 +14,19 @@ public class MainActivity extends AppCompatActivity {
     private Button enterJobOffers;
     private Button adjustComparisonSettings;
     private Button compareJobs;
-//    private DBHelper db;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "database-jobcompare").build();
+
         enterCurrentJob = (Button) findViewById(R.id.btn_enter_current_job);
         enterJobOffers = (Button) findViewById(R.id.btn_enter_job_offers);
         adjustComparisonSettings = (Button) findViewById(R.id.btn_adjust_comp_settings);
         compareJobs = (Button) findViewById(R.id.btn_compare_job_offers);
-//        db = new DBHelper(this);
 
         enterCurrentJob.setOnClickListener(new View.OnClickListener() {
             @Override
