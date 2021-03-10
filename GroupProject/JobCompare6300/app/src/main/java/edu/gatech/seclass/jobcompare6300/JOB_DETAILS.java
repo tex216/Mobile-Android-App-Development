@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class JobDetails {
+public class JOB_DETAILS {
     @PrimaryKey(autoGenerate = true)
     public int JOB_ID;
 
