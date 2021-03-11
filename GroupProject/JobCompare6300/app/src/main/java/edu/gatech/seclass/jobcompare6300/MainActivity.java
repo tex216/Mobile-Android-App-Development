@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        appDatabase = AppDatabase.getInstance(this, true);
+        appDatabase = AppDatabase.getInstance(context, false);
         ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
