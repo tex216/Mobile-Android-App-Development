@@ -40,8 +40,7 @@ public class EnterJobOffersActivity extends AppCompatActivity {
         save = (Button) findViewById(R.id.btn_save);
         cancel = (Button) findViewById(R.id.btn_cancel);
         appDatabase = AppDatabase.getInstance(context);
-        save = (Button) findViewById(R.id.btn_save);
-        cancel = (Button) findViewById(R.id.btn_cancel);
+
         title = (EditText)findViewById(R.id.text_title);
         company = (EditText)findViewById(R.id.text_company);
         city = (EditText)findViewById(R.id.text_city);
@@ -74,19 +73,12 @@ public class EnterJobOffersActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
-            JOB_DETAILS jobDetails = new JOB_DETAILS();
-            jobDetails.TITLE = title.getText().toString();
-            jobDetails.COMPANY = company.getText().toString();
-            jobDetails.CITY = city.getText().toString();
-            jobDetails.STATE = state.getText().toString();
-            jobDetails.YEARLY_SALARY = Double.parseDouble(salary.getText().toString());
-            jobDetails.YEARLY_BONUS = Double.parseDouble(yearlyBonus.getText().toString());
-            jobDetails.COST_OF_LIVING_INDEX = Integer.parseInt(costOfLiving.getText().toString());
-            jobDetails.IS_CURRENT_JOB = false;
-            jobDetails.LEAVE_TIME = Integer.parseInt(leaveTime.getText().toString());
-            jobDetails.PERCENTAGE_MATCHED = Double.parseDouble(retirement.getText().toString());
-            jobDetails.WORK_REMOTE = Integer.parseInt(remoteWork.getSelectedItem().toString());
-            jobDetails.SCORE = null;
+            JOB_DETAILS jobDetails = new JOB_DETAILS(title.getText().toString(),
+                    company.getText().toString(), city.getText().toString(), state.getText().toString(),
+                    Integer.parseInt(costOfLiving.getText().toString()),Integer.parseInt(remoteWork.getSelectedItem().toString()),
+                    Double.parseDouble(salary.getText().toString()), Double.parseDouble(yearlyBonus.getText().toString()),
+                    Double.parseDouble(retirement.getText().toString()),Integer.parseInt(leaveTime.getText().toString()),false,
+                    0.0);
             jobDetailsDao.insertJob(jobDetails);
             handler.post(() -> {
                 Intent intent = new Intent(this, AfterEnterJobOfferActivity.class);

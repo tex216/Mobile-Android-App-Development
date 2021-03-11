@@ -65,31 +65,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleAddJobOffersClick() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-
-        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-        executor.execute(() -> {
-            //Background work here
-            JOB_DETAILS jobDetails = new JOB_DETAILS();
-            jobDetails.TITLE = "Test Title";
-            jobDetails.COMPANY = "Test Company";
-            jobDetails.CITY = "Test City";
-            jobDetails.STATE = "Test State";
-            jobDetails.YEARLY_SALARY = 100000.00;
-            jobDetails.YEARLY_BONUS = 20000.00;
-            jobDetails.COST_OF_LIVING_INDEX = 5;
-            jobDetails.IS_CURRENT_JOB = false;
-            jobDetails.LEAVE_TIME = 3;
-            jobDetails.PERCENTAGE_MATCHED = 6.5;
-            jobDetails.WORK_REMOTE = 3;
-            jobDetails.SCORE = null;
-            jobDetailsDao.insertJob(jobDetails);
-            handler.post(() -> {
+//        ExecutorService executor = Executors.newSingleThreadExecutor();
+//        Handler handler = new Handler(Looper.getMainLooper());
+//
+//        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
+//        executor.execute(() -> {
+//            //Background work here
+//            JOB_DETAILS jobDetails = new JOB_DETAILS();
+//            jobDetails.TITLE = "Test Title";
+//            jobDetails.COMPANY = "Test Company";
+//            jobDetails.CITY = "Test City";
+//            jobDetails.STATE = "Test State";
+//            jobDetails.YEARLY_SALARY = 100000.00;
+//            jobDetails.YEARLY_BONUS = 20000.00;
+//            jobDetails.COST_OF_LIVING_INDEX = 5;
+//            jobDetails.IS_CURRENT_JOB = false;
+//            jobDetails.LEAVE_TIME = 3;
+//            jobDetails.PERCENTAGE_MATCHED = 6.5;
+//            jobDetails.WORK_REMOTE = 3;
+//            jobDetails.SCORE = null;
+//            jobDetailsDao.insertJob(jobDetails);
+//            handler.post(() -> {
                 Intent intent = new Intent(this, EnterJobOffersActivity.class);
                 startActivity(intent);
-            });
-        });
+//            });
+//        });
     }
 
     public void handleAddCurrentJobClick() {
