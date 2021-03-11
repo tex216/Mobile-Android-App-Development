@@ -20,30 +20,22 @@ public class MainActivity extends AppCompatActivity {
     private Button enterJobOffers;
     private Button adjustComparisonSettings;
     private Button compareJobs;
-//    private final Context context = this;
-//    private AppDatabase appDatabase;
+    private final Context context = this;
+    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ComparisonSettingsWeightDao comparisonSettingsWeightDao = AppDatabase.getInstance(this).comparisonSettingsWeightDao();
-
+        appDatabase = AppDatabase.getInstance(this, true);
+        ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
 
-
-//        appDatabase = AppDatabase.getInstance(context);
         executor.execute(() -> {
             if (comparisonSettingsWeightDao.getAllWeights().size() == 0) {
                 comparisonSettingsWeightDao.setDefaultWeight();
             }
-//            handler.post(() -> {
-//                Intent intent = new Intent(this, MainActivity.class);
-//                startActivity(intent);
-//            });
         });
-
 
         enterCurrentJob = (Button) findViewById(R.id.btn_enter_current_job);
         enterJobOffers = (Button) findViewById(R.id.btn_enter_job_offers);

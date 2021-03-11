@@ -29,14 +29,14 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     private EditText yearlyBonus;
     private EditText retirement;
     private EditText leaveTime;
-//    private final Context context = this;
-//    private AppDatabase appDatabase;
+    private final Context context = this;
+    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_current_job);
-//        appDatabase = AppDatabase.getInstance(context);
+        appDatabase = AppDatabase.getInstance(context);
         save = (Button) findViewById(R.id.btn_save_cj);
         cancel = (Button) findViewById(R.id.btn_cancel_cj);
         title = (EditText)findViewById(R.id.text_title_cj);
@@ -67,7 +67,7 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     }
 
     public void handleSaveClick() {
-//        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
+        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -105,14 +105,14 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
                         Double.parseDouble(yearlyBonus.getText().toString()),
                         Double.parseDouble(retirement.getText().toString()),
                         Integer.parseInt(leaveTime.getText().toString()),
-                        true,
-                        0.0
+        true,
+                null
                     );
-//            jobDetailsDao.insertJob(jobDetails);
-//            handler.post(() -> {
-//                Intent intent = new Intent(this, MainActivity.class);
-//                startActivity(intent);
-//            });
+            jobDetailsDao.insertJob(jobDetails);
+            handler.post(() -> {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            });
         });
     }
 

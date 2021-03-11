@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.security.PublicKey;
@@ -47,12 +48,13 @@ public class JOB_DETAILS {
     private boolean IS_CURRENT_JOB;
 
     @ColumnInfo(name = "SCORE")
-//    @Nullable
-    private double SCORE;
+    @Nullable
+    private Double SCORE;
 
-    public JOB_DETAILS(@NonNull String TITLE, String COMPANY, String CITY, String STATE,
+    @Ignore
+    public JOB_DETAILS(String TITLE, String COMPANY, String CITY, String STATE,
                        int COST_OF_LIVING_INDEX, int WORK_REMOTE, double YEARLY_SALARY,double YEARLY_BONUS,
-                       double PERCENTAGE_MATCHED, int LEAVE_TIME, boolean IS_CURRENT_JOB, double SCORE) {
+                       double PERCENTAGE_MATCHED, int LEAVE_TIME, boolean IS_CURRENT_JOB) {
         this.TITLE = TITLE;
         this.COMPANY = COMPANY;
         this.CITY = CITY;
@@ -64,6 +66,12 @@ public class JOB_DETAILS {
         this.PERCENTAGE_MATCHED = PERCENTAGE_MATCHED;
         this.LEAVE_TIME = LEAVE_TIME;
         this.IS_CURRENT_JOB = IS_CURRENT_JOB;
+    }
+
+    public JOB_DETAILS(String TITLE, String COMPANY, String CITY, String STATE,
+                       int COST_OF_LIVING_INDEX, int WORK_REMOTE, double YEARLY_SALARY,double YEARLY_BONUS,
+                       double PERCENTAGE_MATCHED, int LEAVE_TIME, boolean IS_CURRENT_JOB, Double SCORE) {
+        this(TITLE, COMPANY, CITY, STATE, COST_OF_LIVING_INDEX, WORK_REMOTE, YEARLY_SALARY, YEARLY_BONUS, PERCENTAGE_MATCHED, LEAVE_TIME, IS_CURRENT_JOB);
         this.SCORE = SCORE;
     }
 
@@ -119,7 +127,7 @@ public class JOB_DETAILS {
         return this.IS_CURRENT_JOB;
     }
 
-    public double getSCORE(){
+    public Double getSCORE(){
         return this.SCORE;
     }
 }
