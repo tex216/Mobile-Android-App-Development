@@ -58,23 +58,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleAddJobOffersClick() {
-//        Intent intent = new Intent(this, EnterJobOffersActivity.class);
-//        startActivity(intent);
-        JobDetailsDao jobDetailsDao = db.jobDetailsDao();
-        JOB_DETAILS jobDetails = new JOB_DETAILS();
-        jobDetails.TITLE = "Test Title";
-        jobDetails.COMPANY = "Test Company";
-        jobDetails.CITY = "Test City";
-        jobDetails.STATE = "Test State";
-        jobDetails.YEARLY_SALARY = 100000.00;
-        jobDetails.YEARLY_BONUS = 20000.00;
-        jobDetails.COST_OF_LIVING_INDEX = 5;
-        jobDetails.IS_CURRENT_JOB = false;
-        jobDetails.LEAVE_TIME = 3;
-        jobDetails.PERCENTAGE_MATCHED = 6.5;
-        jobDetails.WORK_REMOTE = 3;
-        jobDetails.SCORE = null;
-        jobDetailsDao.insertJob(jobDetails);
+//        JobDetailsDao jobDetailsDao = db.jobDetailsDao();
+//        JOB_DETAILS jobDetails = new JOB_DETAILS();
+//        jobDetails.TITLE = "Test Title";
+//        jobDetails.COMPANY = "Test Company";
+//        jobDetails.CITY = "Test City";
+//        jobDetails.STATE = "Test State";
+//        jobDetails.YEARLY_SALARY = 100000.00;
+//        jobDetails.YEARLY_BONUS = 20000.00;
+//        jobDetails.COST_OF_LIVING_INDEX = 5;
+//        jobDetails.IS_CURRENT_JOB = false;
+//        jobDetails.LEAVE_TIME = 3;
+//        jobDetails.PERCENTAGE_MATCHED = 6.5;
+//        jobDetails.WORK_REMOTE = 3;
+//        jobDetails.SCORE = null;
+//        jobDetailsDao.insertJob(jobDetails);
+        Intent intent = new Intent(this, EnterJobOffersActivity.class);
+        startActivity(intent);
     }
 
     public void handleAddCurrentJobClick() {
