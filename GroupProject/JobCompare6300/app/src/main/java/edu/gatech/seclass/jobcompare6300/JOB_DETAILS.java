@@ -67,7 +67,13 @@ public class JOB_DETAILS {
         this.SCORE = SCORE;
     }
 
-    public int getJOB_ID() { return this.JOB_ID; }
+    public void setJOB_ID(int job_id) {
+        this.JOB_ID = job_id;
+    }
+
+    public int getJOB_ID() {
+        return this.JOB_ID;
+    }
 
     public String getTITLE() {
         return this.TITLE;

@@ -29,4 +29,7 @@ public interface JobDetailsDao {
         @Query("UPDATE JOB_DETAILS SET TITLE = :title ,COMPANY = :company ,CITY = :city ,STATE = :state ,COST_OF_LIVING_INDEX = :costOfLivingIndex ,WORK_REMOTE = :workRemote ,YEARLY_SALARY = :yearlySalary ,YEARLY_BONUS = :yearlyBonus ,PERCENTAGE_MATCHED = :percentageMatch ,LEAVE_TIME = :leaveTime WHERE IS_CURRENT_JOB = 1")
         int updateCurrentJob(String title, String company, String city, String state, int costOfLivingIndex, int workRemote, double yearlySalary, double yearlyBonus, double percentageMatch, int leaveTime);
 
+        // Update job score
+        @Query("UPDATE JOB_DETAILS SET SCORE = :score WHERE JOB_ID = :jobId")
+        void setScore(int jobId, double score);
 }

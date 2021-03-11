@@ -19,5 +19,4 @@ public interface ComparisonSettingsWeightDao {
     // Update comparison weights
     @Query("UPDATE COMPARISON_SETTINGS_WEIGHT SET WEIGHT = CASE WHEN WEIGHT = 'REMOTE_WORK_POSSIBILITY_WEIGHT' THEN :remoteWorkPossibilityWeight WHEN WEIGHT = 'YEARLY_SALARY_WEIGHT' THEN :yearlySalaryWeight WHEN WEIGHT = 'YEARLY_BONUS_WEIGHT' THEN :yearlyBonusWeight WHEN WEIGHT = 'RETIREMENT_BENEFITS_WEIGHT' THEN :retirementBenefitsWeight WHEN WEIGHT = 'LEAVE_TIME_WEIGHT' THEN :leaveTimeWeight ELSE WEIGHT END")
     int updateComparisonWeights(int remoteWorkPossibilityWeight, int yearlySalaryWeight, int yearlyBonusWeight, int retirementBenefitsWeight, int leaveTimeWeight);
-
 }

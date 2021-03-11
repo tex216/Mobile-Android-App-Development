@@ -2,20 +2,31 @@ package edu.gatech.seclass.jobcompare6300;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class RankedListActivity extends AppCompatActivity {
 
     private Button compare;
     private Button cancel;
+    private final Context context = this;
+    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranked_list);
+
+        appDatabase = AppDatabase.getInstance(context);
 
         compare = (Button) findViewById(R.id.btn_compare_ranked_list);
         cancel = (Button) findViewById(R.id.btn_return_ranked_list);
@@ -33,6 +44,13 @@ public class RankedListActivity extends AppCompatActivity {
                 handleCancelClick();
             }
         });
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
+
+        List<JOB_DETAILS> allJobs = jobDetailsDao.getAllJobs();
     }
 
     public void handleCompareJobsClick() {
