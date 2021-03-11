@@ -36,19 +36,19 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_current_job);
-        appDatabase = AppDatabase.getInstance(context);;
+        appDatabase = AppDatabase.getInstance(context);
         save = (Button) findViewById(R.id.btn_save_cj);
         cancel = (Button) findViewById(R.id.btn_cancel_cj);
         title = (EditText)findViewById(R.id.text_title_cj);
-        company = (EditText)findViewById(R.id.text_company_cj);;
-        city = (EditText)findViewById(R.id.text_city_cj);;
-        state = (EditText)findViewById(R.id.text_state_cj);;
-        costOfLiving = (EditText)findViewById(R.id.number_cost_of_living_cj);;
-        remoteWork = (Spinner) findViewById(R.id.dropdown_remote_work_cj);;
-        salary = (EditText)findViewById(R.id.number_salary_cj);;
-        yearlyBonus = (EditText)findViewById(R.id.number_bonus_cj);;
-        retirement = (EditText)findViewById(R.id.number_retirement_cj);;
-        leaveTime = (EditText)findViewById(R.id.number_leave_time_cj);;
+        company = (EditText)findViewById(R.id.text_company_cj);
+        city = (EditText)findViewById(R.id.text_city_cj);
+        state = (EditText)findViewById(R.id.text_state_cj);
+        costOfLiving = (EditText)findViewById(R.id.number_cost_of_living_cj);
+        remoteWork = (Spinner) findViewById(R.id.dropdown_remote_work_cj);
+        salary = (EditText)findViewById(R.id.number_salary_cj);
+        yearlyBonus = (EditText)findViewById(R.id.number_bonus_cj);
+        retirement = (EditText)findViewById(R.id.number_retirement_cj);
+        leaveTime = (EditText)findViewById(R.id.number_leave_time_cj);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
