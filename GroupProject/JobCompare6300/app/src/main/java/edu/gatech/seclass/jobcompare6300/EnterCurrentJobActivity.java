@@ -94,20 +94,20 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
 //        });
         executor.execute(() -> {
             JOB_DETAILS jobDetails = new JOB_DETAILS
-                    (
-                        title.getText().toString(),
-                        company.getText().toString(),
-                        city.getText().toString(),
-                        state.getText().toString(),
-                        Integer.parseInt(costOfLiving.getText().toString()),
-                        Integer.parseInt(remoteWork.getSelectedItem().toString()),
-                        Double.parseDouble(salary.getText().toString()),
-                        Double.parseDouble(yearlyBonus.getText().toString()),
-                        Double.parseDouble(retirement.getText().toString()),
-                        Integer.parseInt(leaveTime.getText().toString()),
-        true,
-                null
-                    );
+                (
+                    title.getText().toString(),
+                    company.getText().toString(),
+                    city.getText().toString(),
+                    state.getText().toString(),
+                    Integer.parseInt(costOfLiving.getText().toString()),
+                    Integer.parseInt(remoteWork.getSelectedItem().toString()),
+                    Double.parseDouble(salary.getText().toString()),
+                    Double.parseDouble(yearlyBonus.getText().toString()),
+                    Double.parseDouble(retirement.getText().toString()),
+                    Integer.parseInt(leaveTime.getText().toString()),
+    true,
+            null
+                );
             jobDetailsDao.insertJob(jobDetails);
             handler.post(() -> {
                 Intent intent = new Intent(this, MainActivity.class);

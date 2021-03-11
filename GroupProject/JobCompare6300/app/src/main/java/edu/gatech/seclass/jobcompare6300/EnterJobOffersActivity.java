@@ -73,7 +73,8 @@ public class EnterJobOffersActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
-            JOB_DETAILS jobDetails = new JOB_DETAILS(
+            JOB_DETAILS jobDetails = new JOB_DETAILS
+                (
                     title.getText().toString(),
                     company.getText().toString(),
                     city.getText().toString(),
@@ -82,7 +83,8 @@ public class EnterJobOffersActivity extends AppCompatActivity {
                     Double.parseDouble(salary.getText().toString()), Double.parseDouble(yearlyBonus.getText().toString()),
                     Double.parseDouble(retirement.getText().toString()),Integer.parseInt(leaveTime.getText().toString()),
                     false,
-                    null);
+                    null
+                );
             jobDetailsDao.insertJob(jobDetails);
             handler.post(() -> {
                 Intent intent = new Intent(this, AfterEnterJobOfferActivity.class);
