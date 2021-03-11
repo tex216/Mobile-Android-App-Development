@@ -20,5 +20,6 @@ public abstract class AppDatabase extends RoomDatabase {
         return Room.databaseBuilder(context,AppDatabase.class,DB_NAME).build();
     }
     public abstract JobDetailsDao jobDetailsDao();
-    public abstract ComparisonSettingsWeightDao comparisonSettingsweightDao();
+    public abstract ComparisonSettingsWeightDao comparisonSettingsWeightDao();
+
 }

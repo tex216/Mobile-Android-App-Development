@@ -12,4 +12,5 @@ public class COMPARISON_SETTINGS_WEIGHT {
 
     @ColumnInfo(name = "WEIGHT_VALUE")
     public int WEIGHT_VALUE;
+
 }
