@@ -79,10 +79,13 @@ public class CompareJobsActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
         int first_job_id = 10;
         int second_job_id = 20;
-        ;
-        executor.execute(() -> {
-            this.selectJobs = jobDetailsDao.getSelectedJobs(first_job_id, second_job_id);
-        });
+
+        Intent i = getIntent();
+        selectJobs = (List<JOB_DETAILS>)i.getSerializableExtra("selected_jobs");
+
+//        executor.execute(() -> {
+//            this.selectJobs = jobDetailsDao.getSelectedJobs(first_job_id, second_job_id);
+//        });
 
         String Title_1 = selectJobs.get(0).getTITLE();
         title_1.setText(Title_1);

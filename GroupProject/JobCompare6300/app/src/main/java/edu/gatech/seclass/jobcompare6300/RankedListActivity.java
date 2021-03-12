@@ -113,6 +113,7 @@ public class RankedListActivity extends AppCompatActivity {
 
     private void handleCompareJobsClick() {
         Intent intent = new Intent(this, CompareJobsActivity.class);
+        intent.putExtra("selected_jobs", (ArrayList<JOB_DETAILS>)this.allJobs);
         startActivity(intent);
     }
 

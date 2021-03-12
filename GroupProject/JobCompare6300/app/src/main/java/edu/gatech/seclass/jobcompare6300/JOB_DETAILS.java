@@ -7,10 +7,11 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.security.PublicKey;
 
 @Entity
-public class JOB_DETAILS {
+public class JOB_DETAILS implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int JOB_ID;
 
