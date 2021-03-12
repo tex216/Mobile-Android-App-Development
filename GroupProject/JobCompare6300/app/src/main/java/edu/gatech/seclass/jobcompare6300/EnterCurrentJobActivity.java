@@ -29,18 +29,20 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     private EditText yearlyBonus;
     private EditText retirement;
     private EditText leaveTime;
-    private final Context context = this;
-    private AppDatabase appDatabase;
 
-    JobDetailsDao jobDetailsDao;
+    private final Context context = this;
+    private AppDatabase appDatabase = AppDatabase.getInstance(this.context);
+    private JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
     private JOB_DETAILS currentJob;
-    private ExecutorService executor;
-    private Handler handler;
+
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_current_job);
+
         appDatabase = AppDatabase.getInstance(context);
         save = (Button) findViewById(R.id.btn_save_cj);
         cancel = (Button) findViewById(R.id.btn_cancel_cj);
@@ -55,26 +57,23 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
         retirement = (EditText)findViewById(R.id.number_retirement_cj);
         leaveTime = (EditText)findViewById(R.id.number_leave_time_cj);
 
-        this.jobDetailsDao = this.appDatabase.jobDetailsDao();
-        this.executor = Executors.newSingleThreadExecutor();
-        this.handler = new Handler(Looper.getMainLooper());
-
         this.executor.execute(() -> {
             this.currentJob = jobDetailsDao.getCurrentJob();
+            handler.post(() -> {
+                if (this.currentJob!=null) { //pre-populate form if current job exists
+                    title.setText(this.currentJob.getTITLE());
+                    company.setText(this.currentJob.getCOMPANY());
+                    city.setText(this.currentJob.getCITY());
+                    state.setText(this.currentJob.getSTATE());
+                    costOfLiving.setText(String.valueOf(this.currentJob.getCOST_OF_LIVING_INDEX()));
+                    remoteWork.setSelection(this.currentJob.getWORK_REMOTE());
+                    yearlySalary.setText(String.valueOf(this.currentJob.getYEARLY_SALARY()));
+                    yearlyBonus.setText(String.valueOf(this.currentJob.getYEARLY_BONUS()));
+                    retirement.setText(String.valueOf(this.currentJob.getPERCENTAGE_MATCHED()));
+                    leaveTime.setText(String.valueOf(this.currentJob.getLEAVE_TIME()));
+                }
+            });
         });
-
-        if (this.currentJob!=null) { //pre-populate form if current job exists
-            title.setText(this.currentJob.getTITLE());
-            company.setText(this.currentJob.getCOMPANY());
-            city.setText(this.currentJob.getCITY());
-            state.setText(this.currentJob.getSTATE());
-            costOfLiving.setText(String.valueOf(this.currentJob.getCOST_OF_LIVING_INDEX()));
-            remoteWork.setSelection(this.currentJob.getWORK_REMOTE());
-            yearlySalary.setText(String.valueOf(this.currentJob.getYEARLY_SALARY()));
-            yearlyBonus.setText(String.valueOf(this.currentJob.getYEARLY_BONUS()));
-            retirement.setText(String.valueOf(this.currentJob.getPERCENTAGE_MATCHED()));
-            leaveTime.setText(String.valueOf(this.currentJob.getLEAVE_TIME()));
-        }
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,27 +91,6 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     }
 
     public void handleSaveClick() {
-//        executor.execute(() -> {
-//            //Background work here
-//            JOB_DETAILS jobDetails = new JOB_DETAILS();
-//            jobDetails.TITLE = "Test Title";
-//            jobDetails.COMPANY = "Test Company";
-//            jobDetails.CITY = "Test City";
-//            jobDetails.STATE = "Test State";
-//            jobDetails.YEARLY_SALARY = 100000.00;
-//            jobDetails.YEARLY_BONUS = 20000.00;
-//            jobDetails.COST_OF_LIVING_INDEX = 5;
-//            jobDetails.IS_CURRENT_JOB = false;
-//            jobDetails.LEAVE_TIME = 3;
-//            jobDetails.PERCENTAGE_MATCHED = 6.5;
-//            jobDetails.WORK_REMOTE = 3;
-//            jobDetails.SCORE = null;
-//            jobDetailsDao.insertJob(jobDetails);
-//            handler.post(() -> {
-//                Intent intent = new Intent(this, MainActivity.class);
-//                startActivity(intent);
-//            });
-//        });
         this.executor.execute(() -> {
             String newTitle = title.getText().toString();
             String newCompany = company.getText().toString();
@@ -125,7 +103,7 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
             double newRetirement = Double.parseDouble(retirement.getText().toString());
             int newLeaveTime = Integer.parseInt(leaveTime.getText().toString());
 
-            if (currentJob == null) { //no existing current job exists, add it
+            if (this.currentJob == null) { //no existing current job exists, add it
                 JOB_DETAILS jobDetails = new JOB_DETAILS(
                         newTitle,
                         newCompany,

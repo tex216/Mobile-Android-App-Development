@@ -52,7 +52,7 @@ public class JOB_DETAILS {
     private Double SCORE;
 
     @Ignore
-    boolean selectedItem;
+    boolean selectedItem = false;
 
     @Ignore
     public JOB_DETAILS(String TITLE, String COMPANY, String CITY, String STATE,
