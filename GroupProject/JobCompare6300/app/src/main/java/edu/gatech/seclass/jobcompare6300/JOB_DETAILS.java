@@ -78,6 +78,7 @@ public class JOB_DETAILS {
         this.SCORE = SCORE;
     }
 
+
     public void setJOB_ID(int job_id) {
         this.JOB_ID = job_id;
     }
