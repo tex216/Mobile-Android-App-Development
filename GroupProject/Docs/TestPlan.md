@@ -47,7 +47,8 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 1.1.3 | Throw error for invalid addJob() details pt. 2 | Execute addJob() with negative values in details that expect integer or float values | Error thrown | - | -
 1.2 | Throw error for invalid updateComparisonSettingsWeight() | Execute updateComparisonSettingsWeight() with one or more negative values | Error thrown | - | -
 1.3.1 | Calculate correct jobScore() with default weights | <ul><li>Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>All weights set to 1</li></ul> | Returned score is 46,400 | - | -
-1.3.2 | Calculate correct jobScore() with specific weights | <ul><li>Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>Yearly Salary Weight = 2, Yearly Bonus Weight = 3, Retirement Weight = 4, Leave Time Weight = 6, and Allowed Telework Weight = 1</li></ul> | Returned score is 38,000 | - | -
+1.3.2 | Calculate correct jobScore() with default weights | <ul><li>Execute score() with these values: Index = 125, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>All weights set to 1</li></ul> | Returned score is 18,560 | - | -
+1.3.3 | Calculate correct jobScore() with specific weights | <ul><li>Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>Yearly Salary Weight = 2, Yearly Bonus Weight = 3, Retirement Weight = 4, Leave Time Weight = 6, and Allowed Telework Weight = 1</li></ul> | Returned score is 38,000 | - | -
 
 
 ### 2.2 Integration Tests
