@@ -108,8 +108,6 @@ public class RankedListActivity extends AppCompatActivity {
         boolean currentCheck = v.isChecked();
         JOB_DETAILS job = this.allJobs.get(position);
         job.active(!currentCheck);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listItem);
-        ranked_list.setAdapter(adapter);
     }
 
     public void handleCompareJobsClick() {
