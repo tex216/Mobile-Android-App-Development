@@ -139,5 +139,51 @@ public class JOB_DETAILS {
         return selectedItem = !selectedItem;
     }
 
+    public void setTITLE(String TITLE) {
+        this.TITLE = TITLE;
+    }
 
+    public void setCOMPANY(String COMPANY) {
+        this.COMPANY = COMPANY;
+    }
+
+    public void setCITY(String CITY) {
+        this.CITY = CITY;
+    }
+
+    public void setSTATE(String STATE) {
+        this.STATE = STATE;
+    }
+
+    public void setCOST_OF_LIVING_INDEX(int COST_OF_LIVING_INDEX) {
+        this.COST_OF_LIVING_INDEX = COST_OF_LIVING_INDEX;
+    }
+
+    public void setWORK_REMOTE(int WORK_REMOTE) {
+        this.WORK_REMOTE = WORK_REMOTE;
+    }
+
+    public void setYEARLY_SALARY(double YEARLY_SALARY) {
+        this.YEARLY_SALARY = YEARLY_SALARY;
+    }
+
+    public void setYEARLY_BONUS(double YEARLY_BONUS) {
+        this.YEARLY_BONUS = YEARLY_BONUS;
+    }
+
+    public void setPERCENTAGE_MATCHED(double PERCENTAGE_MATCHED) {
+        this.PERCENTAGE_MATCHED = PERCENTAGE_MATCHED;
+    }
+
+    public void setLEAVE_TIME(int LEAVE_TIME) {
+        this.LEAVE_TIME = LEAVE_TIME;
+    }
+
+    public void setIS_CURRENT_JOB(boolean IS_CURRENT_JOB) {
+        this.IS_CURRENT_JOB = IS_CURRENT_JOB;
+    }
+
+    public void setSCORE(@Nullable Double SCORE) {
+        this.SCORE = SCORE;
+    }
 }

@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface JobDetailsDao {
 
         // Get current job
         @Query("SELECT * FROM JOB_DETAILS WHERE IS_CURRENT_JOB = 1")
-        List<JOB_DETAILS> getCurrentJob();
+        JOB_DETAILS getCurrentJob();
 
         // Get selected jobs to compare
         @Query("SELECT * FROM JOB_DETAILS WHERE JOB_ID IN (:first_job_id, :second_job_id)")
@@ -26,8 +27,8 @@ public interface JobDetailsDao {
         void insertJob(JOB_DETAILS... job_details);
 
         // Update current job
-        @Query("UPDATE JOB_DETAILS SET TITLE = :title ,COMPANY = :company ,CITY = :city ,STATE = :state ,COST_OF_LIVING_INDEX = :costOfLivingIndex ,WORK_REMOTE = :workRemote ,YEARLY_SALARY = :yearlySalary ,YEARLY_BONUS = :yearlyBonus ,PERCENTAGE_MATCHED = :percentageMatch ,LEAVE_TIME = :leaveTime WHERE IS_CURRENT_JOB = 1")
-        int updateCurrentJob(String title, String company, String city, String state, int costOfLivingIndex, int workRemote, double yearlySalary, double yearlyBonus, double percentageMatch, int leaveTime);
+        @Update
+        int updateCurrentJob(JOB_DETAILS... current_job);
 
         // Update job score
         @Query("UPDATE JOB_DETAILS SET SCORE = :score WHERE JOB_ID = :jobId")

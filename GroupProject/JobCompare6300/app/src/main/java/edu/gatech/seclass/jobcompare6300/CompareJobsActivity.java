@@ -36,6 +36,7 @@ public class CompareJobsActivity extends AppCompatActivity {
     private TextView leaveTime_2;
     private final Context context = this;
     private AppDatabase appDatabase;
+    List<JOB_DETAILS> selectJobs;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,44 +79,44 @@ public class CompareJobsActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
         int first_job_id = 10;
         int second_job_id = 20;
-        List<JOB_DETAILS> selectJobs;
+        ;
         executor.execute(() -> {
-            selectJobs = jobDetailsDao.getSelectedJobs(first_job_id, second_job_id);
+            this.selectJobs = jobDetailsDao.getSelectedJobs(first_job_id, second_job_id);
         });
 
-        String Title_1 = selectJobs.get(i).getTITLE();
+        String Title_1 = selectJobs.get(0).getTITLE();
         title_1.setText(Title_1);
-        String Title_2 = selectJobs.get(i).getTITLE();
+        String Title_2 = selectJobs.get(1).getTITLE();
         title_2.setText(Title_2);
 
-        String Company_1 = selectJobs.get(i).getCOMPANY();
+        String Company_1 = selectJobs.get(0).getCOMPANY();
         company_1.setText(Company_1);
-        String Company_2 = selectJobs.get(i).getCOMPANY();
+        String Company_2 = selectJobs.get(1).getCOMPANY();
         company_2.setText(Company_2);
 
-        String Location_1 = selectJobs.get(i).getCITY() + selectJobs.get(i).getSTATE();
+        String Location_1 = selectJobs.get(0).getCITY() + selectJobs.get(0).getSTATE();
         location_1.setText(Location_1);
-        String Location_2 = selectJobs.get(i).getCITY() + selectJobs.get(i).getSTATE();
+        String Location_2 = selectJobs.get(1).getCITY() + selectJobs.get(1).getSTATE();
         location_2.setText(Location_2);
 
-        String YearlySalary_1 = selectJobs.get(i).getYEARLY_SALARY();
+        String YearlySalary_1 = String.valueOf(selectJobs.get(0).getYEARLY_SALARY());
         yearlySalary_1.setText(YearlySalary_1);
-        String YearlySalary_2 = selectJobs.get(i).getYEARLY_SALARY();
+        String YearlySalary_2 = String.valueOf(selectJobs.get(1).getYEARLY_SALARY());
         yearlySalary_2.setText(YearlySalary_2);
 
-        String YearlyBonus_1 = selectJobs.get(i).getYEARLY_BONUS();
+        String YearlyBonus_1 = String.valueOf(selectJobs.get(0).getYEARLY_BONUS());
         yearlyBonus_1.setText(YearlyBonus_1);
-        String YearlyBonus_2 = selectJobs.get(i).getYEARLY_BONUS();
+        String YearlyBonus_2 = String.valueOf(selectJobs.get(1).getYEARLY_BONUS());
         yearlyBonus_2.setText(YearlyBonus_2);
 
-        String RetirementBenefits_1 = selectJobs.get(i).getPERCENTAGE_MATCHED();
+        String RetirementBenefits_1 = String.valueOf(selectJobs.get(0).getPERCENTAGE_MATCHED());
         retirementBenefits_1.setText(RetirementBenefits_1);
-        String RetirementBenefits_2 = selectJobs.get(i).getPERCENTAGE_MATCHED();
+        String RetirementBenefits_2 = String.valueOf(selectJobs.get(1).getPERCENTAGE_MATCHED());
         retirementBenefits_2.setText(RetirementBenefits_2);
 
-        String LeaveTime_1 = selectJobs.get(i).getLEAVE_TIME();
+        String LeaveTime_1 = String.valueOf(selectJobs.get(0).getLEAVE_TIME());
         leaveTime_1.setText(LeaveTime_1);
-        String LeaveTime_2 = selectJobs.get(i).getLEAVE_TIME();
+        String LeaveTime_2 = String.valueOf(selectJobs.get(1).getLEAVE_TIME());
         leaveTime_2.setText(LeaveTime_2);
 
     }

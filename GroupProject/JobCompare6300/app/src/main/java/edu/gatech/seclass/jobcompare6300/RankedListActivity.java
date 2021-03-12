@@ -28,7 +28,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class RankedListActivity extends AppCompatActivity {
-
     private Button compare;
     private Button cancel;
     private final Context context = this;
@@ -37,6 +36,7 @@ public class RankedListActivity extends AppCompatActivity {
     private ArrayAdapter adapter;
     ListView ranked_list;
     private List<JOB_DETAILS> allJobs;
+    private List<COMPARISON_SETTINGS_WEIGHT> comparison_settings_weights;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +50,6 @@ public class RankedListActivity extends AppCompatActivity {
         cancel = (Button) findViewById(R.id.btn_return_ranked_list);
 
         listItem = new ArrayList<>();
-
-
-        viewData();
-
-
-
-
-//        ranked_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                SparseBooleanArray selectedItem = ranked_list.getCheckedItemPositions();
-//                Toast.makeText(RankedListActivity.this,"1",Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         compare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,30 +65,34 @@ public class RankedListActivity extends AppCompatActivity {
             }
         });
 
+        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+        executor.execute(() -> {
+            this.calculateJobScores();
+        });
+
+        this.viewData();
     }
     public void viewData(){
-
         JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-
-            ExecutorService executor = Executors.newSingleThreadExecutor();
-            Handler handler = new Handler(Looper.getMainLooper());
-            executor.execute(() -> {
-                this.allJobs = jobDetailsDao.getAllJobs();
-            for (int i = 0; i<allJobs.size();i++){
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+        executor.execute(() -> {
+            this.allJobs = jobDetailsDao.getAllJobs();
+            for (int i = 0; i < allJobs.size(); i++){
                 JOB_DETAILS job = allJobs.get(i);
-                if(job.getIS_CURRENT_JOB()==true){
+                if(job.getIS_CURRENT_JOB() == true){
                     listItem.add("Title: " + job.getTITLE() + " (Current Job)"+"\n" + "Company: " + job.getCOMPANY());
                 }else{
                     listItem.add("Title: " + job.getTITLE() + "\n" + "Company: " + job.getCOMPANY());
                 }
             }
-
-            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_checked,listItem);
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_checked, listItem);
             ranked_list.setAdapter(adapter);
-            for(int i=0; i<allJobs.size();i++){
+            for(int i=0; i < allJobs.size(); i++){
                 ranked_list.setItemChecked(i, allJobs.get(i).active(false));
             }
-
             ranked_list.setChoiceMode(ranked_list.CHOICE_MODE_MULTIPLE);
             ranked_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -110,10 +100,7 @@ public class RankedListActivity extends AppCompatActivity {
                     handleItemSelect(parent, view, position, id);
                 }
             });
-
-            });
-
-
+        });
     }
 
     public void handleItemSelect(AdapterView<?> parent, View view, int position, long id) {
@@ -121,8 +108,9 @@ public class RankedListActivity extends AppCompatActivity {
         boolean currentCheck = v.isChecked();
         JOB_DETAILS job = this.allJobs.get(position);
         job.active(!currentCheck);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listItem);
+        ranked_list.setAdapter(adapter);
     }
-
 
     public void handleCompareJobsClick() {
         Intent intent = new Intent(this, CompareJobsActivity.class);
@@ -132,5 +120,63 @@ public class RankedListActivity extends AppCompatActivity {
     public void handleCancelClick() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void calculateJobScores() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        this.getAllWeights();
+        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
+        List<JOB_DETAILS> allJobs = jobDetailsDao.getAllJobs();
+
+        int denominator = this.calculateWeightsDenominator();
+
+        HashMap<String, Integer> map = this.convertListToHashmap();
+        executor.execute(() -> {
+            for (int i = 0; i < allJobs.size(); i++) {
+                JOB_DETAILS job = allJobs.get(i);
+                double remoteWorkPossibilityWeight = (double)map.get("REMOTE_WORK_POSSIBILITY_WEIGHT");
+                double yearlySalaryWeight = (double)map.get("YEARLY_SALARY_WEIGHT");
+                double yearlyBonusWeight = (double)map.get("YEARLY_BONUS_WEIGHT");
+                double retirementBenefitsWeight = (double)map.get("RETIREMENT_BENEFITS_WEIGHT");
+                double leaveTimeWeight = (double)map.get("LEAVE_TIME_WEIGHT");
+
+                double ays = job.getYEARLY_SALARY()/(((double)job.getCOST_OF_LIVING_INDEX())/100.0);
+                double ayb = job.getYEARLY_BONUS()/(((double)job.getCOST_OF_LIVING_INDEX())/100.0);
+                double rbp = (job.getPERCENTAGE_MATCHED()/100.0);
+                double lt = (double)job.getLEAVE_TIME();
+                double rwt = (double)job.getWORK_REMOTE();
+
+                double firstTerm = yearlySalaryWeight/denominator * ays;
+                double secondTerm = yearlyBonusWeight/denominator * ayb;
+                double thirdTerm = retirementBenefitsWeight/denominator * (rbp * ays);
+                double fourthTerm = leaveTimeWeight/denominator * (lt * ays/260.0);
+                double fifthTerm = remoteWorkPossibilityWeight/denominator * ((260.0 - 52.0 * rwt) * (ays/260.0) / 8.0);
+
+                double newScore = firstTerm + secondTerm + thirdTerm + fourthTerm - fifthTerm;
+
+                    jobDetailsDao.setScore(allJobs.get(i).getJOB_ID(), newScore);
+            }
+        });
+    }
+
+    private int calculateWeightsDenominator() {
+        int totalWeights = 0;
+        for (COMPARISON_SETTINGS_WEIGHT i : comparison_settings_weights) {
+            totalWeights = totalWeights + i.WEIGHT_VALUE;
+        }
+        return totalWeights;
+    }
+
+    private void getAllWeights() {
+        ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
+        this.comparison_settings_weights = comparisonSettingsWeightDao.getAllWeights();
+    }
+
+    private HashMap<String, Integer> convertListToHashmap() {
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        for (COMPARISON_SETTINGS_WEIGHT i : this.comparison_settings_weights) map.put(i.WEIGHT, i.WEIGHT_VALUE);
+        return map;
     }
 }
