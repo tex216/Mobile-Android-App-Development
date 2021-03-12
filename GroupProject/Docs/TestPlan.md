@@ -1,5 +1,5 @@
 # Test Plan v2
--v2 updated job score test case
+* v2 update job score test case
 
 **Author**: Team 109
 
