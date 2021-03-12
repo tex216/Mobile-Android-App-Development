@@ -1,4 +1,5 @@
-# Test Plan v1
+# Test Plan v2
+-v2 updated job score test case
 
 **Author**: Team 109
 
@@ -45,7 +46,7 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 1.1.2 | Throw error for invalid addJob() details pt. 1 | Execute addJob() with text in details that expect integer or float values | Error thrown | - | -
 1.1.3 | Throw error for invalid addJob() details pt. 2 | Execute addJob() with negative values in details that expect integer or float values | Error thrown | - | -
 1.2 | Throw error for invalid updateComparisonSettingsWeight() | Execute updateComparisonSettingsWeight() with one or more negative values | Error thrown | - | -
-1.3.1 | Calculate correct jobScore() | Execute score() with these values: Index = 50, Commute Time = 0.5, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26 | Returned score is 239,500 | - | -
+1.3.1 | Calculate correct jobScore() | Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26 | Returned score is 232,000 | - | -
 
 
 ### 2.2 Integration Tests
