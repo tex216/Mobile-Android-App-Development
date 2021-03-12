@@ -53,7 +53,7 @@ public class JOB_DETAILS implements Serializable {
     private Double SCORE;
 
     @Ignore
-    boolean selectedItem = false;
+    private boolean selectedItem = false;
 
     @Ignore
     public JOB_DETAILS(String TITLE, String COMPANY, String CITY, String STATE,
@@ -136,8 +136,12 @@ public class JOB_DETAILS implements Serializable {
         return this.SCORE;
     }
 
-    public boolean active(boolean selectedItem){
-        return selectedItem = !selectedItem;
+    public boolean isSelectedItem() {
+        return selectedItem;
+    }
+
+    public void setSelectedItem(boolean selectedItem) {
+        this.selectedItem = selectedItem;
     }
 
     public void setTITLE(String TITLE) {

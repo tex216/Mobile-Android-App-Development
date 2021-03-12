@@ -108,7 +108,7 @@ public class RankedListActivity extends AppCompatActivity {
         CheckedTextView v = (CheckedTextView) view;
         boolean currentCheck = v.isChecked();
         JOB_DETAILS job = this.allJobs.get(position);
-        job.active(!currentCheck);
+        job.setSelectedItem(currentCheck);
     }
 
     private void handleCompareJobsClick() {

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,7 +37,7 @@ public class CompareJobsActivity extends AppCompatActivity {
     private TextView leaveTime_2;
     private final Context context = this;
     private AppDatabase appDatabase;
-    List<JOB_DETAILS> selectJobs;
+    List<JOB_DETAILS> selectJobs = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,12 +81,17 @@ public class CompareJobsActivity extends AppCompatActivity {
         int first_job_id = 10;
         int second_job_id = 20;
 
-        Intent i = getIntent();
-        selectJobs = (List<JOB_DETAILS>)i.getSerializableExtra("selected_jobs");
+        List<JOB_DETAILS> allJobs = (List<JOB_DETAILS>)getIntent().getSerializableExtra("selected_jobs");
 
 //        executor.execute(() -> {
 //            this.selectJobs = jobDetailsDao.getSelectedJobs(first_job_id, second_job_id);
 //        });
+
+        for (int i = 0; i < allJobs.size(); i++) {
+            if (allJobs.get(i).isSelectedItem() == true) {
+                selectJobs.add(allJobs.get(i));
+            }
+        }
 
         String Title_1 = selectJobs.get(0).getTITLE();
         title_1.setText(Title_1);
