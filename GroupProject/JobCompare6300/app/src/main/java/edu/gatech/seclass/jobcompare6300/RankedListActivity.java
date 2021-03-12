@@ -7,10 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
+import android.util.SparseBooleanArray;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +36,7 @@ public class RankedListActivity extends AppCompatActivity {
     private ArrayList<String> listItem;
     private ArrayAdapter adapter;
     ListView ranked_list;
+    private List<JOB_DETAILS> allJobs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +51,19 @@ public class RankedListActivity extends AppCompatActivity {
 
         listItem = new ArrayList<>();
 
+
         viewData();
+
+
+
+
+//        ranked_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                SparseBooleanArray selectedItem = ranked_list.getCheckedItemPositions();
+//                Toast.makeText(RankedListActivity.this,"1",Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         compare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,24 +79,15 @@ public class RankedListActivity extends AppCompatActivity {
             }
         });
 
-        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        executor.execute(() -> {
-            List<JOB_DETAILS> allJobs = jobDetailsDao.getAllJobs();
-            for (int i = 0; i<allJobs.size();i++){
-
-            }
-
-        });
     }
     public void viewData(){
-        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        executor.execute(() -> {
-            List<JOB_DETAILS> allJobs = jobDetailsDao.getAllJobs();
 
+        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
+
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Handler handler = new Handler(Looper.getMainLooper());
+            executor.execute(() -> {
+                this.allJobs = jobDetailsDao.getAllJobs();
             for (int i = 0; i<allJobs.size();i++){
                 JOB_DETAILS job = allJobs.get(i);
                 if(job.getIS_CURRENT_JOB()==true){
@@ -84,11 +97,30 @@ public class RankedListActivity extends AppCompatActivity {
                 }
             }
 
-            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listItem);
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_checked,listItem);
             ranked_list.setAdapter(adapter);
+            for(int i=0; i<allJobs.size();i++){
+                ranked_list.setItemChecked(i, allJobs.get(i).active(false));
+            }
+
+            ranked_list.setChoiceMode(ranked_list.CHOICE_MODE_MULTIPLE);
+            ranked_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    handleItemSelect(parent, view, position, id);
+                }
+            });
+
+            });
 
 
-        });
+    }
+
+    public void handleItemSelect(AdapterView<?> parent, View view, int position, long id) {
+        CheckedTextView v = (CheckedTextView) view;
+        boolean currentCheck = v.isChecked();
+        JOB_DETAILS job = this.allJobs.get(position);
+        job.active(!currentCheck);
     }
 
 

@@ -52,6 +52,9 @@ public class JOB_DETAILS {
     private Double SCORE;
 
     @Ignore
+    boolean selectedItem;
+
+    @Ignore
     public JOB_DETAILS(String TITLE, String COMPANY, String CITY, String STATE,
                        int COST_OF_LIVING_INDEX, int WORK_REMOTE, double YEARLY_SALARY,double YEARLY_BONUS,
                        double PERCENTAGE_MATCHED, int LEAVE_TIME, boolean IS_CURRENT_JOB) {
@@ -130,4 +133,10 @@ public class JOB_DETAILS {
     public Double getSCORE(){
         return this.SCORE;
     }
+
+    public boolean active(boolean selectedItem){
+        return selectedItem = !selectedItem;
+    }
+
+
 }
