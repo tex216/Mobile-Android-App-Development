@@ -162,13 +162,26 @@ This is still our intended end state. The alpha/beta version of the application 
         </tr>
             <tr>
             <td class="description_width" width=350px>
-                User is required to provide all input fields. An accompanying error mark will appear on the right hand side of the text field if it is empty.
+                User is required to provide all input fields correctly. An accompanying error mark will appear on the right hand side of the text field if it is invalid.
             </td>
             <td class="image_width">
                 <figure>
                     <img src="./images/error_current_job.png" alt="error_current_job" width=250px/>
                     <img src="./images/error_enter_job_details.png" alt="error_enter_job_details" width=250px/>
                     <img src="./images/error_comparison_settings.png" alt="error_comparison_settings" width=250px/>
+                    <img src="./images/error_all_weights_0.png" alt="error_all_weights_0" width=250px/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width" width=350px>
+                When user enters or edits current job or updates comparison settings weight, when we automatically navigate the user back to the main menu, we will also display a message briefly to notify the user the information has been successfully saved.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/success_save_current_job.png" alt="success_save_current_job" width=250px/>
+                    <img src="./images/success_save_comparison_settings.png" alt="success_save_comparison_settings" width=250px/>
                 </figure>
             </td>
         </tr>

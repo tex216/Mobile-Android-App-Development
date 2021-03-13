@@ -108,7 +108,6 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
         this.retirementBenefitsWeight = Integer.parseInt(retirementBenefits.getText().toString());
         this.leaveTimeWeight = Integer.parseInt(leaveTime.getText().toString());
         if (this.checkForInvalidValues()) {
-            Toast.makeText(this.context, "At least 1 comparison setting needs to be positive", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -171,6 +170,11 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
         && this.retirementBenefitsWeight == 0
         && this.leaveTimeWeight == 0
         ) {
+            remoteWork.setError("At least 1 weight must be positive");
+            yearlySalary.setError("At least 1 weight must be positive");
+            yearlyBonus.setError("At least 1 weight must be positive");
+            retirementBenefits.setError("At least 1 weight must be positive");
+            leaveTime.setError("At least 1 weight must be positive");
             hasErrors = true;
         }
         return hasErrors;
