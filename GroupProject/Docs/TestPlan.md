@@ -42,13 +42,13 @@ Bugs and enhancements will be created as a Git issue. Git issues will be priorit
 
 Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 -- | ------- | ----- | --------------- | ------------- | --------------
-1.1.1 | Throw error for incomplete addJob() | Execute addJob() with partially complete payload | Error thrown | - | -
-1.1.2 | Throw error for invalid addJob() details pt. 1 | Execute addJob() with text in details that expect integer or float values | Error thrown | - | -
-1.1.3 | Throw error for invalid addJob() details pt. 2 | Execute addJob() with negative values in details that expect integer or float values | Error thrown | - | -
-1.2 | Throw error for invalid updateComparisonSettingsWeight() | Execute updateComparisonSettingsWeight() with one or more negative values | Error thrown | - | -
-1.3.1 | Calculate correct jobScore() with default weights | <ul><li>Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>All weights set to 1</li></ul> | Returned score is 46,400 | - | -
-1.3.2 | Calculate correct jobScore() with default weights | <ul><li>Execute score() with these values: Index = 125, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>All weights set to 1</li></ul> | Returned score is 18,560 | - | -
-1.3.3 | Calculate correct jobScore() with specific weights | <ul><li>Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>Yearly Salary Weight = 2, Yearly Bonus Weight = 3, Retirement Weight = 4, Leave Time Weight = 6, and Allowed Telework Weight = 1</li></ul> | Returned score is 38,000 | - | -
+1.1.1 | Throw error for incomplete addJob() | Execute addJob() with partially complete payload | Error thrown | Displays error mark next to incomplete fields | Pass
+1.1.2 | Throw error for invalid addJob() details pt. 1 | Execute addJob() with text in details that expect integer or float values | Error thrown | Frontend input field does not allow user to type text | Pass
+1.1.3 | Throw error for invalid addJob() details pt. 2 | Execute addJob() with negative values in details that expect integer or float values | Error thrown | Frontend input field does not allow user to input negative values | Pass
+1.2 | Throw error for invalid updateComparisonSettingsWeight() | Execute updateComparisonSettingsWeight() with one or more negative values | Error thrown | Frontend input field does not allow user to input negative values | Pass
+1.3.1 | Calculate correct jobScore() with default weights | <ul><li>Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>All weights set to 1</li></ul> | Returned score is 46,400 | 46,400 | Pass
+1.3.2 | Calculate correct jobScore() with default weights | <ul><li>Execute score() with these values: Index = 125, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>All weights set to 1</li></ul> | Returned score is 18,560 | 18,560 | Pass
+1.3.3 | Calculate correct jobScore() with specific weights | <ul><li>Execute score() with these values: Index = 50, Telework Days = 1, Yearly Salary = 100,000, Yearly Bonus = 10,000, Retirement Benefits = 6%, and Leave Time = 26</li><li>Yearly Salary Weight = 2, Yearly Bonus Weight = 3, Retirement Weight = 4, Leave Time Weight = 6, and Allowed Telework Weight = 1</li></ul> | Returned score is 38,000 | 38,000 | Pass
 
 
 ### 2.2 Integration Tests
