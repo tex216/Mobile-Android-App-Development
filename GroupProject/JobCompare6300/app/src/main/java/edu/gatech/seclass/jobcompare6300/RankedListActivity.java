@@ -43,6 +43,7 @@ public class RankedListActivity extends AppCompatActivity {
 
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     private Handler handler = new Handler(Looper.getMainLooper());
+    private List<Integer> countList=new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +108,24 @@ public class RankedListActivity extends AppCompatActivity {
     private void handleItemSelect(AdapterView<?> parent, View view, int position, long id) {
         CheckedTextView v = (CheckedTextView) view;
         boolean currentCheck = v.isChecked();
-        JOB_DETAILS job = this.allJobs.get(position);
-        job.setSelectedItem(currentCheck);
+        JOB_DETAILS job;
+        if(v.isChecked()==true){
+            this.countList.add(position);
+            if(this.countList.size()<=2){
+                job = this.allJobs.get(position);
+                job.setSelectedItem(currentCheck);
+            }else{
+                job = this.allJobs.get(this.countList.get(0));
+                job.setSelectedItem(false);
+                this.ranked_list.setItemChecked(this.countList.get(0), false);
+                this.countList.remove(0);
+                job = this.allJobs.get(position);
+                job.setSelectedItem(currentCheck);
+
+            }
+
+        }
+
     }
 
     private void handleCompareJobsClick() {

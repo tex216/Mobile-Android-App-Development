@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -33,6 +35,10 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
     private EditText leaveTime;
     private final Context context = this;
     private AppDatabase appDatabase;
+//    private ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
+//    private List<COMPARISON_SETTINGS_WEIGHT> comparison_settings_weights;
+//    private ExecutorService executor = Executors.newSingleThreadExecutor();
+//    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,27 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
         yearlySalary = (EditText)findViewById(R.id.text_salary_weight);
         remoteWork = (EditText)findViewById(R.id.text_remote_work_weight);
         yearlyBonus = (EditText)findViewById(R.id.text_bonus_weight);
+
+//        this.executor.execute(() -> {
+//            this.getAllWeights();
+//            handler.post(() -> {
+//                HashMap<String, Integer> map = this.convertListToHashmap();
+//                int remoteWorkPossibilityWeight = map.get("REMOTE_WORK_POSSIBILITY_WEIGHT");
+//                int yearlySalaryWeight = map.get("YEARLY_SALARY_WEIGHT");
+//                int yearlyBonusWeight = map.get("YEARLY_BONUS_WEIGHT");
+//                int retirementBenefitsWeight = map.get("RETIREMENT_BENEFITS_WEIGHT");
+//                int leaveTimeWeight = map.get("LEAVE_TIME_WEIGHT");
+//                retirementBenefits.setText(String.valueOf(retirementBenefitsWeight));
+//                leaveTime.setText(String.valueOf(leaveTimeWeight));
+//                yearlySalary.setText(String.valueOf(yearlySalaryWeight));
+//                remoteWork.setText(String.valueOf(remoteWorkPossibilityWeight));
+//                yearlyBonus.setText(String.valueOf(yearlyBonusWeight));
+//
+//            });
+//        });
+
+
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +93,7 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
     }
 
     public void handleSaveClick() {
+        Toast.makeText(this,"Comparison Settings are Changed!", Toast.LENGTH_SHORT).show();
         ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
@@ -88,4 +116,13 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+//    private void getAllWeights() {
+//        this.comparison_settings_weights = comparisonSettingsWeightDao.getAllWeights();
+//    }
+//
+//    private HashMap<String, Integer> convertListToHashmap() {
+//        HashMap<String, Integer> map = new HashMap<String, Integer>();
+//        for (COMPARISON_SETTINGS_WEIGHT i : this.comparison_settings_weights) map.put(i.WEIGHT, i.WEIGHT_VALUE);
+//        return map;
+//    }
 }

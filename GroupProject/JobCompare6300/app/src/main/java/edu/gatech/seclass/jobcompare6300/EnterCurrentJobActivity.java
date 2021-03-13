@@ -5,6 +5,7 @@ import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.session.MediaSession;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -91,6 +93,7 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     }
 
     public void handleSaveClick() {
+        Toast.makeText(this,"Current Job is Saved!", Toast.LENGTH_SHORT).show();
         this.executor.execute(() -> {
             String newTitle = title.getText().toString();
             String newCompany = company.getText().toString();
