@@ -7,28 +7,31 @@
 ### 1.1 Assumptions
 
 1. We are assuming there will only be 1 user.
-1. The minimum API level for the app is API 28: Android 9.0 (Pie).
 1. There is a single system running the application so no communication or saving between devices is necessary.
 1. The user will interact with the application in a reasonable fashion e.g. the user will add a reasonable number of job offers and not 1 million.
 1. The user has all the details associated with a job and cannot enter partial information.
 1. The user does not have special needs or requirements e.g. ADA.
+1. The user will enter valid city and state.
 
 ### 1.2 Constraints
 
 1. The application must be lightweight in performance so it can run on an Android phone.
 1. There is no external data storage and all data will be saved locally.
 
-
 ### 1.3 System Environment
 
 1. The application will be deployed to an Android phone that has a compatible API level.
+1. The minimum SDK for the app is API 28: Android 9.0 (Pie).
 1. The data will be stored on Android SQLite database.
 1. The application will be written in Java.
+1. The application must be run on a Pixel_3a_API_30_x86 emulator.
+1. The application will use Room 2.2.6.
+
 
 ## 2 Architectural Design
 
 ### 2.1 Component Diagram v1
-This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.
+```This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.```
 
 ![component diagram](./images/component_diagram.png)
 
@@ -42,7 +45,7 @@ When the user chooses to compare jobs, the "Display Ranked List of Jobs" UI comp
 \
 The "Display Ranked List of Jobs" component will provide the JobOffersToCompare interface to the "Compare Jobs" component based on what the user has selected. The "Compare Jobs" component then requires the Jobs interface provided by the Jobs component to get the details of the selected jobs and provide these information via the SelectedJobs interface. The "Display Selected Jobs for Comparison" component then displays the SelectedJobs to the user. 
 
-### 2.2 Deployment Diagram v1
+### 2.2 Deployment Diagram v2
 ![deployment diagram](./images/deployment_diagram.png)
 
 Our app is written in Java. It uses Android SDK tools to compile classes, resources and package the code along with any required data. Android depends on Linux OS for essential operating services such as security management, process management, network stack etc. The Linux kernel plays the role of an abstraction layer between the hardware and the software stack.
@@ -52,11 +55,11 @@ When the app is activated by the user, it is firstly initialized by creating a n
 ## 3 Low-Level Design
 
 ### 3.1 Class Diagram v1
-This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.
+```This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.```
 
 ![class diagram](./images/class_diagram.png)
 
-## 4 User Interface Design v1
+## 4 User Interface Design v2
 <section mockups>
     <table class="gui">
         <tr>

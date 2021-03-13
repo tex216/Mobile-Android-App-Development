@@ -9,7 +9,8 @@ This simple app allows User to enter job details and then compare jobs based on 
 ## Getting Started
 
 ### Dependencies
-* Pixel 3 API 28
+* The minimum SDK for the app is API 28: Android 9.0 (Pie).
+* The application must be run on a phone equivalent to AVD Pixel_3a_API_30_x86 emulator.
 
 ## Main Features
 
@@ -21,8 +22,8 @@ This simple app allows User to enter job details and then compare jobs based on 
 ### Enter / Edit a Current Job
 Easily store or edit current job details here.
 
-![Enter_current_job_top](./images/final_app/Enter_current_job_top.png)
-![Enter_current_job_bottom](./images/final_app/Enter_current_job_bottom.png)
+<img src="./images/enter_current_job_1.png" alt="enter_current_job_1" width=405px/>
+<img src="./images/enter_current_job_2.png" alt="enter_current_job_2" width=405px/>
 
 * `Title` - title of the job
 * `Company` - company of the job
@@ -45,8 +46,8 @@ Easily store or edit current job details here.
 ### Enter Job Offer
 Easily store all job offers here.
 
-![Enter_current_job_top](./images/final_app/Enter_current_job_top.png)
-![Enter_current_job_bottom](./images/final_app/Enter_current_job_bottom.png)
+<img src="./images/enter_job_offers_1.png" alt="enter_job_offers_1" width=405px/>
+<img src="./images/enter_job_offers_2.png" alt="enter_job_offers_2" width=405px/>
 
 * `Title` - title of the job
 * `Company` - company of the job
@@ -64,14 +65,15 @@ Easily store all job offers here.
 1. Click the `SAVE` button to store information, `CANCEL` to return to main screen, or `COMPARE` to compare to current job (if entered).
 1. When clicking `SAVE`, a successful save will display the following screen:
 
-![Job_details_saved](./images/final_app/Job_details_saved.png)
+<img src="./images/after_entering_job_offers_compare_enabled.png" alt="after_entering_job_offers_compare_enabled" width=405px/>
 
 *Note: job offers cannot be edited after saving.*
 
 ### Adjust Comparison Settings
 Not all aspects of a job offer may be equaled. Adjust settings to weight aspects relative to each other based on personal preferences.
 
-![Adjust_comparison_settings](./images/final_app/Adjust_comparison_settings.png)
+<img src="./images/adjust_comparison_settings.png" alt="adjust_comparison_settings" width=405px/>
+
 
 * `Retirement benefits` - weight for consideration of retirement benefits. Must be integer greater than or equaled to 0
 * `Leave time` - weight for consideration of leave time. Must be integer greater than or equaled to 0
@@ -88,17 +90,17 @@ Not all aspects of a job offer may be equaled. Adjust settings to weight aspects
 ### Compare Jobs
 View all jobs and compare two jobs in detail here.
 
-![Ranked_list_jobs](./images/final_app/Ranked_list_jobs.png)
+<img src="./images/ranked_list.png" alt="ranked_list" width=405px/>
 
 #### Instructions
 1. Review job details that have been entered including current job and all job offers. All jobs will be returned sorted by job score descending. the job with the highest score based on preferences / weights will be returned at top. The calculation for job score is as follows: **AYS + AYB + (RBP * AYS) + (LT * AYS / 260) - ((260 - 52 * RWT) * (AYS / 260) / 8)**
 1. Select two jobs to compare. Only two jobs can be selected at max:
-![Ranked_list_jobs_selected](./images/final_app/Ranked_list_jobs_selected.png)
+<img src="./images/ranked_list_selected.png" alt="ranked_list_selected" width=405px/>
+
 1. Click `COMPARE` to see job details of selected jobs. Only two jobs can be compared:
-![Compare_jobs](./images/final_app/Compare_jobs.png)
+<img src="./images/compare_jobs_2.png" alt="compare_jobs_2" width=405px/>
 
 *Note: comparison feature is only available after entering two or more jobs.*
 
 ## Acknowledgments
-
 * Hat tip to the lectures and piazza discussions
