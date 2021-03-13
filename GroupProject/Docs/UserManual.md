@@ -83,7 +83,7 @@ Not all aspects of a job offer may be equaled. Adjust settings to weight aspects
 1. Input valid integer values for all fields
 1. Click the `SAVE` button to store information or `CANCEL` to return to main.
 
-*Note: if weight values are not entered, all weights will default to a weight of 1.*
+*Note: if weight values are not entered, all weights will default to a weight of 1. User cannot set all weights to 0.*
 
 ### Compare Jobs
 View all jobs and compare two jobs in detail here.
