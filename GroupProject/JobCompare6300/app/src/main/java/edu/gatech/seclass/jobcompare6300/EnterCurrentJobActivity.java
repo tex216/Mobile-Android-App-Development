@@ -9,6 +9,7 @@ import android.media.session.MediaSession;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -93,6 +94,9 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     }
 
     public void handleSaveClick() {
+        if (this.checkForEmptyFields()) {
+            return;
+        }
         Toast.makeText(this,"Current Job is Saved!", Toast.LENGTH_SHORT).show();
         this.executor.execute(() -> {
             String newTitle = title.getText().toString();
@@ -140,6 +144,47 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         });
+    }
+
+    private boolean checkForEmptyFields() {
+        boolean hasErrors = false;
+        if(TextUtils.isEmpty(title.getText())){
+            title.setError("Title is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(company.getText())){
+            company.setError("Company is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(city.getText())){
+            city.setError("City is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(state.getText())){
+            state.setError("State is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(costOfLiving.getText())){
+            costOfLiving.setError("Cost of living is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(yearlySalary.getText())){
+            yearlySalary.setError("Salary is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(yearlyBonus.getText())){
+            yearlyBonus.setError("Bonus is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(retirement.getText())){
+            retirement.setError("Retirement is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(leaveTime.getText())){
+            leaveTime.setError("Leave time is required");
+            hasErrors = true;
+        }
+        return hasErrors;
     }
 
     public void handleCancelClick() {

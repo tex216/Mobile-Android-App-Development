@@ -36,12 +36,10 @@ public class CompareJobsActivity extends AppCompatActivity {
     private TextView leaveTime_1;
     private TextView leaveTime_2;
     private final Context context = this;
-    private AppDatabase appDatabase;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_jobs);
-        appDatabase = AppDatabase.getInstance(context);
 
         returnToMainMenu = (Button) findViewById(R.id.btn_return_compare);
         anotherCompare = (Button) findViewById(R.id.btn_another_compare);
@@ -74,17 +72,7 @@ public class CompareJobsActivity extends AppCompatActivity {
             }
         });
 
-        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        int first_job_id = 10;
-        int second_job_id = 20;
-
         List<JOB_DETAILS> selectedJobs = (List<JOB_DETAILS>)getIntent().getSerializableExtra("selected_jobs");
-
-//        executor.execute(() -> {
-//            this.selectJobs = jobDetailsDao.getSelectedJobs(first_job_id, second_job_id);
-//        });
 
         String Title_1 = selectedJobs.get(0).getTITLE();
         title_1.setText(Title_1);

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +26,7 @@ public class EnterJobOffersActivity extends AppCompatActivity {
     private EditText state;
     private EditText costOfLiving;
     private Spinner remoteWork;
-    private EditText salary;
+    private EditText yearlySalary;
     private EditText yearlyBonus;
     private EditText retirement;
     private EditText leaveTime;
@@ -47,7 +48,7 @@ public class EnterJobOffersActivity extends AppCompatActivity {
         state = (EditText)findViewById(R.id.text_state);
         costOfLiving = (EditText)findViewById(R.id.number_cost_of_living);
         remoteWork = (Spinner) findViewById(R.id.dropdown_remote_work);
-        salary = (EditText)findViewById(R.id.number_salary);
+        yearlySalary = (EditText)findViewById(R.id.number_salary);
         yearlyBonus = (EditText)findViewById(R.id.number_bonus);
         retirement = (EditText)findViewById(R.id.number_retirement);
         leaveTime = (EditText)findViewById(R.id.number_leave_time);
@@ -69,29 +70,74 @@ public class EnterJobOffersActivity extends AppCompatActivity {
     }
 
     public void handleSaveClick() {
-        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        executor.execute(() -> {
-            JOB_DETAILS jobDetails = new JOB_DETAILS
-                (
-                    title.getText().toString(),
-                    company.getText().toString(),
-                    city.getText().toString(),
-                    state.getText().toString(),
-                    Integer.parseInt(costOfLiving.getText().toString()),Integer.parseInt(remoteWork.getSelectedItem().toString()),
-                    Double.parseDouble(salary.getText().toString()), Double.parseDouble(yearlyBonus.getText().toString()),
-                    Double.parseDouble(retirement.getText().toString()),Integer.parseInt(leaveTime.getText().toString()),
-                    false,
-                    null
-                );
-            jobDetailsDao.insertJob(jobDetails);
-            handler.post(() -> {
-                Intent intent = new Intent(this, AfterEnterJobOfferActivity.class);
-                intent.putExtra("new_job", jobDetails);
-                startActivity(intent);
+        if (this.checkForEmptyFields()) {
+            return;
+        } else {
+            JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Handler handler = new Handler(Looper.getMainLooper());
+            executor.execute(() -> {
+                JOB_DETAILS jobDetails = new JOB_DETAILS
+                        (
+                                title.getText().toString(),
+                                company.getText().toString(),
+                                city.getText().toString(),
+                                state.getText().toString(),
+                                Integer.parseInt(costOfLiving.getText().toString()),Integer.parseInt(remoteWork.getSelectedItem().toString()),
+                                Double.parseDouble(yearlySalary.getText().toString()), Double.parseDouble(yearlyBonus.getText().toString()),
+                                Double.parseDouble(retirement.getText().toString()),Integer.parseInt(leaveTime.getText().toString()),
+                                false,
+                                null
+                        );
+                jobDetailsDao.insertJob(jobDetails);
+                handler.post(() -> {
+                    Intent intent = new Intent(this, AfterEnterJobOfferActivity.class);
+                    intent.putExtra("new_job", jobDetails);
+                    startActivity(intent);
+                });
             });
-        });
+        }
+    }
+
+    private boolean checkForEmptyFields() {
+        boolean hasErrors = false;
+        if(TextUtils.isEmpty(title.getText())){
+            title.setError("Title is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(company.getText())){
+            company.setError("Company is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(city.getText())){
+            city.setError("City is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(state.getText())){
+            state.setError("State is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(costOfLiving.getText())){
+            costOfLiving.setError("Cost of living is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(yearlySalary.getText())){
+            yearlySalary.setError("Salary is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(yearlyBonus.getText())){
+            yearlyBonus.setError("Bonus is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(retirement.getText())){
+            retirement.setError("Retirement is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(leaveTime.getText())){
+            leaveTime.setError("Leave time is required");
+            hasErrors = true;
+        }
+        return hasErrors;
     }
 
     public void handleCancelClick() {

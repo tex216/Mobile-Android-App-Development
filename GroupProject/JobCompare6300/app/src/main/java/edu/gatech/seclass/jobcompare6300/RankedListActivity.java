@@ -129,6 +129,7 @@ public class RankedListActivity extends AppCompatActivity {
             }
         }else{
             this.countList.remove(Integer.valueOf(position));
+            this.allJobs.get(position).setSelectedItem(false);
         }
         if(countList.size()==2){
             compare.setEnabled(true);
