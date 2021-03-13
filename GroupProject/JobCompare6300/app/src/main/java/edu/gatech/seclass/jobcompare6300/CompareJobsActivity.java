@@ -101,14 +101,14 @@ public class CompareJobsActivity extends AppCompatActivity {
         String Location_2 = selectedJobs.get(1).getCITY() + selectedJobs.get(1).getSTATE();
         location_2.setText(Location_2);
 
-        String YearlySalary_1 = String.valueOf(selectedJobs.get(0).getYEARLY_SALARY());
+        String YearlySalary_1 = String.valueOf(selectedJobs.get(0).getYEARLY_SALARY() / selectedJobs.get(0).getCOST_OF_LIVING_INDEX() * 100);
         yearlySalary_1.setText(YearlySalary_1);
-        String YearlySalary_2 = String.valueOf(selectedJobs.get(1).getYEARLY_SALARY());
+        String YearlySalary_2 = String.valueOf(selectedJobs.get(1).getYEARLY_SALARY() / selectedJobs.get(1).getCOST_OF_LIVING_INDEX() * 100);
         yearlySalary_2.setText(YearlySalary_2);
 
-        String YearlyBonus_1 = String.valueOf(selectedJobs.get(0).getYEARLY_BONUS());
+        String YearlyBonus_1 = String.valueOf(selectedJobs.get(0).getYEARLY_BONUS() / selectedJobs.get(0).getCOST_OF_LIVING_INDEX() * 100);
         yearlyBonus_1.setText(YearlyBonus_1);
-        String YearlyBonus_2 = String.valueOf(selectedJobs.get(1).getYEARLY_BONUS());
+        String YearlyBonus_2 = String.valueOf(selectedJobs.get(1).getYEARLY_BONUS() / selectedJobs.get(1).getCOST_OF_LIVING_INDEX() * 100);
         yearlyBonus_2.setText(YearlyBonus_2);
 
         String RetirementBenefits_1 = String.valueOf(selectedJobs.get(0).getPERCENTAGE_MATCHED());
