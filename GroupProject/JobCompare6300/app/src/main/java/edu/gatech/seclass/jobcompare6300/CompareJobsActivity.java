@@ -27,10 +27,10 @@ public class CompareJobsActivity extends AppCompatActivity {
     private TextView company_2;
     private TextView location_1;
     private TextView location_2;
-    private TextView yearlySalary_1;
-    private TextView yearlySalary_2;
-    private TextView yearlyBonus_1;
-    private TextView yearlyBonus_2;
+    private TextView adjYearlySalary_1;
+    private TextView adjYearlySalary_2;
+    private TextView adjYearlyBonus_1;
+    private TextView adjYearlyBonus_2;
     private TextView retirementBenefits_1;
     private TextView retirementBenefits_2;
     private TextView leaveTime_1;
@@ -51,10 +51,10 @@ public class CompareJobsActivity extends AppCompatActivity {
         company_2 = (TextView)findViewById(R.id.value_company_2);
         location_1 = (TextView)findViewById(R.id.value_location_1);
         location_2 = (TextView)findViewById(R.id.value_location_2);
-        yearlySalary_1 = (TextView)findViewById(R.id.value_salary_1);
-        yearlySalary_2 = (TextView)findViewById(R.id.value_salary_2);
-        yearlyBonus_1 = (TextView)findViewById(R.id.value_bonus_1);
-        yearlyBonus_2 = (TextView)findViewById(R.id.value_bonus_2);
+        adjYearlySalary_1 = (TextView)findViewById(R.id.value_adj_salary_1);
+        adjYearlySalary_2 = (TextView)findViewById(R.id.value_adj_salary_2);
+        adjYearlyBonus_1 = (TextView)findViewById(R.id.value_adj_bonus_1);
+        adjYearlyBonus_2 = (TextView)findViewById(R.id.value_adj_bonus_2);
         retirementBenefits_1 = (TextView)findViewById(R.id.value_retirement_1);
         retirementBenefits_2 = (TextView)findViewById(R.id.value_retirement_2);
         leaveTime_1 = (TextView)findViewById(R.id.value_leave_time_1);
@@ -101,15 +101,15 @@ public class CompareJobsActivity extends AppCompatActivity {
         String Location_2 = selectedJobs.get(1).getCITY() + ", " + selectedJobs.get(1).getSTATE();
         location_2.setText(Location_2);
 
-        String YearlySalary_1 = String.valueOf(selectedJobs.get(0).getYEARLY_SALARY());
-        yearlySalary_1.setText(YearlySalary_1);
-        String YearlySalary_2 = String.valueOf(selectedJobs.get(1).getYEARLY_SALARY());
-        yearlySalary_2.setText(YearlySalary_2);
+        String AdjYearlySalary_1 = String.valueOf(selectedJobs.get(0).getYEARLY_SALARY() / selectedJobs.get(0).getCOST_OF_LIVING_INDEX() * 100);
+        adjYearlySalary_1.setText(AdjYearlySalary_1);
+        String AdjYearlySalary_2 = String.valueOf(selectedJobs.get(1).getYEARLY_SALARY() / selectedJobs.get(1).getCOST_OF_LIVING_INDEX() * 100);
+        adjYearlySalary_2.setText(AdjYearlySalary_2);
 
-        String YearlyBonus_1 = String.valueOf(selectedJobs.get(0).getYEARLY_BONUS());
-        yearlyBonus_1.setText(YearlyBonus_1);
-        String YearlyBonus_2 = String.valueOf(selectedJobs.get(1).getYEARLY_BONUS());
-        yearlyBonus_2.setText(YearlyBonus_2);
+        String AdjYearlyBonus_1 = String.valueOf(selectedJobs.get(0).getYEARLY_BONUS() / selectedJobs.get(0).getCOST_OF_LIVING_INDEX() * 100);
+        adjYearlyBonus_1.setText(AdjYearlyBonus_1);
+        String AdjYearlyBonus_2 = String.valueOf(selectedJobs.get(1).getYEARLY_BONUS() / selectedJobs.get(1).getCOST_OF_LIVING_INDEX() * 100);
+        adjYearlyBonus_2.setText(AdjYearlyBonus_2);
 
         String RetirementBenefits_1 = String.valueOf(selectedJobs.get(0).getPERCENTAGE_MATCHED());
         retirementBenefits_1.setText(RetirementBenefits_1);

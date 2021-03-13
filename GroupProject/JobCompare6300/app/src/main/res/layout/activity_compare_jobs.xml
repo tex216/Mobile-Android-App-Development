@@ -155,16 +155,16 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/label_salary_compare"
+                                    android:id="@+id/label_adj_salary_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="20dp"
-                                    android:text="Yearly salary"
+                                    android:text="Adjusted yearly salary"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/value_salary_1"
+                                    android:id="@+id/value_adj_salary_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:padding="20dp"
@@ -172,7 +172,7 @@
                                     android:textSize="18sp" />
 
                                 <TextView
-                                    android:id="@+id/value_salary_2"
+                                    android:id="@+id/value_adj_salary_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:padding="20dp"
@@ -185,17 +185,17 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/label_bonus_compare"
+                                    android:id="@+id/label_adj_bonus_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
-                                    android:text="Yearly bonus"
+                                    android:text="Adjusted yearly bonus"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/value_bonus_1"
+                                    android:id="@+id/value_adj_bonus_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:background="#FFD0C2"
@@ -204,7 +204,7 @@
                                     android:textSize="18sp" />
 
                                 <TextView
-                                    android:id="@+id/value_bonus_2"
+                                    android:id="@+id/value_adj_bonus_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:background="#FFD0C2"
