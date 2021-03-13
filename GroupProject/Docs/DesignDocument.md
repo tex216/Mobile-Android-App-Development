@@ -28,6 +28,8 @@
 ## 2 Architectural Design
 
 ### 2.1 Component Diagram v1
+This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.
+
 ![component diagram](./images/component_diagram.png)
 
 We will have multiple UI components for controlling the user's interactions with the application. These components will use the Activity API provided by Android.
@@ -50,6 +52,8 @@ When the app is activated by the user, it is firstly initialized by creating a n
 ## 3 Low-Level Design
 
 ### 3.1 Class Diagram v1
+This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.
+
 ![class diagram](./images/class_diagram.png)
 
 ## 4 User Interface Design v1
@@ -65,22 +69,23 @@ When the app is activated by the user, it is firstly initialized by creating a n
         </tr>
         <tr>
             <td class="description_width" width=350px>
-                When the app is started, the user is presented with the main menu, which allows the user to (1) enter or edit current job details, (2) enter job offers, (3) adjust the comparison settings, or (4) compare job offers
+                When the app is started, the user is presented with the main menu, which allows the user to (1) enter or edit current job details, (2) enter job offers, (3) adjust the comparison settings, or (4) compare job offers (disabled if no job offers were entered yet)
             </td>
             <td class="image_width">
                 <figure>
-                    <img src="./images/main_menu.png" alt="main_menu" width=250px/>
+                    <img src="./images/main_menu_compare_enabled.png" alt="main_menu_compare_enabled" width=250px/>
+                    <img src="./images/main_menu_compare_disabled.png" alt="main_menu_compare_disabled" width=250px/>
                 </figure>
             </td>
         </tr>
         <tr>
             <td class="description_width" width=350px>
-                When the user clicks on the ENTER/EDIT CURRENT JOB or the ENTER JOB OFFERS button, the user will be presented the same Enter job details screen.
+                When the user clicks on the ENTER/EDIT CURRENT JOB button, the user will be presented the Enter current job form.
             </td>
             <td class="image_width">
                 <figure>
-                    <img src="./images/enter_job_details1.png" alt="enter_job_details1" width=250px/>
-                    <img src="./images/enter_job_details2.png" alt="enter_job_details2" width=250px/>
+                    <img src="./images/enter_current_job_1.png" alt="enter_current_job_1" width=250px/>
+                    <img src="./images/enter_current_job_2.png" alt="enter_current_job_2" width=250px/>
                 </figure>
             </td>
         </tr>
@@ -90,8 +95,32 @@ When the app is activated by the user, it is firstly initialized by creating a n
             </td>
             <td class="image_width">
                 <figure>
-                    <img src="./images/edit_current_job1.png" alt="edit_current_job1" width=250px/>
-                    <img src="./images/edit_current_job2.png" alt="edit_current_job2" width=250px/>
+                    <img src="./images/edit_current_job_1.png" alt="edit_current_job_1" width=250px/>
+                    <img src="./images/edit_current_job_2.png" alt="edit_current_job_2" width=250px/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width" width=350px>
+                When the user clicks on the ENTER JOB OFFERS button, the user will be presented the Enter job details form.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/enter_job_offers_1.png" alt="enter_job_offers_1" width=250px/>
+                    <img src="./images/enter_job_offers_2.png" alt="enter_job_offers_2" width=250px/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width" width=350px>
+                After the user enters the job offer details and clicks on the SAVE button, the user will be presented with the options to either ENTER ANOTHER OFFER, RETURN TO MAIN MENU or COMPARE WITH CURRENT JOB (if present). If the user clicks on the CANCEL button, the user will be taken back to the main menu.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/after_entering_job_offers_compare_enabled.png" alt="after_entering_job_offers_compare_enabled" width=250px/>
+                    <img src="./images/after_entering_job_offers_compare_disabled.png" alt="after_entering_job_offers_compare_disabled" width=250px/>
                 </figure>
             </td>
         </tr>
@@ -109,23 +138,12 @@ When the app is activated by the user, it is firstly initialized by creating a n
         </tr>
             <tr>
             <td class="description_width" width=350px>
-                After the user saves or cancels entering a job offer, the user will be presented with the options to either ENTER ANOTHER OFFER, RETURN TO MAIN MENU or COMPARE WITH CURRENT JOB. If the user is entering or editing a current job, the user will not be presented these screens and will be directed back to the main menu automatically.
+                When the user clicks on the COMPARE JOB OFFERS button, the user will be presented the Ranked list of jobs screen with the current job indicated and a list of jobs offers. The list is sorted in descending job score. The user can select two jobs to compare, selected jobs will have a checkmark next to it. The COMPARE button will only be clickable if the user has selected 2 jobs. The user will not be allowed to select more than 2 jobs.
             </td>
             <td class="image_width">
                 <figure>
-                    <img src="./images/after_entering_job_offers.png" alt="after_entering_job_offers" width=250px/>
-                    <img src="./images/cancel_entering_job_offers.png" alt="cancel_entering_job_offers" width=250px/>
-                </figure>
-            </td>
-        </tr>
-        </tr>
-            <tr>
-            <td class="description_width" width=350px>
-                When the user clicks on the COMPARE JOB OFFERS button, the user will be presented the Ranked list of jobs screen with the current job and list of jobs offers in descending job score. The user can select two jobs to compare, selected jobs will be highlighted in gray.
-            </td>
-            <td class="image_width">
-                <figure>
-                    <img src="./images/ranked_list_of_jobs.png" alt="ranked_list_of_jobs" width=250px/>
+                    <img src="./images/ranked_list.png" alt="ranked_list" width=250px/>
+                    <img src="./images/ranked_list_selected.png" alt="ranked_list_selected" width=250px/>
                 </figure>
             </td>
         </tr>
@@ -136,7 +154,21 @@ When the app is activated by the user, it is firstly initialized by creating a n
             </td>
             <td class="image_width">
                 <figure>
-                    <img src="./images/compare_jobs.png" alt="compare_jobs" width=250px/>
+                    <img src="./images/compare_jobs_1.png" alt="compare_jobs_1" width=250px/>
+                    <img src="./images/compare_jobs_2.png" alt="compare_jobs_2" width=250px/>
+                </figure>
+            </td>
+        </tr>
+        </tr>
+            <tr>
+            <td class="description_width" width=350px>
+                User is required to provide all input fields. An accompanying error mark will appear on the right hand side of the text field if it is empty.
+            </td>
+            <td class="image_width">
+                <figure>
+                    <img src="./images/error_current_job.png" alt="error_current_job" width=250px/>
+                    <img src="./images/error_enter_job_details.png" alt="error_enter_job_details" width=250px/>
+                    <img src="./images/error_comparison_settings.png" alt="error_comparison_settings" width=250px/>
                 </figure>
             </td>
         </tr>
