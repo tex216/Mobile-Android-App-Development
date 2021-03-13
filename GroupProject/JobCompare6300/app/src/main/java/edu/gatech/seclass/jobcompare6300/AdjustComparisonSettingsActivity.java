@@ -118,7 +118,7 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
 
     private HashMap<String, Integer> convertListToHashmap() {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
-        for (COMPARISON_SETTINGS_WEIGHT i : this.comparison_settings_weights) map.put(i.WEIGHT, i.WEIGHT_VALUE);
+        for (COMPARISON_SETTINGS_WEIGHT i : this.comparison_settings_weights) map.put(i.getWEIGHT(), i.getWEIGHT_VALUE());
         return map;
     }
 }

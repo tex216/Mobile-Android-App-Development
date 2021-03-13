@@ -1,22 +1,12 @@
 package edu.gatech.seclass.jobcompare6300;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class CompareJobsActivity extends AppCompatActivity {
     private Button returnToMainMenu;
@@ -35,7 +25,6 @@ public class CompareJobsActivity extends AppCompatActivity {
     private TextView retirementBenefits_2;
     private TextView leaveTime_1;
     private TextView leaveTime_2;
-    private final Context context = this;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
