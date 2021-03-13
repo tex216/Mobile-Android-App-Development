@@ -51,7 +51,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:stretchColumns="0">
 
                             <TableRow
                                 android:layout_width="match_parent"
@@ -61,7 +62,6 @@
                                     android:id="@+id/label_title_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Title"
@@ -72,7 +72,6 @@
                                     android:id="@+id/value_title_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Title 1"
@@ -82,7 +81,6 @@
                                     android:id="@+id/value_title_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Title 2"
@@ -97,7 +95,6 @@
                                     android:id="@+id/label_company_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Company"
                                     android:textSize="18sp"
@@ -107,7 +104,6 @@
                                     android:id="@+id/value_company_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Company 1"
                                     android:textSize="18sp" />
@@ -116,7 +112,6 @@
                                     android:id="@+id/value_company_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Company 2"
                                     android:textSize="18sp" />
@@ -130,7 +125,6 @@
                                     android:id="@+id/label_location_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Location"
@@ -141,7 +135,6 @@
                                     android:id="@+id/value_location_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="City 1, State 1"
@@ -151,10 +144,9 @@
                                     android:id="@+id/value_location_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
-                                    android:text="City 2, State 2"
+                                    android:text="City 1, State 1"
                                     android:textSize="18sp" />
                             </TableRow>
 
@@ -166,7 +158,6 @@
                                     android:id="@+id/label_salary_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Adjusted yearly salary"
                                     android:textSize="18sp"
@@ -176,7 +167,6 @@
                                     android:id="@+id/value_salary_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Salary 1"
                                     android:textSize="18sp" />
@@ -185,7 +175,6 @@
                                     android:id="@+id/value_salary_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Salary 2"
                                     android:textSize="18sp" />
@@ -199,7 +188,6 @@
                                     android:id="@+id/label_bonus_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Adjusted yearly bonus"
@@ -210,7 +198,6 @@
                                     android:id="@+id/value_bonus_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Bonus 1"
@@ -220,7 +207,6 @@
                                     android:id="@+id/value_bonus_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Bonus 2"
@@ -235,7 +221,6 @@
                                     android:id="@+id/label_retirement_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Retirement benefits"
                                     android:textSize="18sp"
@@ -245,7 +230,6 @@
                                     android:id="@+id/value_retirement_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Benefits 1"
                                     android:textSize="18sp" />
@@ -254,7 +238,6 @@
                                     android:id="@+id/value_retirement_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:padding="20dp"
                                     android:text="Benefits 2"
                                     android:textSize="18sp" />
@@ -268,7 +251,6 @@
                                     android:id="@+id/label_leave_time_compare"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
                                     android:text="Leave time"
@@ -279,20 +261,18 @@
                                     android:id="@+id/value_leave_time_1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
-                                    android:text="Leave time 1"
+                                    android:text="Leave 1"
                                     android:textSize="18sp" />
 
                                 <TextView
                                     android:id="@+id/value_leave_time_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
                                     android:background="#FFD0C2"
                                     android:padding="20dp"
-                                    android:text="Leave time 2"
+                                    android:text="Leave 2"
                                     android:textSize="18sp" />
                             </TableRow>
                         </TableLayout>
@@ -302,7 +282,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
