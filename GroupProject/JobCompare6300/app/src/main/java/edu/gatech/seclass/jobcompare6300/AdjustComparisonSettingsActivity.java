@@ -41,6 +41,12 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     private Handler handler = new Handler(Looper.getMainLooper());
 
+    int remoteWorkPossibilityWeight;
+    int yearlySalaryWeight;
+    int yearlyBonusWeight;
+    int retirementBenefitsWeight;
+    int leaveTimeWeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,17 +98,23 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
         if (this.checkForEmptyFields()) {
             return;
         }
-        Toast.makeText(this,"Comparison Settings are Changed!", Toast.LENGTH_SHORT).show();
         ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
+        this.remoteWorkPossibilityWeight = Integer.parseInt(remoteWork.getText().toString());
+        this.yearlySalaryWeight = Integer.parseInt(yearlySalary.getText().toString());
+        this.yearlyBonusWeight = Integer.parseInt(yearlyBonus.getText().toString());
+        this.retirementBenefitsWeight = Integer.parseInt(retirementBenefits.getText().toString());
+        this.leaveTimeWeight = Integer.parseInt(leaveTime.getText().toString());
+        if (this.checkForInvalidValues()) {
+            Toast.makeText(this.context, "At least 1 comparison setting needs to be positive", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Toast.makeText(this,"Comparison Settings are Changed!", Toast.LENGTH_SHORT).show();
+
         executor.execute(() -> {
-            int remoteWorkPossibilityWeight = Integer.parseInt(remoteWork.getText().toString());
-            int yearlySalaryWeight = Integer.parseInt(yearlySalary.getText().toString());
-            int yearlyBonusWeight = Integer.parseInt(yearlyBonus.getText().toString());
-            int retirementBenefitsWeight = Integer.parseInt(retirementBenefits.getText().toString());
-            int leaveTimeWeight = Integer.parseInt(leaveTime.getText().toString());
             comparisonSettingsWeightDao.updateComparisonWeights(remoteWorkPossibilityWeight, yearlySalaryWeight, yearlyBonusWeight, retirementBenefitsWeight, leaveTimeWeight);
             handler.post(() -> {
                 Intent intent = new Intent(this, MainActivity.class);
@@ -146,6 +158,19 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
         }
         if(TextUtils.isEmpty(leaveTime.getText())){
             leaveTime.setError("Weight is required");
+            hasErrors = true;
+        }
+        return hasErrors;
+    }
+
+    private boolean checkForInvalidValues() {
+        boolean hasErrors = false;
+        if (this.remoteWorkPossibilityWeight == 0
+        && this.yearlySalaryWeight == 0
+        && this.yearlyBonusWeight == 0
+        && this.retirementBenefitsWeight == 0
+        && this.leaveTimeWeight == 0
+        ) {
             hasErrors = true;
         }
         return hasErrors;
