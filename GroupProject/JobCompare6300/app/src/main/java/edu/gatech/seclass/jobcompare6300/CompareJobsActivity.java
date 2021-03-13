@@ -96,9 +96,9 @@ public class CompareJobsActivity extends AppCompatActivity {
         String Company_2 = selectedJobs.get(1).getCOMPANY();
         company_2.setText(Company_2);
 
-        String Location_1 = selectedJobs.get(0).getCITY() + selectedJobs.get(0).getSTATE();
+        String Location_1 = selectedJobs.get(0).getCITY() + ", " + selectedJobs.get(0).getSTATE();
         location_1.setText(Location_1);
-        String Location_2 = selectedJobs.get(1).getCITY() + selectedJobs.get(1).getSTATE();
+        String Location_2 = selectedJobs.get(1).getCITY() + ", " + selectedJobs.get(1).getSTATE();
         location_2.setText(Location_2);
 
         String YearlySalary_1 = String.valueOf(selectedJobs.get(0).getYEARLY_SALARY());
