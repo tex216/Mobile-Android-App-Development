@@ -29,18 +29,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         appDatabase = AppDatabase.getInstance(context, false);
         ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
+        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
         ExecutorService executor = Executors.newSingleThreadExecutor();
-
-        executor.execute(() -> {
-            if (comparisonSettingsWeightDao.getAllWeights().size() == 0) {
-                comparisonSettingsWeightDao.setDefaultWeight();
-            }
-        });
+        Handler handler = new Handler(Looper.getMainLooper());
 
         enterCurrentJob = (Button) findViewById(R.id.btn_enter_current_job);
         enterJobOffers = (Button) findViewById(R.id.btn_enter_job_offers);
         adjustComparisonSettings = (Button) findViewById(R.id.btn_adjust_comp_settings);
         compareJobs = (Button) findViewById(R.id.btn_compare_job_offers);
+
+        executor.execute(() -> {
+            if (comparisonSettingsWeightDao.getAllWeights().size() == 0) {
+                comparisonSettingsWeightDao.setDefaultWeight();
+            };
+            int numberOfJobs = jobDetailsDao.getAllJobs().size();
+
+            handler.post(() -> {
+                if (numberOfJobs < 2) {
+                    compareJobs.setEnabled(false);
+                    compareJobs.setClickable(false);
+                }
+            });
+        });
 
         enterCurrentJob.setOnClickListener(new View.OnClickListener() {
             @Override
