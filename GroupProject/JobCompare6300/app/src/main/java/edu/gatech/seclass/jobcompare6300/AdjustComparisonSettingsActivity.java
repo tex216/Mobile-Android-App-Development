@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,6 +89,9 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
     }
 
     public void handleSaveClick() {
+        if (this.checkForEmptyFields()) {
+            return;
+        }
         Toast.makeText(this,"Comparison Settings are Changed!", Toast.LENGTH_SHORT).show();
         ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
         ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -120,5 +124,30 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         for (COMPARISON_SETTINGS_WEIGHT i : this.comparison_settings_weights) map.put(i.getWEIGHT(), i.getWEIGHT_VALUE());
         return map;
+    }
+
+    private boolean checkForEmptyFields() {
+        boolean hasErrors = false;
+        if(TextUtils.isEmpty(remoteWork.getText())){
+            remoteWork.setError("Weight is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(yearlySalary.getText())){
+            yearlySalary.setError("Weight is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(yearlyBonus.getText())){
+            yearlyBonus.setError("Weight is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(retirementBenefits.getText())){
+            retirementBenefits.setError("Weight is required");
+            hasErrors = true;
+        }
+        if(TextUtils.isEmpty(leaveTime.getText())){
+            leaveTime.setError("Weight is required");
+            hasErrors = true;
+        }
+        return hasErrors;
     }
 }
