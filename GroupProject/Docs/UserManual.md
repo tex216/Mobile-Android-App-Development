@@ -13,10 +13,10 @@ This simple app leverages an Affine Cipher (i.e., E(x) = (αx + β) % 26) to enc
 
 ## Main Features
 
-* Enter / edit a current job - lorem ipsum
-* Enter job offer(s) - lorem ipsum
-* Adjust comparison settings - lorem ipsum
-* Compare jobs - lorem ipsum
+* **Enter / edit a current job** - save current job details
+* **Enter job offer(s)** - save all job offers and their details
+* **Adjust comparison settings** - adjust preferences of job aspects (e.g., salary, bonus, etc.)
+* **Compare jobs** - compare saved jobs
 
 ### Enter / Edit a Current Job
 Easily store or edit current job details here.
@@ -39,7 +39,7 @@ Easily store or edit current job details here.
 1. Input valid values for all fields. There is no drafting so unsaved details will be lost.
 1. Click the `SAVE` button to store information or `CANCEL` to return to main screen.
 
-Note: only one current job can be saved. Once saved, User may come back to edit current job.
+*Note: only one current job can be saved. Once saved, User may come back to edit current job.*
 
 
 ### Enter Job Offer
@@ -66,7 +66,7 @@ Easily store all job offers here.
 
 ![Job_details_saved](./images/final_app/Job_details_saved.png)
 
-Note: job offers cannot be edited after saving.
+*Note: job offers cannot be edited after saving.*
 
 ### Adjust Comparison Settings
 Not all aspects of a job offer may be equaled. Adjust settings to weight aspects relative to each other based on personal preferences.
@@ -83,7 +83,7 @@ Not all aspects of a job offer may be equaled. Adjust settings to weight aspects
 1. Input valid integer values for all fields
 1. Click the `SAVE` button to store information or `CANCEL` to return to main.
 
-Note: if weight values are not entered, all weights will default to a weight of 1.
+*Note: if weight values are not entered, all weights will default to a weight of 1.*
 
 ### Compare Jobs
 View all jobs and compare two jobs in detail here.
@@ -92,9 +92,12 @@ View all jobs and compare two jobs in detail here.
 
 #### Instructions
 1. Review job details that have been entered including current job and all job offers. All jobs will be returned sorted by job score descending. the job with the highest score based on preferences / weights will be returned at top. The calculation for job score is as follows: **AYS + AYB + (RBP * AYS) + (LT * AYS / 260) - ((260 - 52 * RWT) * (AYS / 260) / 8)**
-1. Select two jobs to compare: ![Ranked_list_jobs_selected](./images/final_app/Ranked_list_jobs_selected.png)
-1. Click `COMPARE` to see job details of selected jobs: ![Compare_jobs](./images/final_app/Compare_jobs.png)
+1. Select two jobs to compare:
+![Ranked_list_jobs_selected](./images/final_app/Ranked_list_jobs_selected.png)
+1. Click `COMPARE` to see job details of selected jobs:
+![Compare_jobs](./images/final_app/Compare_jobs.png)
 
+*Note: comparison feature is only available after entering two or more jobs.*
 
 ## Acknowledgments
 
