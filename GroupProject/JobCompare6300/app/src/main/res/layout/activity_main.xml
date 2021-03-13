@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/btn_enter_current_job"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6e1005"
+            android:gravity="center"
+            android:text="Enter/edit current job"
+            android:textAlignment="textStart"
+            app:cornerRadius="50dp"
+            app:icon="@android:drawable/ic_menu_edit"
+            app:iconSize="50dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/btn_enter_job_offers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#6e1005"
+            android:text="Enter job offers"
+            android:textAlignment="textStart"
+            app:cornerRadius="50dp"
+            app:icon="@android:drawable/ic_menu_add"
+            app:iconGravity="start"
+            app:iconSize="50dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/btn_adjust_comp_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#6e1005"
+            android:text="Adjust comparison settings"
+            android:textAlignment="textStart"
+            app:cornerRadius="50dp"
+            app:icon="@android:drawable/ic_menu_manage"
+            app:iconGravity="start"
+            app:iconSize="50dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/btn_compare_job_offers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#6e1005"
+            android:text="Compare job offers"
+            android:textAlignment="textStart"
+            app:cornerRadius="50dp"
+            app:icon="@android:drawable/ic_menu_sort_by_size"
+            app:iconGravity="start"
+            app:iconSize="50dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="405dp"
+            app:srcCompat="@drawable/home_image" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
