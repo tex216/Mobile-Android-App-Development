@@ -2,7 +2,7 @@
 
 **Author**: Team 109
 
-## 1 Use Case Diagram v1
+## 1 Use Case Diagram v2
 
 ![Use Case Model](./images/UseCaseModel_v2.png)
 
