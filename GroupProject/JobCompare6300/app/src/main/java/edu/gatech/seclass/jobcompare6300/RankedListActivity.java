@@ -54,6 +54,7 @@ public class RankedListActivity extends AppCompatActivity {
         cancel = (Button) findViewById(R.id.btn_return_ranked_list);
         ranked_list = (ListView) findViewById(R.id.ranked_list);
 
+
         this.executor.execute(() -> {
             //must be in this order
             //get all weights
@@ -66,6 +67,10 @@ public class RankedListActivity extends AppCompatActivity {
             this.allJobs = jobDetailsDao.getAllJobs();
             handler.post(() -> {
                 this.viewData();
+                if(this.countList.size()!=2){
+                    compare.setEnabled(false);
+                    compare.setClickable(false);
+                }
             });
         });
 
@@ -116,14 +121,21 @@ public class RankedListActivity extends AppCompatActivity {
                 job.setSelectedItem(currentCheck);
             }else{
                 job = this.allJobs.get(this.countList.get(0));
-                job.setSelectedItem(false);
+                job.setSelectedItem(currentCheck);
                 this.ranked_list.setItemChecked(this.countList.get(0), false);
                 this.countList.remove(0);
                 job = this.allJobs.get(position);
                 job.setSelectedItem(currentCheck);
-
             }
-
+        }else{
+            this.countList.remove(Integer.valueOf(position));
+        }
+        if(countList.size()==2){
+            compare.setEnabled(true);
+            compare.setClickable(true);
+        }else{
+            compare.setEnabled(false);
+            compare.setClickable(false);
         }
 
     }
@@ -135,6 +147,7 @@ public class RankedListActivity extends AppCompatActivity {
                 selectedJobs.add(allJobs.get(i));
             }
         }
+
         Intent intent = new Intent(this, CompareJobsActivity.class);
         intent.putExtra("selected_jobs", (ArrayList<JOB_DETAILS>)selectedJobs);
         startActivity(intent);
