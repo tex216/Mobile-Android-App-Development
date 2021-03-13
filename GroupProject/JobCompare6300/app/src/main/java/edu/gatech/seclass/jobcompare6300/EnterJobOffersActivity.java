@@ -88,6 +88,7 @@ public class EnterJobOffersActivity extends AppCompatActivity {
             jobDetailsDao.insertJob(jobDetails);
             handler.post(() -> {
                 Intent intent = new Intent(this, AfterEnterJobOfferActivity.class);
+                intent.putExtra("new_job", jobDetails);
                 startActivity(intent);
             });
         });

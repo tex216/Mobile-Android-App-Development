@@ -129,8 +129,14 @@ public class RankedListActivity extends AppCompatActivity {
     }
 
     private void handleCompareJobsClick() {
+        List<JOB_DETAILS> selectedJobs = new ArrayList<JOB_DETAILS>();
+        for (int i = 0; i < allJobs.size(); i++) {
+            if (allJobs.get(i).isSelectedItem() == true) {
+                selectedJobs.add(allJobs.get(i));
+            }
+        }
         Intent intent = new Intent(this, CompareJobsActivity.class);
-        intent.putExtra("selected_jobs", (ArrayList<JOB_DETAILS>)this.allJobs);
+        intent.putExtra("selected_jobs", (ArrayList<JOB_DETAILS>)selectedJobs);
         startActivity(intent);
     }
 
