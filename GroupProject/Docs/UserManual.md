@@ -4,12 +4,12 @@
 
 ## Introduction
 
-This simple app leverages an Affine Cipher (i.e., E(x) = (αx + β) % 26) to encrypt messages. It will take a string that contains at least one letter (defined as [a-zA-Z]) and encrypt the letter(s).
+This simple app allows User to enter job details and then compare jobs based on salary, bonus, retirements, or etc.. 
 
 ## Getting Started
 
 ### Dependencies
-* Pixel 2 API 28
+* Pixel 3 API 28
 
 ## Main Features
 
