@@ -69,7 +69,7 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
                     city.setText(this.currentJob.getCITY());
                     state.setText(this.currentJob.getSTATE());
                     costOfLiving.setText(String.valueOf(this.currentJob.getCOST_OF_LIVING_INDEX()));
-                    remoteWork.setSelection(this.currentJob.getWORK_REMOTE());
+                    remoteWork.setSelection(this.currentJob.getWORK_REMOTE()-1);
                     yearlySalary.setText(String.valueOf(this.currentJob.getYEARLY_SALARY()));
                     yearlyBonus.setText(String.valueOf(this.currentJob.getYEARLY_BONUS()));
                     retirement.setText(String.valueOf(this.currentJob.getPERCENTAGE_MATCHED()));
