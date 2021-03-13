@@ -93,6 +93,7 @@ View all jobs and compare two jobs in detail here.
 #### Instructions
 1. Review job details that have been entered including current job and all job offers. All jobs will be returned sorted by job score descending. the job with the highest score based on preferences / weights will be returned at top. The calculation for job score is as follows: **AYS + AYB + (RBP * AYS) + (LT * AYS / 260) - ((260 - 52 * RWT) * (AYS / 260) / 8)**
 1. Select two jobs to compare:
+
 ![Ranked_list_jobs_selected](./images/final_app/Ranked_list_jobs_selected.png)
 1. Click `COMPARE` to see job details of selected jobs:
 ![Compare_jobs](./images/final_app/Compare_jobs.png)
