@@ -20,7 +20,7 @@ import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
-public class AfterEnterJobOfferActivity extends AppCompatActivity {
+public class AfterEnterJobOfferActivity extends BaseActivity {
     private Button addAnotherOffer;
     private Button returnMainMenu;
     private Button compareCurrentOffer;
@@ -35,12 +35,7 @@ public class AfterEnterJobOfferActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_after_enter_job_offer);
-
-        addAnotherOffer = (Button) findViewById(R.id.btn_add_another_job);
-        returnMainMenu = (Button) findViewById(R.id.btn_return_after_job);
-        compareCurrentOffer = (Button) findViewById(R.id.btn_compare_current_offer);
-
+        this.initializeUI();
         executor.execute(() -> {
             this.currentJob = this.jobDetailsDao.getCurrentJob();
             handler.post(() -> {
@@ -50,28 +45,36 @@ public class AfterEnterJobOfferActivity extends AppCompatActivity {
                 }
             });
         });
+    }
 
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_after_enter_job_offer;
+    }
+
+    @Override
+    protected void initializeUI() {
+        this.addAnotherOffer = (Button) findViewById(R.id.btn_add_another_job);
+        this.returnMainMenu = (Button) findViewById(R.id.btn_return_after_job);
+        this.compareCurrentOffer = (Button) findViewById(R.id.btn_compare_current_offer);
         addAnotherOffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 handleAddAnotherOfferClick();
             }
         });
-
         returnMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 handleReturnMainMenuClick();
             }
         });
-
         compareCurrentOffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 handleCompareCurrentOfferClick();
             }
         });
-
     }
 
     public void handleReturnMainMenuClick() {

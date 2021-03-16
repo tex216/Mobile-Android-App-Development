@@ -11,7 +11,7 @@ import java.util.List;
 import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.R;
 
-public class CompareJobsActivity extends AppCompatActivity {
+public class CompareJobsActivity extends BaseActivity {
     private Button returnToMainMenu;
     private Button anotherCompare;
     private TextView title_1;
@@ -31,38 +31,7 @@ public class CompareJobsActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compare_jobs);
-
-        returnToMainMenu = (Button) findViewById(R.id.btn_return_compare);
-        anotherCompare = (Button) findViewById(R.id.btn_another_compare);
-        title_1 = (TextView)findViewById(R.id.value_title_1);
-        title_2 = (TextView)findViewById(R.id.value_title_2);
-        company_1 = (TextView)findViewById(R.id.value_company_1);
-        company_2 = (TextView)findViewById(R.id.value_company_2);
-        location_1 = (TextView)findViewById(R.id.value_location_1);
-        location_2 = (TextView)findViewById(R.id.value_location_2);
-        adjYearlySalary_1 = (TextView)findViewById(R.id.value_adj_salary_1);
-        adjYearlySalary_2 = (TextView)findViewById(R.id.value_adj_salary_2);
-        adjYearlyBonus_1 = (TextView)findViewById(R.id.value_adj_bonus_1);
-        adjYearlyBonus_2 = (TextView)findViewById(R.id.value_adj_bonus_2);
-        retirementBenefits_1 = (TextView)findViewById(R.id.value_retirement_1);
-        retirementBenefits_2 = (TextView)findViewById(R.id.value_retirement_2);
-        leaveTime_1 = (TextView)findViewById(R.id.value_leave_time_1);
-        leaveTime_2 = (TextView)findViewById(R.id.value_leave_time_2);
-
-        returnToMainMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleReturnMainMenuClick();
-            }
-        });
-
-        anotherCompare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleAnotherComparisonClick();
-            }
-        });
+        this.initializeUI();
 
         List<JOB_DETAILS> selectedJobs = (List<JOB_DETAILS>)getIntent().getSerializableExtra("selected_jobs");
 
@@ -103,12 +72,50 @@ public class CompareJobsActivity extends AppCompatActivity {
 
     }
 
-    public void handleReturnMainMenuClick() {
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_compare_jobs;
+    }
+
+    @Override
+    protected void initializeUI() {
+        returnToMainMenu = (Button) findViewById(R.id.btn_return_compare);
+        anotherCompare = (Button) findViewById(R.id.btn_another_compare);
+        title_1 = (TextView)findViewById(R.id.value_title_1);
+        title_2 = (TextView)findViewById(R.id.value_title_2);
+        company_1 = (TextView)findViewById(R.id.value_company_1);
+        company_2 = (TextView)findViewById(R.id.value_company_2);
+        location_1 = (TextView)findViewById(R.id.value_location_1);
+        location_2 = (TextView)findViewById(R.id.value_location_2);
+        adjYearlySalary_1 = (TextView)findViewById(R.id.value_adj_salary_1);
+        adjYearlySalary_2 = (TextView)findViewById(R.id.value_adj_salary_2);
+        adjYearlyBonus_1 = (TextView)findViewById(R.id.value_adj_bonus_1);
+        adjYearlyBonus_2 = (TextView)findViewById(R.id.value_adj_bonus_2);
+        retirementBenefits_1 = (TextView)findViewById(R.id.value_retirement_1);
+        retirementBenefits_2 = (TextView)findViewById(R.id.value_retirement_2);
+        leaveTime_1 = (TextView)findViewById(R.id.value_leave_time_1);
+        leaveTime_2 = (TextView)findViewById(R.id.value_leave_time_2);
+        returnToMainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleReturnMainMenuClick();
+            }
+        });
+
+        anotherCompare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleAnotherComparisonClick();
+            }
+        });
+    }
+
+    private void handleReturnMainMenuClick() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void handleAnotherComparisonClick() {
+    private void handleAnotherComparisonClick() {
         Intent intent = new Intent(this, RankedListActivity.class);
         startActivity(intent);
     }

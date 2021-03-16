@@ -1,7 +1,5 @@
 package edu.gatech.seclass.jobcompare6300.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +25,7 @@ import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
-public class RankedListActivity extends AppCompatActivity {
+public class RankedListActivity extends BaseActivity {
     private Button compare;
     private Button cancel;
     ListView ranked_list;
@@ -48,13 +46,7 @@ public class RankedListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ranked_list);
-
-        compare = (Button) findViewById(R.id.btn_compare_ranked_list);
-        cancel = (Button) findViewById(R.id.btn_return_ranked_list);
-        ranked_list = (ListView) findViewById(R.id.ranked_list);
-
-
+        this.initializeUI();
         this.executor.execute(() -> {
             //must be in this order
             //get all weights
@@ -73,7 +65,18 @@ public class RankedListActivity extends AppCompatActivity {
                 }
             });
         });
+    }
 
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_ranked_list;
+    }
+
+    @Override
+    protected void initializeUI() {
+        this.compare = (Button) findViewById(R.id.btn_compare_ranked_list);
+        this.cancel = (Button) findViewById(R.id.btn_return_ranked_list);
+        this.ranked_list = (ListView) findViewById(R.id.ranked_list);
         compare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

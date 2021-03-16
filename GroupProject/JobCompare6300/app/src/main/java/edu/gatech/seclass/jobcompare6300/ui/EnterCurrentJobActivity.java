@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutorService;
@@ -22,22 +23,11 @@ import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
-public class EnterCurrentJobActivity extends AppCompatActivity {
-    private Button save;
-    private Button cancel;
-    private EditText title;
-    private EditText company;
-    private EditText city;
-    private EditText state;
-    private EditText costOfLiving;
-    private Spinner remoteWork;
-    private EditText yearlySalary;
-    private EditText yearlyBonus;
-    private EditText retirement;
-    private EditText leaveTime;
+public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
 
     private final Context context = this;
-    private AppDatabase appDatabase = AppDatabase.getInstance(this.context);
+
+    private AppDatabase appDatabase = AppDatabase.getInstance(context);
     private JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
     private JOB_DETAILS currentJob;
 
@@ -47,56 +37,41 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_current_job);
-
-        appDatabase = AppDatabase.getInstance(context);
-        save = (Button) findViewById(R.id.btn_save_cj);
-        cancel = (Button) findViewById(R.id.btn_cancel_cj);
-        title = (EditText)findViewById(R.id.text_title_cj);
-        company = (EditText)findViewById(R.id.text_company_cj);
-        city = (EditText)findViewById(R.id.text_city_cj);
-        state = (EditText)findViewById(R.id.text_state_cj);
-        costOfLiving = (EditText)findViewById(R.id.number_cost_of_living_cj);
-        remoteWork = (Spinner) findViewById(R.id.dropdown_remote_work_cj);
-        yearlySalary = (EditText)findViewById(R.id.number_salary_cj);
-        yearlyBonus = (EditText)findViewById(R.id.number_bonus_cj);
-        retirement = (EditText)findViewById(R.id.number_retirement_cj);
-        leaveTime = (EditText)findViewById(R.id.number_leave_time_cj);
+        this.initializeUI();
 
         this.executor.execute(() -> {
             this.currentJob = jobDetailsDao.getCurrentJob();
             handler.post(() -> {
                 if (this.currentJob!=null) { //pre-populate form if current job exists
-                    title.setText(this.currentJob.getTITLE());
-                    company.setText(this.currentJob.getCOMPANY());
-                    city.setText(this.currentJob.getCITY());
-                    state.setText(this.currentJob.getSTATE());
-                    costOfLiving.setText(String.valueOf(this.currentJob.getCOST_OF_LIVING_INDEX()));
-                    remoteWork.setSelection(this.currentJob.getWORK_REMOTE()-1);
-                    yearlySalary.setText(String.valueOf(this.currentJob.getYEARLY_SALARY()));
-                    yearlyBonus.setText(String.valueOf(this.currentJob.getYEARLY_BONUS()));
-                    retirement.setText(String.valueOf(this.currentJob.getPERCENTAGE_MATCHED()));
-                    leaveTime.setText(String.valueOf(this.currentJob.getLEAVE_TIME()));
+                    this.title.setText(this.currentJob.getTITLE());
+                    this.company.setText(this.currentJob.getCOMPANY());
+                    this.city.setText(this.currentJob.getCITY());
+                    this.state.setText(this.currentJob.getSTATE());
+                    this.costOfLiving.setText(String.valueOf(this.currentJob.getCOST_OF_LIVING_INDEX()));
+                    this.remoteWork.setSelection(this.currentJob.getWORK_REMOTE()-1);
+                    this.yearlySalary.setText(String.valueOf(this.currentJob.getYEARLY_SALARY()));
+                    this.yearlyBonus.setText(String.valueOf(this.currentJob.getYEARLY_BONUS()));
+                    this.retirement.setText(String.valueOf(this.currentJob.getPERCENTAGE_MATCHED()));
+                    this.leaveTime.setText(String.valueOf(this.currentJob.getLEAVE_TIME()));
                 }
             });
         });
-
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleSaveClick();
-            }
-        });
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleCancelClick();
-            }
-        });
     }
 
-    public void handleSaveClick() {
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_enter_job_offers;
+    }
+
+    @Override
+    protected void initializeUI() {
+        super.initializeUI();
+        TextView jobOffersHeader = (TextView) findViewById(R.id.label_job_offers_header);
+        jobOffersHeader.setText("Enter current job");
+    }
+
+    @Override
+    protected void handleSaveClick() {
         if (this.checkForEmptyFields()) {
             return;
         }
@@ -149,6 +124,12 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void handleCancelClick() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     private boolean checkForEmptyFields() {
         boolean hasErrors = false;
         if(TextUtils.isEmpty(title.getText())){
@@ -188,10 +169,5 @@ public class EnterCurrentJobActivity extends AppCompatActivity {
             hasErrors = true;
         }
         return hasErrors;
-    }
-
-    public void handleCancelClick() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }

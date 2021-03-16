@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCompare6300">
-        <activity android:name=".ui.AfterEnterJobOfferActivity"></activity>
+        <activity android:name=".ui.EnterJobDetailsBaseActivity"></activity>
+        <activity android:name=".ui.BaseActivity" />
+        <activity android:name=".ui.AfterEnterJobOfferActivity" />
         <activity android:name=".ui.CompareJobsActivity" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld

@@ -8,24 +8,19 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
 import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
 import edu.gatech.seclass.jobcompare6300.data.COMPARISON_SETTINGS_WEIGHT;
 import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
-import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 
 public class ComparisonSettings {
     private AppDatabase appDatabase;
     private ComparisonSettingsWeightDao comparisonSettingsWeightDao;
-    private JobDetailsDao jobDetailsDao;
     private ExecutorService executor;
-
     private HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> map = new HashMap<>();
 
     public ComparisonSettings(Context context) {
-        appDatabase = AppDatabase.getInstance(context, true);
+        appDatabase = AppDatabase.getInstance(context);
         this.comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
-        this.jobDetailsDao = this.appDatabase.jobDetailsDao();
         this.executor = Executors.newSingleThreadExecutor();
     }
 

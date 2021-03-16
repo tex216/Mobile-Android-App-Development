@@ -21,60 +21,24 @@ import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
-public class EnterJobOffersActivity extends AppCompatActivity {
-    private Button save;
-    private Button cancel;
-
-    private EditText title;
-    private EditText company;
-    private EditText city;
-    private EditText state;
-    private EditText costOfLiving;
-    private Spinner remoteWork;
-    private EditText yearlySalary;
-    private EditText yearlyBonus;
-    private EditText retirement;
-    private EditText leaveTime;
+public class EnterJobOffersActivity extends EnterJobDetailsBaseActivity {
     private final Context context = this;
     private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_job_offers);
-
-        save = (Button) findViewById(R.id.btn_save);
-        cancel = (Button) findViewById(R.id.btn_cancel);
-        appDatabase = AppDatabase.getInstance(context);
-
-        title = (EditText)findViewById(R.id.text_title);
-        company = (EditText)findViewById(R.id.text_company);
-        city = (EditText)findViewById(R.id.text_city);
-        state = (EditText)findViewById(R.id.text_state);
-        costOfLiving = (EditText)findViewById(R.id.number_cost_of_living);
-        remoteWork = (Spinner) findViewById(R.id.dropdown_remote_work);
-        yearlySalary = (EditText)findViewById(R.id.number_salary);
-        yearlyBonus = (EditText)findViewById(R.id.number_bonus);
-        retirement = (EditText)findViewById(R.id.number_retirement);
-        leaveTime = (EditText)findViewById(R.id.number_leave_time);
-
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleSaveClick();
-            }
-        });
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleCancelClick();
-            }
-        });
-
+        this.initializeUI();
+        this.appDatabase = AppDatabase.getInstance(context);
     }
 
-    public void handleSaveClick() {
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_enter_job_offers;
+    }
+
+    @Override
+    protected void handleSaveClick() {
         if (this.checkForEmptyFields()) {
             return;
         } else {
@@ -102,6 +66,12 @@ public class EnterJobOffersActivity extends AppCompatActivity {
                 });
             });
         }
+    }
+
+    @Override
+    protected void handleCancelClick() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private boolean checkForEmptyFields() {
@@ -143,10 +113,5 @@ public class EnterJobOffersActivity extends AppCompatActivity {
             hasErrors = true;
         }
         return hasErrors;
-    }
-
-    public void handleCancelClick() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }

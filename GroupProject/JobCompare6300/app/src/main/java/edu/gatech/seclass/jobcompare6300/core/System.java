@@ -14,7 +14,6 @@ import java.util.concurrent.Future;
 
 import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
 import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
-import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 
 public class System {
@@ -29,7 +28,7 @@ public class System {
 
     private System(Context context)
     {
-        appDatabase = AppDatabase.getInstance(context, false);
+        this.appDatabase = AppDatabase.getInstance(context, false);
         this.comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
         this.jobDetailsDao = this.appDatabase.jobDetailsDao();
         this.executor = Executors.newSingleThreadExecutor();

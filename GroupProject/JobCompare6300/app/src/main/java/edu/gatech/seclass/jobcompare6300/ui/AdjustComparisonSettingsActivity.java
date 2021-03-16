@@ -28,7 +28,7 @@ import edu.gatech.seclass.jobcompare6300.data.COMPARISON_SETTINGS_WEIGHT;
 import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
-public class AdjustComparisonSettingsActivity extends AppCompatActivity {
+public class AdjustComparisonSettingsActivity extends BaseActivity {
     private Button save;
     private Button cancel;
     private EditText remoteWork;
@@ -36,46 +36,32 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
     private EditText yearlyBonus;
     private EditText retirementBenefits;
     private EditText leaveTime;
-    private final Context context = this;
-    System system;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adjust_comparison_settings);
-        this.system = System.getInstance(this.context);
-
-        save = (Button) findViewById(R.id.btn_save_weight);
-        cancel = (Button) findViewById(R.id.btn_cancel_weight);
-
-        retirementBenefits = (EditText)findViewById(R.id.text_retirement_benefits_weight);
-        leaveTime = (EditText)findViewById(R.id.text_leave_time_weight);
-        yearlySalary = (EditText)findViewById(R.id.text_salary_weight);
-        remoteWork = (EditText)findViewById(R.id.text_remote_work_weight);
-        yearlyBonus = (EditText)findViewById(R.id.text_bonus_weight);
-
-        int remoteWorkPossibilityWeight = 0;
-        int yearlySalaryWeight = 0;
-        int yearlyBonusWeight = 0;
-        int retirementBenefitsWeight = 0;
-        int leaveTimeWeight = 0;
-
+        this.initializeUI();
         try {
-            remoteWorkPossibilityWeight = system.getWeight(COMPARISON_SETTINGS_OPTIONS.REMOTE_WORK_POSSIBILITY_WEIGHT);
-            yearlySalaryWeight = system.getWeight(COMPARISON_SETTINGS_OPTIONS.YEARLY_SALARY_WEIGHT);
-            yearlyBonusWeight = system.getWeight(COMPARISON_SETTINGS_OPTIONS.YEARLY_BONUS_WEIGHT);
-            retirementBenefitsWeight = system.getWeight(COMPARISON_SETTINGS_OPTIONS.RETIREMENT_BENEFITS_WEIGHT);
-            leaveTimeWeight = system.getWeight(COMPARISON_SETTINGS_OPTIONS.LEAVE_TIME_WEIGHT);
+            this.populateDefaultWeights();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-        retirementBenefits.setText(String.valueOf(retirementBenefitsWeight));
-        leaveTime.setText(String.valueOf(leaveTimeWeight));
-        yearlySalary.setText(String.valueOf(yearlySalaryWeight));
-        remoteWork.setText(String.valueOf(remoteWorkPossibilityWeight));
-        yearlyBonus.setText(String.valueOf(yearlyBonusWeight));
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_adjust_comparison_settings;
+    }
 
+    @Override
+    protected void initializeUI() {
+        this.save = (Button) findViewById(R.id.btn_save_weight);
+        this.cancel = (Button) findViewById(R.id.btn_cancel_weight);
+        this.retirementBenefits = (EditText)findViewById(R.id.text_retirement_benefits_weight);
+        this.leaveTime = (EditText)findViewById(R.id.text_leave_time_weight);
+        this.yearlySalary = (EditText)findViewById(R.id.text_salary_weight);
+        this.remoteWork = (EditText)findViewById(R.id.text_remote_work_weight);
+        this.yearlyBonus = (EditText)findViewById(R.id.text_bonus_weight);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,14 +75,42 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
                 handleCancelClick();
             }
         });
-
     }
 
-    public void handleSaveClick() {
+    private void handleSaveClick() {
         if (this.checkForEmptyFields()) {
             return;
         }
+        HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> weights = this.getEnteredInputs();
+        if (this.checkForInvalidValues(weights)) {
+            this.setInvalidValueErrorMessage();
+            return;
+        }
+        this.system.updateComparisonWeights(weights);
+        Toast.makeText(this,"Comparison settings successfully changed!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
+    private void handleCancelClick() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void populateDefaultWeights() throws Exception {
+        int remoteWorkPossibilityWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.REMOTE_WORK_POSSIBILITY_WEIGHT);
+        int yearlySalaryWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.YEARLY_SALARY_WEIGHT);
+        int yearlyBonusWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.YEARLY_BONUS_WEIGHT);
+        int retirementBenefitsWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.RETIREMENT_BENEFITS_WEIGHT);
+        int leaveTimeWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.LEAVE_TIME_WEIGHT);
+        this.retirementBenefits.setText(String.valueOf(retirementBenefitsWeight));
+        this.leaveTime.setText(String.valueOf(leaveTimeWeight));
+        this.yearlySalary.setText(String.valueOf(yearlySalaryWeight));
+        this.remoteWork.setText(String.valueOf(remoteWorkPossibilityWeight));
+        this.yearlyBonus.setText(String.valueOf(yearlyBonusWeight));
+    }
+
+    private HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> getEnteredInputs() {
         HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> weights = new HashMap<>();
         int remoteWorkPossibilityWeight = Integer.parseInt(remoteWork.getText().toString());
         weights.put(COMPARISON_SETTINGS_OPTIONS.REMOTE_WORK_POSSIBILITY_WEIGHT, remoteWorkPossibilityWeight);
@@ -112,24 +126,7 @@ public class AdjustComparisonSettingsActivity extends AppCompatActivity {
 
         int leaveTimeWeight = Integer.parseInt(leaveTime.getText().toString());
         weights.put(COMPARISON_SETTINGS_OPTIONS.LEAVE_TIME_WEIGHT, leaveTimeWeight);
-
-        if (this.checkForInvalidValues(weights)) {
-            this.setInvalidValueErrorMessage();
-            return;
-        }
-
-        this.system.updateComparisonWeights(weights);
-
-        Toast.makeText(this,"Comparison settings successfully changed!", Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void handleCancelClick() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        return weights;
     }
 
     private boolean checkForEmptyFields() {
