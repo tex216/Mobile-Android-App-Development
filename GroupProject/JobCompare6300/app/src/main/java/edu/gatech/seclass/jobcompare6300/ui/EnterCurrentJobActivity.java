@@ -43,16 +43,7 @@ public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
             this.currentJob = jobDetailsDao.getCurrentJob();
             handler.post(() -> {
                 if (this.currentJob!=null) { //pre-populate form if current job exists
-                    this.title.setText(this.currentJob.getTITLE());
-                    this.company.setText(this.currentJob.getCOMPANY());
-                    this.city.setText(this.currentJob.getCITY());
-                    this.state.setText(this.currentJob.getSTATE());
-                    this.costOfLiving.setText(String.valueOf(this.currentJob.getCOST_OF_LIVING_INDEX()));
-                    this.remoteWork.setSelection(this.currentJob.getWORK_REMOTE()-1);
-                    this.yearlySalary.setText(String.valueOf(this.currentJob.getYEARLY_SALARY()));
-                    this.yearlyBonus.setText(String.valueOf(this.currentJob.getYEARLY_BONUS()));
-                    this.retirement.setText(String.valueOf(this.currentJob.getPERCENTAGE_MATCHED()));
-                    this.leaveTime.setText(String.valueOf(this.currentJob.getLEAVE_TIME()));
+                    this.prepopulateCurrentJob();
                 }
             });
         });
@@ -128,6 +119,19 @@ public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
     protected void handleCancelClick() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void prepopulateCurrentJob() {
+        this.title.setText(this.currentJob.getTITLE());
+        this.company.setText(this.currentJob.getCOMPANY());
+        this.city.setText(this.currentJob.getCITY());
+        this.state.setText(this.currentJob.getSTATE());
+        this.costOfLiving.setText(String.valueOf(this.currentJob.getCOST_OF_LIVING_INDEX()));
+        this.remoteWork.setSelection(this.currentJob.getWORK_REMOTE()-1);
+        this.yearlySalary.setText(String.valueOf(this.currentJob.getYEARLY_SALARY()));
+        this.yearlyBonus.setText(String.valueOf(this.currentJob.getYEARLY_BONUS()));
+        this.retirement.setText(String.valueOf(this.currentJob.getPERCENTAGE_MATCHED()));
+        this.leaveTime.setText(String.valueOf(this.currentJob.getLEAVE_TIME()));
     }
 
     private boolean checkForEmptyFields() {

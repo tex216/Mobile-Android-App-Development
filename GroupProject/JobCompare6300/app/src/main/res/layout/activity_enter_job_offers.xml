@@ -19,7 +19,7 @@
             android:background="#FFFFFF"
             android:backgroundTint="#6e1005"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="none"
             android:paddingStart="5dp"
             android:text="Enter job offers"
             android:textColor="#FFFFFFFF"
@@ -55,7 +55,7 @@
                         android:background="#FFFFFF"
                         android:ems="10"
                         android:enabled="true"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:paddingStart="5dp"
                         android:text="Title"
                         android:textSize="18sp" />
@@ -83,7 +83,7 @@
                         android:layout_weight="1"
                         android:background="#FFFFFF"
                         android:ems="10"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:paddingStart="5dp"
                         android:text="Company"
                         android:textSize="18sp" />
@@ -109,6 +109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:inputType="none"
                         android:paddingStart="5dp"
                         android:text="Location"
                         android:textSize="18sp"/>
@@ -122,9 +123,9 @@
                             android:id="@+id/label_city"
                             android:layout_width="34dp"
                             android:layout_height="wrap_content"
+                            android:inputType="none"
                             android:background="#FFFFFF"
                             android:ems="10"
-                            android:inputType="text"
                             android:paddingStart="5dp"
                             android:text="City"
                             android:textSize="16sp" />
@@ -143,9 +144,9 @@
                             android:id="@+id/label_state"
                             android:layout_width="53dp"
                             android:layout_height="wrap_content"
+                            android:inputType="none"
                             android:background="#FFFFFF"
                             android:ems="10"
-                            android:inputType="text"
                             android:paddingStart="5dp"
                             android:text="State"
                             android:textSize="16sp" />
@@ -172,9 +173,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:inputType="none"
                         android:background="#FFFFFF"
                         android:ems="10"
-                        android:inputType="text"
                         android:paddingStart="5dp"
                         android:text="Cost of living in the location"
                         android:textSize="18sp" />
@@ -200,9 +201,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:inputType="none"
                         android:background="#FFFFFF"
                         android:ems="10"
-                        android:inputType="text"
                         android:paddingStart="5dp"
                         android:text="Possibility of work remotely"
                         android:textSize="18sp" />
@@ -228,7 +229,7 @@
                         android:layout_weight="1"
                         android:background="#FFFFFF"
                         android:ems="10"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:paddingStart="5dp"
                         android:text="Yearly salary"
                         android:textSize="18sp" />
@@ -256,7 +257,7 @@
                         android:layout_weight="1"
                         android:background="#FFFFFF"
                         android:ems="10"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:paddingStart="5dp"
                         android:text="Yearly bonus"
                         android:textSize="18sp" />
@@ -284,7 +285,7 @@
                         android:layout_weight="1"
                         android:background="#FFFFFF"
                         android:ems="10"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:paddingStart="5dp"
                         android:text="Retirement benefits"
                         android:textSize="18sp" />
@@ -312,7 +313,7 @@
                         android:layout_weight="1"
                         android:background="#FFFFFF"
                         android:ems="10"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:paddingStart="5dp"
                         android:text="Leave time"
                         android:textSize="18sp" />

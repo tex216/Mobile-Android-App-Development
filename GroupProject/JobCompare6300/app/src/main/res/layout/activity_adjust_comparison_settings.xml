@@ -18,7 +18,7 @@
             android:background="#FFFFFF"
             android:backgroundTint="#6e1005"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="none"
             android:paddingStart="5dp"
             android:text="Adjust comparison settings"
             android:textColor="#FFFFFFFF"
@@ -38,6 +38,7 @@
                     android:id="@+id/label_retirement_benefits_weight"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
                     android:paddingStart="5dp"
                     android:text="Retirement benefits"
                     android:textSize="18sp" />
@@ -59,6 +60,7 @@
                     android:id="@+id/label_leave_time_weight"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
                     android:paddingStart="5dp"
                     android:text="Leave time"
                     android:textSize="18sp" />
@@ -80,6 +82,7 @@
                     android:id="@+id/label_salary_weight"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
                     android:paddingStart="5dp"
                     android:text="Yearly salary"
                     android:textSize="18sp" />
@@ -101,6 +104,7 @@
                     android:id="@+id/label_remote_work_weight"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
                     android:paddingStart="5dp"
                     android:text="Possibility to work remotely"
                     android:textSize="18sp" />
@@ -122,6 +126,7 @@
                     android:id="@+id/label_bonus_weight"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
                     android:paddingStart="5dp"
                     android:text="Yearly bonus"
                     android:textSize="18sp" />
