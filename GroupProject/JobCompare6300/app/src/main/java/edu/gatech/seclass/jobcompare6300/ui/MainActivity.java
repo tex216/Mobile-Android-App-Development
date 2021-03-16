@@ -1,7 +1,6 @@
-package edu.gatech.seclass.jobcompare6300;
+package edu.gatech.seclass.jobcompare6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +10,15 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import edu.gatech.seclass.jobcompare6300.core.System;
+import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
+import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
+import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
+import edu.gatech.seclass.jobcompare6300.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,36 +27,31 @@ public class MainActivity extends AppCompatActivity {
     private Button adjustComparisonSettings;
     private Button compareJobs;
     private final Context context = this;
-    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        appDatabase = AppDatabase.getInstance(context, false);
-        ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
-        JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
+        System system = System.getInstance(this.context);
 
         enterCurrentJob = (Button) findViewById(R.id.btn_enter_current_job);
         enterJobOffers = (Button) findViewById(R.id.btn_enter_job_offers);
         adjustComparisonSettings = (Button) findViewById(R.id.btn_adjust_comp_settings);
         compareJobs = (Button) findViewById(R.id.btn_compare_job_offers);
 
-        executor.execute(() -> {
-            if (comparisonSettingsWeightDao.getAllWeights().size() == 0) {
-                comparisonSettingsWeightDao.setDefaultWeight();
-            };
-            int numberOfJobs = jobDetailsDao.getAllJobs().size();
-
-            handler.post(() -> {
-                if (numberOfJobs < 2) {
-                    compareJobs.setEnabled(false);
-                    compareJobs.setClickable(false);
-                }
-            });
-        });
+        system.initialize();
+        int numberOfJobs = 0;
+        try {
+            numberOfJobs = system.getNumberOfJobs();
+            if (numberOfJobs < 2) {
+                compareJobs.setEnabled(false);
+                compareJobs.setClickable(false);
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         enterCurrentJob.setOnClickListener(new View.OnClickListener() {
             @Override

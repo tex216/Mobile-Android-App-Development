@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCompare6300">
-        <activity android:name=".AfterEnterJobOfferActivity"></activity>
-        <activity android:name=".CompareJobsActivity" />
+        <activity android:name=".ui.AfterEnterJobOfferActivity"></activity>
+        <activity android:name=".ui.CompareJobsActivity" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-        <activity android:name=".RankedListActivity" />
-        <activity android:name=".AdjustComparisonSettingsActivity" />
-        <activity android:name=".EnterCurrentJobActivity" />
-        <activity android:name=".EnterJobOffersActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.RankedListActivity" />
+        <activity android:name=".ui.AdjustComparisonSettingsActivity" />
+        <activity android:name=".ui.EnterCurrentJobActivity" />
+        <activity android:name=".ui.EnterJobOffersActivity" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

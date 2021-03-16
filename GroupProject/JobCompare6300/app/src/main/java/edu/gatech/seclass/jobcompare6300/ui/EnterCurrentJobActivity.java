@@ -1,11 +1,9 @@
-package edu.gatech.seclass.jobcompare6300;
+package edu.gatech.seclass.jobcompare6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.session.MediaSession;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,6 +16,11 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
+import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
+import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
+import edu.gatech.seclass.jobcompare6300.R;
 
 public class EnterCurrentJobActivity extends AppCompatActivity {
     private Button save;

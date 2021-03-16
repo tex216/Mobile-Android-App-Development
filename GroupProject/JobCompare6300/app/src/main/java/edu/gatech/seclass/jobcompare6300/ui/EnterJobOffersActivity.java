@@ -1,4 +1,4 @@
-package edu.gatech.seclass.jobcompare6300;
+package edu.gatech.seclass.jobcompare6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,11 @@ import android.widget.Spinner;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
+import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
+import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
+import edu.gatech.seclass.jobcompare6300.R;
 
 public class EnterJobOffersActivity extends AppCompatActivity {
     private Button save;

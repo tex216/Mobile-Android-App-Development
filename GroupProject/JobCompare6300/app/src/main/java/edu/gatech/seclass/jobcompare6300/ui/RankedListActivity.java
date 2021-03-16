@@ -1,4 +1,4 @@
-package edu.gatech.seclass.jobcompare6300;
+package edu.gatech.seclass.jobcompare6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,25 +7,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-import android.util.SparseBooleanArray;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
+import edu.gatech.seclass.jobcompare6300.data.COMPARISON_SETTINGS_WEIGHT;
+import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
+import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
+import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
+import edu.gatech.seclass.jobcompare6300.R;
 
 public class RankedListActivity extends AppCompatActivity {
     private Button compare;
