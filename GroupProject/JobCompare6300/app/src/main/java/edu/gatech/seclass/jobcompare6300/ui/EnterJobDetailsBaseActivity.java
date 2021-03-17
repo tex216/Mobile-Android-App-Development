@@ -1,19 +1,12 @@
 package edu.gatech.seclass.jobcompare6300.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import edu.gatech.seclass.jobcompare6300.R;
-import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
-import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
-import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 
 public abstract class EnterJobDetailsBaseActivity extends BaseActivity {
     protected Button save;

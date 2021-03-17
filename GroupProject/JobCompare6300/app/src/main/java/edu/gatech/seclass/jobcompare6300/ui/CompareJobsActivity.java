@@ -1,13 +1,11 @@
 package edu.gatech.seclass.jobcompare6300.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.List;
-
 import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.R;
 
@@ -34,10 +32,7 @@ public class CompareJobsActivity extends BaseActivity {
         this.initializeUI();
 
         List<JOB_DETAILS> selectedJobs = (List<JOB_DETAILS>)getIntent().getSerializableExtra("selected_jobs");
-//
-//        for (int i = 0; i < selectedJobs.size(); i++) {
-//            selectedJobs.get(i).getTITLE();
-//        }
+
         String Title_1 = selectedJobs.get(0).getTITLE();
         title_1.setText(Title_1);
         String Title_2 = selectedJobs.get(1).getTITLE();
@@ -98,6 +93,7 @@ public class CompareJobsActivity extends BaseActivity {
         retirementBenefits_2 = (TextView)findViewById(R.id.value_retirement_2);
         leaveTime_1 = (TextView)findViewById(R.id.value_leave_time_1);
         leaveTime_2 = (TextView)findViewById(R.id.value_leave_time_2);
+
         returnToMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

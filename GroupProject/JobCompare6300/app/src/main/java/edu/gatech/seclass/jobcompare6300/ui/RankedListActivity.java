@@ -1,30 +1,16 @@
 package edu.gatech.seclass.jobcompare6300.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import edu.gatech.seclass.jobcompare6300.core.COMPARISON_SETTINGS_OPTIONS;
-import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
-import edu.gatech.seclass.jobcompare6300.data.COMPARISON_SETTINGS_WEIGHT;
-import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
 import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
-import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
 public class RankedListActivity extends BaseActivity {
@@ -35,7 +21,7 @@ public class RankedListActivity extends BaseActivity {
     private ArrayList<String> listItem = new ArrayList<>();
     private ArrayAdapter adapter;
     private List<JOB_DETAILS> allJobs;
-    private List<Integer> countList=new ArrayList<Integer>();
+    private List<Integer> countList = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +67,7 @@ public class RankedListActivity extends BaseActivity {
         ranked_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                handleItemSelect(parent, view, position, id);
+                handleItemSelect(view, position);
             }
         });
     }
@@ -106,16 +92,16 @@ public class RankedListActivity extends BaseActivity {
         this.ranked_list.setAdapter(adapter);
     }
 
-    private void handleItemSelect(AdapterView<?> parent, View view, int position, long id) {
+    private void handleItemSelect(View view, int position) {
         CheckedTextView v = (CheckedTextView) view;
         boolean currentCheck = v.isChecked();
         JOB_DETAILS job;
-        if(v.isChecked()==true){
+        if (v.isChecked() == true) {
             this.countList.add(position);
-            if(this.countList.size()<=2){
+            if (this.countList.size() <= 2) {
                 job = this.allJobs.get(position);
                 job.setSelectedItem(currentCheck);
-            }else{
+            } else {
                 job = this.allJobs.get(this.countList.get(0));
                 job.setSelectedItem(currentCheck);
                 this.ranked_list.setItemChecked(this.countList.get(0), false);
@@ -123,18 +109,17 @@ public class RankedListActivity extends BaseActivity {
                 job = this.allJobs.get(position);
                 job.setSelectedItem(currentCheck);
             }
-        }else{
+        } else {
             this.countList.remove(Integer.valueOf(position));
             this.allJobs.get(position).setSelectedItem(false);
         }
-        if(countList.size()==2){
+        if (countList.size() == 2) {
             compare.setEnabled(true);
             compare.setClickable(true);
-        }else{
+        } else {
             compare.setEnabled(false);
             compare.setClickable(false);
         }
-
     }
 
     private void handleCompareJobsClick() {

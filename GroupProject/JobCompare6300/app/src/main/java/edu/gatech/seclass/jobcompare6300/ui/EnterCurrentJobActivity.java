@@ -1,27 +1,11 @@
 package edu.gatech.seclass.jobcompare6300.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
 import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
-import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
 public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
@@ -98,7 +82,6 @@ public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
                     this.newRetirement, this.newLeaveTime, true);
         } else { //there is an existing current job, update details
             this.updateCurrentJob();
-            this.system.updateJob(this.currentJob);
         }
     }
 
@@ -114,6 +97,6 @@ public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
         this.currentJob.setPERCENTAGE_MATCHED(newRetirement);
         this.currentJob.setLEAVE_TIME(newLeaveTime);
         this.currentJob.setSCORE(null);
+        this.system.updateJob(this.currentJob);
     }
-
 }
