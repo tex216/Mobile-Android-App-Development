@@ -44,7 +44,7 @@ public class ComparisonSettings {
         return this.map.get(COMPARISON_SETTINGS_OPTIONS.LEAVE_TIME_WEIGHT);
     }
 
-    public void getAllWeights() throws ExecutionException, InterruptedException {
+    public HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> getAllWeights() throws ExecutionException, InterruptedException {
         Future obj = this.executor.submit((Callable) () -> this.comparisonSettingsWeightDao.getAllWeights());
         List<COMPARISON_SETTINGS_WEIGHT> comparison_settings_weights = (List<COMPARISON_SETTINGS_WEIGHT>) obj.get();
         for (COMPARISON_SETTINGS_WEIGHT i : comparison_settings_weights) {
@@ -52,6 +52,7 @@ public class ComparisonSettings {
             int value = i.getWEIGHT_VALUE();
             this.map.put(key, value);
         }
+        return this.map;
     }
 
     public void updateComparisonWeights(HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> weight) {
@@ -64,5 +65,10 @@ public class ComparisonSettings {
         this.executor.execute(() -> {
             this.comparisonSettingsWeightDao.updateComparisonWeights(remoteWorkPossibilityWeight, yearlySalaryWeight, yearlyBonusWeight, retirementBenefitsWeight, leaveTimeWeight);
         });
+    }
+
+    public int getTotalWeight() {
+        return this.getRemoteWorkPossibilityWeight() + this.getRetirementBenefitsWeight() +
+                this.getLeaveTimeWeight() + this.getYearlyBonusWeight() + this.getYearlySalaryWeight();
     }
 }

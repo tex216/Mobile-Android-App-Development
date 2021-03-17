@@ -34,7 +34,10 @@ public class CompareJobsActivity extends BaseActivity {
         this.initializeUI();
 
         List<JOB_DETAILS> selectedJobs = (List<JOB_DETAILS>)getIntent().getSerializableExtra("selected_jobs");
-
+//
+//        for (int i = 0; i < selectedJobs.size(); i++) {
+//            selectedJobs.get(i).getTITLE();
+//        }
         String Title_1 = selectedJobs.get(0).getTITLE();
         title_1.setText(Title_1);
         String Title_2 = selectedJobs.get(1).getTITLE();

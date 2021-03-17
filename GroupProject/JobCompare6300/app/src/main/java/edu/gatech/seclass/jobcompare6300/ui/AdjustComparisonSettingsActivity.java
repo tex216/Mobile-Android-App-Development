@@ -42,7 +42,7 @@ public class AdjustComparisonSettingsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         this.initializeUI();
         try {
-            this.populateDefaultWeights();
+            this.prepopulateWeights();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,7 +97,7 @@ public class AdjustComparisonSettingsActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    private void populateDefaultWeights() throws Exception {
+    private void prepopulateWeights() throws Exception {
         int remoteWorkPossibilityWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.REMOTE_WORK_POSSIBILITY_WEIGHT);
         int yearlySalaryWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.YEARLY_SALARY_WEIGHT);
         int yearlyBonusWeight = this.system.getWeight(COMPARISON_SETTINGS_OPTIONS.YEARLY_BONUS_WEIGHT);

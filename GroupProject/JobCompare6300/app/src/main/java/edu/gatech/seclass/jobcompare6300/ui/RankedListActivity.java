@@ -15,9 +15,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import edu.gatech.seclass.jobcompare6300.core.COMPARISON_SETTINGS_OPTIONS;
 import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
 import edu.gatech.seclass.jobcompare6300.data.COMPARISON_SETTINGS_WEIGHT;
 import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
@@ -30,41 +32,25 @@ public class RankedListActivity extends BaseActivity {
     private Button cancel;
     ListView ranked_list;
 
-    private final Context context = this;
-    private AppDatabase appDatabase = AppDatabase.getInstance(this.context);
-    private JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-    private ComparisonSettingsWeightDao comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
     private ArrayList<String> listItem = new ArrayList<>();
     private ArrayAdapter adapter;
     private List<JOB_DETAILS> allJobs;
-    private List<COMPARISON_SETTINGS_WEIGHT> comparison_settings_weights;
-
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
-    private Handler handler = new Handler(Looper.getMainLooper());
     private List<Integer> countList=new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.initializeUI();
-        this.executor.execute(() -> {
-            //must be in this order
-            //get all weights
-            //get all the jobs
-            //calculate and update the job scores
-            //re-get all the jobs with new scores
-            this.getAllWeights();
-            this.allJobs = jobDetailsDao.getAllJobs();
-            this.calculateJobScores();
-            this.allJobs = jobDetailsDao.getAllJobs();
-            handler.post(() -> {
-                this.viewData();
-                if(this.countList.size()!=2){
-                    compare.setEnabled(false);
-                    compare.setClickable(false);
-                }
-            });
-        });
+
+        try {
+            //must re-get all the jobs after score calculation
+            this.system.calculateScore();
+            this.allJobs = this.system.getAllJobs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.viewData();
+        this.shouldDisableCompareButton();
     }
 
     @Override
@@ -98,6 +84,13 @@ public class RankedListActivity extends BaseActivity {
                 handleItemSelect(parent, view, position, id);
             }
         });
+    }
+
+    private void shouldDisableCompareButton() {
+        if(this.countList.size()!=2){
+            compare.setEnabled(false);
+            compare.setClickable(false);
+        }
     }
 
     private void viewData(){
@@ -160,54 +153,5 @@ public class RankedListActivity extends BaseActivity {
     private void handleCancelClick() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
-    private void calculateJobScores() {
-        int denominator = this.calculateWeightsDenominator();
-
-        HashMap<String, Integer> map = this.convertListToHashmap();
-        this.executor.execute(() -> {
-            for (int i = 0; i < this.allJobs.size(); i++) {
-                JOB_DETAILS job = this.allJobs.get(i);
-                double remoteWorkPossibilityWeight = (double)map.get("REMOTE_WORK_POSSIBILITY_WEIGHT");
-                double yearlySalaryWeight = (double)map.get("YEARLY_SALARY_WEIGHT");
-                double yearlyBonusWeight = (double)map.get("YEARLY_BONUS_WEIGHT");
-                double retirementBenefitsWeight = (double)map.get("RETIREMENT_BENEFITS_WEIGHT");
-                double leaveTimeWeight = (double)map.get("LEAVE_TIME_WEIGHT");
-
-                double ays = job.getYEARLY_SALARY()/(((double)job.getCOST_OF_LIVING_INDEX())/100.0);
-                double ayb = job.getYEARLY_BONUS()/(((double)job.getCOST_OF_LIVING_INDEX())/100.0);
-                double rbp = (job.getPERCENTAGE_MATCHED()/100.0);
-                double lt = (double)job.getLEAVE_TIME();
-                double rwt = (double)job.getWORK_REMOTE();
-
-                double firstTerm = yearlySalaryWeight/denominator * ays;
-                double secondTerm = yearlyBonusWeight/denominator * ayb;
-                double thirdTerm = retirementBenefitsWeight/denominator * (rbp * ays);
-                double fourthTerm = leaveTimeWeight/denominator * (lt * ays/260.0);
-                double fifthTerm = remoteWorkPossibilityWeight/denominator * ((260.0 - 52.0 * rwt) * (ays/260.0) / 8.0);
-
-                double newScore = firstTerm + secondTerm + thirdTerm + fourthTerm - fifthTerm;
-                this.jobDetailsDao.setScore(this.allJobs.get(i).getJOB_ID(), newScore);
-            }
-        });
-    }
-
-    private int calculateWeightsDenominator() {
-        int totalWeights = 0;
-        for (COMPARISON_SETTINGS_WEIGHT i : this.comparison_settings_weights) {
-            totalWeights = totalWeights + i.getWEIGHT_VALUE();
-        }
-        return totalWeights;
-    }
-
-    private void getAllWeights() {
-        this.comparison_settings_weights = comparisonSettingsWeightDao.getAllWeights();
-    }
-
-    private HashMap<String, Integer> convertListToHashmap() {
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
-        for (COMPARISON_SETTINGS_WEIGHT i : this.comparison_settings_weights) map.put(i.getWEIGHT(), i.getWEIGHT_VALUE());
-        return map;
     }
 }

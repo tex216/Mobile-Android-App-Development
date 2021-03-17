@@ -1,11 +1,9 @@
 package edu.gatech.seclass.jobcompare6300.core;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -14,6 +12,7 @@ import java.util.concurrent.Future;
 
 import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
 import edu.gatech.seclass.jobcompare6300.data.ComparisonSettingsWeightDao;
+import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
 import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 
 public class System {
@@ -25,6 +24,7 @@ public class System {
     private ExecutorService executor;
 
     private ComparisonSettings comparisonSettings;
+    private Job job;
 
     private System(Context context)
     {
@@ -33,6 +33,7 @@ public class System {
         this.jobDetailsDao = this.appDatabase.jobDetailsDao();
         this.executor = Executors.newSingleThreadExecutor();
         this.comparisonSettings = new ComparisonSettings(context);
+        this.job = new Job(context);
     }
 
     public static System getInstance(Context context)
@@ -82,7 +83,49 @@ public class System {
         return weight;
     }
 
+    public void calculateScore() throws Exception {
+        List<JOB_DETAILS> allJobs = this.getAllJobs();
+        HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> map = this.comparisonSettings.getAllWeights();
+        this.job.calculateScore(allJobs, map);
+    }
+
     public void updateComparisonWeights(HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> weights) {
         this.comparisonSettings.updateComparisonWeights(weights);
+    }
+
+    public List<JOB_DETAILS> getAllJobs() throws ExecutionException, InterruptedException {
+        return this.job.getAllJobs();
+    }
+
+    public JOB_DETAILS getCurrentJob() throws ExecutionException, InterruptedException {
+        return this.job.getCurrentJob();
+    }
+
+    public JOB_DETAILS addJob(
+            String newTitle, String newCompany, String newCity, String newState,
+            int newCostOfLiving, int newRemoteWork, double newYearlySalary, double newYearlyBonus,
+            double newRetirement, int newLeaveTime, boolean isCurrentJob
+    ) {
+        JOB_DETAILS jobDetails = new JOB_DETAILS(
+                newTitle,
+                newCompany,
+                newCity,
+                newState,
+                newCostOfLiving,
+                newRemoteWork,
+                newYearlySalary,
+                newYearlyBonus,
+                newRetirement,
+                newLeaveTime,
+                isCurrentJob,
+                null);
+        executor.execute(() -> {
+            this.job.addJob(jobDetails);
+        });
+        return jobDetails;
+    }
+
+    public void updateJob(JOB_DETAILS currentJob) {
+        this.job.updateJob(currentJob);
     }
 }

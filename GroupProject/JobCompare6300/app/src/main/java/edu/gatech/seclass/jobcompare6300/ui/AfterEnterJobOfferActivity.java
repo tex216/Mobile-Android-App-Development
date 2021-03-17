@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -25,26 +26,22 @@ public class AfterEnterJobOfferActivity extends BaseActivity {
     private Button returnMainMenu;
     private Button compareCurrentOffer;
 
-    private final Context context = this;
-    private AppDatabase appDatabase = AppDatabase.getInstance(context);
-    private JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
-    private Handler handler = new Handler(Looper.getMainLooper());
     JOB_DETAILS currentJob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.initializeUI();
-        executor.execute(() -> {
-            this.currentJob = this.jobDetailsDao.getCurrentJob();
-            handler.post(() -> {
-                if (currentJob == null) {
-                    compareCurrentOffer.setEnabled(false);
-                    compareCurrentOffer.setClickable(false);
-                }
-            });
-        });
+
+        try {
+            this.currentJob = this.system.getCurrentJob();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.shouldDisableCompareButton();
     }
 
     @Override
@@ -95,5 +92,12 @@ public class AfterEnterJobOfferActivity extends BaseActivity {
         jobsToCompare.add(newJobOffer);
         intent.putExtra("selected_jobs", (ArrayList<JOB_DETAILS>)jobsToCompare);
         startActivity(intent);
+    }
+
+    private void shouldDisableCompareButton() {
+        if (this.currentJob == null) {
+            this.compareCurrentOffer.setEnabled(false);
+            this.compareCurrentOffer.setClickable(false);
+        }
     }
 }

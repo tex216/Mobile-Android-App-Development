@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -25,28 +26,23 @@ import edu.gatech.seclass.jobcompare6300.R;
 
 public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
 
-    private final Context context = this;
-
-    private AppDatabase appDatabase = AppDatabase.getInstance(context);
-    private JobDetailsDao jobDetailsDao = this.appDatabase.jobDetailsDao();
     private JOB_DETAILS currentJob;
-
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
-    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.initializeUI();
+        try {
+            this.currentJob = this.system.getCurrentJob();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        this.executor.execute(() -> {
-            this.currentJob = jobDetailsDao.getCurrentJob();
-            handler.post(() -> {
-                if (this.currentJob!=null) { //pre-populate form if current job exists
-                    this.prepopulateCurrentJob();
-                }
-            });
-        });
+        if (this.currentJob!=null) { //pre-populate form if current job exists
+            this.prepopulateCurrentJob();
+        }
     }
 
     @Override
@@ -66,53 +62,13 @@ public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
         if (this.checkForEmptyFields()) {
             return;
         }
-        Toast.makeText(this,"Current Job is Saved!", Toast.LENGTH_SHORT).show();
-        this.executor.execute(() -> {
-            String newTitle = title.getText().toString();
-            String newCompany = company.getText().toString();
-            String newCity = city.getText().toString();
-            String newState = state.getText().toString();
-            int newCostOfLiving = Integer.parseInt(costOfLiving.getText().toString());
-            int newRemoteWork = Integer.parseInt(remoteWork.getSelectedItem().toString());
-            double newYearlySalary = Double.parseDouble(yearlySalary.getText().toString());
-            double newYearlyBonus = Double.parseDouble(yearlyBonus.getText().toString());
-            double newRetirement = Double.parseDouble(retirement.getText().toString());
-            int newLeaveTime = Integer.parseInt(leaveTime.getText().toString());
+        this.getJobDetails();
+        Toast.makeText(this,"Current job successfully saved!", Toast.LENGTH_SHORT).show();
 
-            if (this.currentJob == null) { //no existing current job exists, add it
-                JOB_DETAILS jobDetails = new JOB_DETAILS(
-                        newTitle,
-                        newCompany,
-                        newCity,
-                        newState,
-                        newCostOfLiving,
-                        newRemoteWork,
-                        newYearlySalary,
-                        newYearlyBonus,
-                        newRetirement,
-                        newLeaveTime,
-                        true,
-                        null);
-                this.jobDetailsDao.insertJob(jobDetails);
-            } else { //there is an existing current job, update details
-                this.currentJob.setTITLE(newTitle);
-                this.currentJob.setCOMPANY(newCompany);
-                this.currentJob.setCITY(newCity);
-                this.currentJob.setSTATE(newState);
-                this.currentJob.setCOST_OF_LIVING_INDEX(newCostOfLiving);
-                this.currentJob.setWORK_REMOTE(newRemoteWork);
-                this.currentJob.setYEARLY_SALARY(newYearlySalary);
-                this.currentJob.setYEARLY_BONUS(newYearlyBonus);
-                this.currentJob.setPERCENTAGE_MATCHED(newRetirement);
-                this.currentJob.setLEAVE_TIME(newLeaveTime);
-                this.currentJob.setSCORE(null);
-                this.jobDetailsDao.updateCurrentJob(this.currentJob);
-            }
-            handler.post(() -> {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-            });
-        });
+        this.addOrUpdateCurrentJob();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -134,44 +90,30 @@ public class EnterCurrentJobActivity extends EnterJobDetailsBaseActivity {
         this.leaveTime.setText(String.valueOf(this.currentJob.getLEAVE_TIME()));
     }
 
-    private boolean checkForEmptyFields() {
-        boolean hasErrors = false;
-        if(TextUtils.isEmpty(title.getText())){
-            title.setError("Title is required");
-            hasErrors = true;
+    private void addOrUpdateCurrentJob() {
+        if (this.currentJob == null) { //no existing current job exists, add it
+            this.system.addJob(
+                    this.newTitle, this.newCompany, this.newCity, this.newState,
+                    this.newCostOfLiving, this.newRemoteWork, this.newYearlySalary, this.newYearlyBonus,
+                    this.newRetirement, this.newLeaveTime, true);
+        } else { //there is an existing current job, update details
+            this.updateCurrentJob();
+            this.system.updateJob(this.currentJob);
         }
-        if(TextUtils.isEmpty(company.getText())){
-            company.setError("Company is required");
-            hasErrors = true;
-        }
-        if(TextUtils.isEmpty(city.getText())){
-            city.setError("City is required");
-            hasErrors = true;
-        }
-        if(TextUtils.isEmpty(state.getText())){
-            state.setError("State is required");
-            hasErrors = true;
-        }
-        if(TextUtils.isEmpty(costOfLiving.getText())){
-            costOfLiving.setError("Cost of living is required");
-            hasErrors = true;
-        }
-        if(TextUtils.isEmpty(yearlySalary.getText())){
-            yearlySalary.setError("Salary is required");
-            hasErrors = true;
-        }
-        if(TextUtils.isEmpty(yearlyBonus.getText())){
-            yearlyBonus.setError("Bonus is required");
-            hasErrors = true;
-        }
-        if(TextUtils.isEmpty(retirement.getText())){
-            retirement.setError("Retirement is required");
-            hasErrors = true;
-        }
-        if(TextUtils.isEmpty(leaveTime.getText())){
-            leaveTime.setError("Leave time is required");
-            hasErrors = true;
-        }
-        return hasErrors;
     }
+
+    private void updateCurrentJob() {
+        this.currentJob.setTITLE(newTitle);
+        this.currentJob.setCOMPANY(newCompany);
+        this.currentJob.setCITY(newCity);
+        this.currentJob.setSTATE(newState);
+        this.currentJob.setCOST_OF_LIVING_INDEX(newCostOfLiving);
+        this.currentJob.setWORK_REMOTE(newRemoteWork);
+        this.currentJob.setYEARLY_SALARY(newYearlySalary);
+        this.currentJob.setYEARLY_BONUS(newYearlyBonus);
+        this.currentJob.setPERCENTAGE_MATCHED(newRetirement);
+        this.currentJob.setLEAVE_TIME(newLeaveTime);
+        this.currentJob.setSCORE(null);
+    }
+
 }
