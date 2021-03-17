@@ -32,4 +32,8 @@ public interface JobDetailsDao {
         // Update job score
         @Query("UPDATE JOB_DETAILS SET SCORE = :score WHERE JOB_ID = :jobId")
         void setScore(int jobId, double score);
+
+        // Refactored insert / update current job
+        @Query("INSERT OR REPLACE INTO JOB_DETAILS(TITLE, COMPANY, CITY, STATE, COST_OF_LIVING_INDEX, WORK_REMOTE, YEARLY_SALARY, YEARLY_BONUS, PERCENTAGE_MATCHED, LEAVE_TIME, IS_CURRENT_JOB) VALUES(:title, :company, :city, :state, :costOfLiving, :remoteWork, :yearlySalary, :yearlyBonus, :retirement, :leaveTime, :isCurrentJob)")
+        int insertReplaceJob(String title, String company, String city, String state, int costOfLiving, int remoteWork, double yearlySalary, double yearlyBonus, int retirement, int leaveTime, boolean isCurrentJob);
 }
