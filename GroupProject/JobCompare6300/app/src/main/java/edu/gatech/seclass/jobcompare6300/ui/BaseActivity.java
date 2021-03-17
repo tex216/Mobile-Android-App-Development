@@ -1,9 +1,7 @@
 package edu.gatech.seclass.jobcompare6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import edu.gatech.seclass.jobcompare6300.core.System;
 
 public abstract class BaseActivity extends AppCompatActivity {

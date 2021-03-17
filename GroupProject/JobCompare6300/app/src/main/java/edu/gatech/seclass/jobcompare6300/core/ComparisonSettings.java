@@ -19,9 +19,17 @@ public class ComparisonSettings {
     private HashMap<COMPARISON_SETTINGS_OPTIONS, Integer> map = new HashMap<>();
 
     public ComparisonSettings(Context context) {
-        appDatabase = AppDatabase.getInstance(context);
+        this.appDatabase = AppDatabase.getInstance(context);
         this.comparisonSettingsWeightDao = this.appDatabase.comparisonSettingsWeightDao();
         this.executor = Executors.newSingleThreadExecutor();
+    }
+
+    public void setDefaultWeight() {
+        this.executor.execute(() -> {
+            if (this.comparisonSettingsWeightDao.getAllWeights().size() == 0) {
+                this.comparisonSettingsWeightDao.setDefaultWeight();
+            };
+        });
     }
 
     public int getRemoteWorkPossibilityWeight() {
@@ -65,10 +73,5 @@ public class ComparisonSettings {
         this.executor.execute(() -> {
             this.comparisonSettingsWeightDao.updateComparisonWeights(remoteWorkPossibilityWeight, yearlySalaryWeight, yearlyBonusWeight, retirementBenefitsWeight, leaveTimeWeight);
         });
-    }
-
-    public int getTotalWeight() {
-        return this.getRemoteWorkPossibilityWeight() + this.getRetirementBenefitsWeight() +
-                this.getLeaveTimeWeight() + this.getYearlyBonusWeight() + this.getYearlySalaryWeight();
     }
 }

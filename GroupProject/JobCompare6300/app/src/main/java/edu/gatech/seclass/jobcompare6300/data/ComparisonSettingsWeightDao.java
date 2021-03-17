@@ -2,7 +2,6 @@ package edu.gatech.seclass.jobcompare6300.data;
 
 import androidx.room.Dao;
 import androidx.room.Query;
-
 import java.util.List;
 
 @Dao

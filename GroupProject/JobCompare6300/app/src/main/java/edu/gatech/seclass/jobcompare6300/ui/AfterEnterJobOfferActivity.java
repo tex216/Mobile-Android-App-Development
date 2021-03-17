@@ -1,24 +1,13 @@
 package edu.gatech.seclass.jobcompare6300.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import edu.gatech.seclass.jobcompare6300.data.AppDatabase;
 import edu.gatech.seclass.jobcompare6300.data.JOB_DETAILS;
-import edu.gatech.seclass.jobcompare6300.data.JobDetailsDao;
 import edu.gatech.seclass.jobcompare6300.R;
 
 public class AfterEnterJobOfferActivity extends BaseActivity {
