@@ -1,4 +1,4 @@
-package edu.gatech.seclass.jobcompare6300;
+package edu.gatech.seclass.jobcompare6300.data;
 
 import android.content.Context;
 
@@ -11,11 +11,11 @@ public abstract class AppDatabase extends RoomDatabase {
     private static final String DB_NAME = "database-jobcompare";
     private static volatile AppDatabase appDatabase;
 
-    static synchronized  AppDatabase getInstance(Context context) {
+    public static synchronized  AppDatabase getInstance(Context context) {
         return getInstance(context, false);
     }
 
-    static synchronized AppDatabase getInstance(Context context, boolean resetDatabase){
+    public static synchronized AppDatabase getInstance(Context context, boolean resetDatabase){
         if (resetDatabase) context.deleteDatabase(DB_NAME);
         if (appDatabase == null) appDatabase = create(context);
         return appDatabase;

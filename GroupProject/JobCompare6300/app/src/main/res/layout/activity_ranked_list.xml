@@ -16,7 +16,7 @@
             android:background="#FFFFFF"
             android:backgroundTint="#6e1005"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="none"
             android:paddingStart="5dp"
             android:text="Ranked list of jobs"
             android:textColor="#FFFFFFFF"

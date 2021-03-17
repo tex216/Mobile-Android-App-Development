@@ -1,7 +1,6 @@
-package edu.gatech.seclass.jobcompare6300;
+package edu.gatech.seclass.jobcompare6300.data;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -17,10 +16,6 @@ public interface JobDetailsDao {
         // Get current job
         @Query("SELECT * FROM JOB_DETAILS WHERE IS_CURRENT_JOB = 1")
         JOB_DETAILS getCurrentJob();
-
-        // Get selected jobs to compare
-        @Query("SELECT * FROM JOB_DETAILS WHERE JOB_ID IN (:first_job_id, :second_job_id)")
-        List<JOB_DETAILS> getSelectedJobs(int first_job_id, int second_job_id);
 
         // Insert job detail
         @Insert
