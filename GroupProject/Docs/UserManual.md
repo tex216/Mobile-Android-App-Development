@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This simple app allows User to enter job details and then compare jobs based on salary, bonus, retirements, or etc.. 
+This simple app allows Users to enter job details and compare jobs based on salary, bonus, retirement benefits, leave time, and/or possibility of working remotely.
 
 ## Getting Started
 
@@ -62,7 +62,7 @@ Easily store all job offers here.
 
 #### Instructions
 1. Input valid values for all fields. There is no drafting so unsaved details will be lost.
-1. Click the `SAVE` button to store information, `CANCEL` to return to main screen, or `COMPARE` to compare to current job (if entered).
+1. Click the `SAVE` button to store information, `CANCEL` to return to main screen, or `COMPARE` to compare to current job (if current job is saved).
 1. When clicking `SAVE`, a successful save will display the following screen:
 
 <img src="./images/after_entering_job_offers_compare_enabled.png" alt="after_entering_job_offers_compare_enabled" width=405px/>
@@ -70,7 +70,7 @@ Easily store all job offers here.
 *Note: job offers cannot be edited after saving.*
 
 ### Adjust Comparison Settings
-Not all aspects of a job offer may be equaled. Adjust settings to weight aspects relative to each other based on personal preferences.
+Not all aspects of a job offer may be equal. Adjust weight settings to express  relative importance of salary, benefits, etc. based on personal preference.
 
 <img src="./images/adjust_comparison_settings.png" alt="adjust_comparison_settings" width=405px/>
 
@@ -85,7 +85,7 @@ Not all aspects of a job offer may be equaled. Adjust settings to weight aspects
 1. Input valid integer values for all fields
 1. Click the `SAVE` button to store information or `CANCEL` to return to main.
 
-*Note: if weight values are not entered, all weights will default to a weight of 1. User cannot set all weights to 0.*
+*Note: if weight values are not entered, all weights will default to a weight of 1. User cannot set all weights to 0. Weights cannot be negative.*
 
 ### Compare Jobs
 View all jobs and compare two jobs in detail here.
@@ -93,14 +93,22 @@ View all jobs and compare two jobs in detail here.
 <img src="./images/ranked_list.png" alt="ranked_list" width=405px/>
 
 #### Instructions
-1. Review job details that have been entered including current job and all job offers. All jobs will be returned sorted by job score descending. the job with the highest score based on preferences / weights will be returned at top. The calculation for job score is as follows: **AYS + AYB + (RBP * AYS) + (LT * AYS / 260) - ((260 - 52 * RWT) * (AYS / 260) / 8)**
+1. Review job details that have been entered including current job and all job offers. All jobs will be returned sorted by job score descending. The job with the highest score after consideration of weights will be ranked at the top. Job score formula can be found in appendix.
 1. Select two jobs to compare. Only two jobs can be selected at max:
 <img src="./images/ranked_list_selected.png" alt="ranked_list_selected" width=405px/>
 
 1. Click `COMPARE` to see job details of selected jobs. Only two jobs can be compared:
 <img src="./images/compare_jobs_2.png" alt="compare_jobs_2" width=405px/>
 
-*Note: comparison feature is only available after entering two or more jobs.*
+*Note: comparison feature is only available after entering two or more jobs e.g., enter current job and enter 1 job offer.*
+
+## appendix
+* The calculation for job score is as follows: **AYS + AYB + (RBP * AYS) + (LT * AYS / 260) - ((260 - 52 * RWT) * (AYS / 260) / 8)**
+  * **AYS** = Adjusted Yearly Salary
+  * **AYB** = Adjusted Yearly Bonus 
+  * **RBP** = Retirement Benefit Percentage
+  * **LT** = Leave Time
+  * **RWT** = Remote Work Days Per Week
 
 ## Acknowledgments
 * Hat tip to the lectures and piazza discussions
