@@ -1,5 +1,6 @@
-# Test Plan v2
+# Test Plan v3
 * v2 update job score test case
+* v3 added additional tests and test results
 
 **Author**: Team 109
 
@@ -58,9 +59,13 @@ Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 
 Id | Purpose | Steps | Expected Result | Actual Result | Pass/Fail Info
 -- | ------- | ----- | --------------- | ------------- | --------------
-2.1 | Save Job Offer to DB | <ol><li>Prepare addJob() payload with new job offer</li><li>Execute addJob() with Job Offer details</li></ol> | New job offer is inserted in DB with a valid and unique jobId | New job offer is inserted in DB with a valid and unique jobId | Pass
-2.2 | Fetch Job Offer from DB | <ol><li>Prepare getAllJobOffers() payload</li><li>Execute getAllJobOffers()</li></ol> | All records in DB are returned | All records in DB are returned | Pass
-2.3 | Pass user inputs from GUI to backend | <ol><li>Open current job details screen</li><li>Enter current job details</li><li>Save current job details</li><li>Inspect if inputs are passed</li></ol> | User inputs from GUI are successfully passed to backend | User inputs from GUI are successfully passed to backend | Pass
+2.1 | Save Current Job to DB | <ol><li>Prepare system.addJob() payload with isCurrentJob set to true</li><li>Execute addJob()</li></ol> | New job offer is inserted in DB with a valid & unique jobId and isCurrentJob is set to 1 | New job offer is inserted in DB with a valid and unique jobId | Pass
+2.2 | Save Job Offer to DB | <ol><li>Prepare system.addJob() payload with isCurrentJob set to false</li><li>Execute addJob() with Job Offer details</li></ol> | New job offer is inserted in DB with a valid & unique jobId | New job offer is inserted in DB with a valid and unique jobId | Pass
+2.3 | Fetch Job Offer from DB | <ol><li>Prepare system.getAllJobs() payload</li><li>Execute getAllJobOffers()</li></ol> | All records in DB are returned | All records in DB are returned | Pass
+2.4 | Initialize default comparison weights in DB | Execute system.initialize() | <ul><li>DB is initialized with COMPARISON_SETTINGS_WEIGHT table</li><li>All weight values are set to 1</li></ul> | Table is initialized with all weight values set to 1 | Pass
+2.5 | Insert comparison weights in DB | <ol><li>Prepare system.updateComparisonWeights() hashmap payload. All values can be set to 2 for this test</li><li>Execute updateComparisonWeights() hashmap</li><li>Inspect the COMPARISON_SETTINGS_WEIGHT table</li></ol> | The 5 comparison weight values are all set to 2 | All weight values are set to 2 | Pass
+2.6 | Pass user inputs from current job screen to backend objects | <ol><li>Open current job details screen</li><li>Enter current job details</li><li>Save current job details</li><li>Inspect if inputs are passed</li></ol> | User inputs from GUI are successfully passed to backend objects | User inputs from GUI are successfully passed to backend | Pass
+2.7 | Move between screens | <ol><li>Open home page. Navigate to Enter Current Job screen</li><li>Cancel and return to Main Menu</li><li>Navigate to Enter Job Offer Screen</li><li>Cancel and return to Main Menu</li><li>Navigate to Adjust Comparison Settings screen</li><li>Cancel and return to Main Menu</li></ol> | User should be able to execute each step and move between screens without crashing the app. Final screen will be Main Menu | Able to move between each enumerated screen in the procedure without crashing the app | Pass
 
 ### 3 System Tests
 
