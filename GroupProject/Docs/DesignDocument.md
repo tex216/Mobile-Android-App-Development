@@ -29,20 +29,14 @@
 
 ## 2 Architectural Design
 
-### 2.1 Component Diagram v1
-```This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.```
-
+### 2.1 Component Diagram v3
 ![component diagram](./images/component_diagram.png)
 
-We will have multiple UI components for controlling the user's interactions with the application. These components will use the Activity API provided by Android.
+We will have multiple UI components which handles the user's interaction with our application. These represent our application's frontend and control what the user will see. We have a base activity that uses the Activity API provided by Android and provides some common interface such as initializeUI for our other activity classes. The ```Enter or Edit Current Job Details``` and ```Enter Job Offers``` UI share a common ```Enter Job Details Base``` interface for common actions such as getting the input. This is convenient as job details entered by the user are common to both and will reduce duplicate code.
 \
-The Persistence infrastructure component will provide the Persistence interface that allows our application to read and write from and to the database. The database will be the Android SQLite database.
+The ```System``` component houses the business logic our application depends on. It is the point of entry to our application's backend. This means upon receiving information from either the UI or Persistence layer, the ```System``` component will be responsible for processing the data and figuring out what to do next and where the data should go. This is done by delegating the right tasks to the ```Job``` and ```Comparison Settings ``` components. For example, setting default weights of 1 on system initialize will be delegated to the ```Comparison Settings``` component, while calculating job score and returning a ranked list of job details will require delegating parts to the ```Job``` component and parts to the ```Comparison Settings``` component. 
 \
-Since both current job and job offers share the same attributes, the "Enter or Edit Current Job Details" component and the "Enter Job Offers" component will both inherit from a base "Enter Job" component. These components collectively will provide the JobDetails interface which is the required by the Jobs component to persist to the database.
-\
-When the user chooses to compare jobs, the "Display Ranked List of Jobs" UI component will require the RankedList, which the Rank Jobs component provides. The Rank Jobs component requires Jobs and ComparisonSettings in order to calculate the score for each job. These are provided by the Jobs component and "Comparison Settings" component respectively and they will read these information from the database.
-\
-The "Display Ranked List of Jobs" component will provide the JobOffersToCompare interface to the "Compare Jobs" component based on what the user has selected. The "Compare Jobs" component then requires the Jobs interface provided by the Jobs component to get the details of the selected jobs and provide these information via the SelectedJobs interface. The "Display Selected Jobs for Comparison" component then displays the SelectedJobs to the user. 
+We are using the Room library which provides an API for interactions with Android's SQLite database. We layered our own ```App Database``` interface on top of this API to house a single entry point for creating the database, getting database connections, creating and interacting with different tables and data elements. This app database infrastructure will provide the persistence layer that our ```System``` component uses. 
 
 ### 2.2 Deployment Diagram v2
 ![deployment diagram](./images/deployment_diagram.png)
