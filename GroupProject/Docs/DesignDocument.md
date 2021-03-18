@@ -6,12 +6,11 @@
 
 ### 1.1 Assumptions
 
-1. We are assuming there will only be 1 user.
+1. There will only be 1 user.
 1. There is a single system running the application so no communication or saving between devices is necessary.
-1. The user will interact with the application in a reasonable fashion e.g. the user will add a reasonable number of job offers and not 1 million.
+1. The user will interact with the application in a reasonable fashion. For example, the user will add a reasonable number of job offers, the user will enter reasonable job details such as valid city and state, retirement benefit matching and leave time.
 1. The user has all the details associated with a job and cannot enter partial information.
 1. The user does not have special needs or requirements e.g. ADA.
-1. The user will enter valid city and state.
 
 ### 1.2 Constraints
 
@@ -24,7 +23,7 @@
 1. The minimum SDK for the app is API 28: Android 9.0 (Pie).
 1. The data will be stored on Android SQLite database.
 1. The application will be written in Java.
-1. The application must be run on a Pixel_3a_API_30_x86 emulator.
+1. The application must be run on a device equivalent to the Pixel_3a_API_30_x86 emulator.
 1. The application will use Room 2.2.6.
 
 
