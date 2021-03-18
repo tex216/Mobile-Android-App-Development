@@ -58,7 +58,7 @@ When the app is activated by the user, it is firstly initialized by creating a n
 
 ![class diagram](./images/class_diagram.png)
 
-## 4 User Interface Design v2
+## 4 User Interface Design v3
 <section mockups>
     <table class="gui">
         <tr>
@@ -152,7 +152,7 @@ When the app is activated by the user, it is firstly initialized by creating a n
         </tr>
             <tr>
             <td class="description_width" width=350px>
-                After the user checks 2 jobs and click on the COMPARE button, the user will be presented with this screen. The table will display the job details for the selected jobs. The user will  have the option to MAKE ANOTHER COMPARISON or RETURN TO MAIN MENU.
+                After the user has selected 2 jobs and clicks on the COMPARE button, the user will be presented with this Compare jobs screen. The table will display the job details for the selected jobs. The user will  have the option to MAKE ANOTHER COMPARISON or RETURN TO MAIN MENU.
             </td>
             <td class="image_width">
                 <figure>
@@ -178,7 +178,7 @@ When the app is activated by the user, it is firstly initialized by creating a n
         </tr>
             <tr>
             <td class="description_width" width=350px>
-                When user enters or edits current job or updates comparison settings weight, when we automatically navigate the user back to the main menu, we will also display a message briefly to notify the user the information has been successfully saved.
+                After the user enters or edits current job or updates comparison settings weight and clicks SAVE, we automatically navigate the user back to the main menu along with a brief message to notify the user the information has been successfully saved.
             </td>
             <td class="image_width">
                 <figure>
