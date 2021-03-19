@@ -11,11 +11,13 @@
 1. The user will interact with the application in a reasonable fashion. For example, the user will add a reasonable number of job offers, the user will enter reasonable job details such as valid city and state, retirement benefit matching and leave time.
 1. The user has all the details associated with a job and cannot enter partial information.
 1. The user does not have special needs or requirements e.g. ADA.
+1. Data will persist between runs unless the user deletes the application.
 
 ### 1.2 Constraints
 
 1. The application must be lightweight in performance so it can run on an Android phone.
 1. There is no external data storage and all data will be saved locally.
+1. The user will not have access to the database so no deletion is possible.
 
 ### 1.3 System Environment
 
@@ -36,19 +38,18 @@ We will have multiple UI components which handles the user's interaction with ou
 \
 The ```System``` component houses the business logic our application depends on. It is the point of entry to our application's backend. This means upon receiving information from either the UI or Persistence layer, the ```System``` component will be responsible for processing the data and figuring out what to do next and where the data should go. This is done by delegating the right tasks to the ```Job``` and ```Comparison Settings ``` components. For example, setting default weights of 1 on system initialize will be delegated to the ```Comparison Settings``` component, while calculating job score and returning a ranked list of job details will require delegating parts to the ```Job``` component and parts to the ```Comparison Settings``` component. 
 \
-We are using the Room library which provides an API for interactions with Android's SQLite database. We layered our own ```App Database``` interface on top of this API to house a single entry point for creating the database, getting database connections, creating and interacting with different tables and data elements. This app database infrastructure will provide the persistence layer that our ```System``` component uses. 
+We are using the Room library which provides an API for interactions with Android's SQLite database. We layered our own ```App Database``` interface on top of this API to house a single entry point for creating the database, getting database connections, and creating & interacting with different tables & data elements. This app database infrastructure will provide the persistence layer that our ```System``` component uses. 
 
-### 2.2 Deployment Diagram v2
+### 2.2 Deployment Diagram v3
 ![deployment diagram](./images/deployment_diagram.png)
 
-Our app is written in Java. It uses Android SDK tools to compile classes, resources and package the code along with any required data. Android depends on Linux OS for essential operating services such as security management, process management, network stack etc. The Linux kernel plays the role of an abstraction layer between the hardware and the software stack.
+Our app is written in Java. It uses Android SDK tools to compile classes, resources, and code along with any required data. Android depends on Linux OS for essential operating services such as security management, process management, network stack etc. The Linux kernel plays the role of an abstraction layer between the hardware and the software stack.
 \
-When the app is activated by the user, it is firstly initialized by creating a new project in an Android Studio 3.0+ environment and created a JobCompare6300.apk file. A collection of java classes are where the app built and prompted to run with the help of an emulator (API 28: Android 9.0 (Pie) minimum environment). For the front-end of the application, an AndroidManifest.xml file is created to outline the layout of the application’s user interface (UI) and describes the main characteristics of the project to express each of its modules. For the back-end of the application, all the results that requested by the user will be firstly retrived from the Android SQLite datebase using Room (2.2.6 version), then finally display on the Android mobile device to the user. 
+When the app is activated by the user, it is firstly initialized by creating a new project in an Android Studio 3.0+ environment and a JobCompare6300.apk file. A collection of java classes is where the app is built and prompted to run with the help of an emulator. For the frontend of the application, an AndroidManifest.xml file is created to outline the layout of the application’s user interface (UI) and describes the main characteristics of the project to express each of its modules. For the backend of the application, all the results that are requested by the user will be firstly retrieved from the Android SQLite datebase using Room (2.2.6 version), then finally displayed on the Android mobile device to the user.
 
 ## 3 Low-Level Design
 
-### 3.1 Class Diagram v1
-```This is still our intended end state. The alpha/beta version of the application currently does not reflect this but we will be referring to this to refactor our application in the Transition phase.```
+### 3.1 Class Diagram v2
 
 ![class diagram](./images/class_diagram.png)
 
