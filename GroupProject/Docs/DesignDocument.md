@@ -53,6 +53,20 @@ When the app is activated by the user, it is firstly initialized by creating a n
 
 ![class diagram](./images/class_diagram.png)
 
+Our class diagram represents our backend classes and does not include Android Activity classes and persistence classes. 
+\
+The ```System``` class is the entry point and creates the ```ComparisonSettings``` and ```Job``` classes. These classes calls into our ```AppDatabase``` class which is the interface for persistence tasks. The ```JOB_DETAILS``` and ```COMPARISON_SETTINGS_WEIGHT``` classes model our database tables.
+\
+When entering or editing current job details, the ```System``` class will take the inputs passed from the frontend Activity class to the ```Job``` class. The ```Job``` class will create an in-memory representation of the ```Job``` using the ```JOB_DETAILS``` class and use the ```AppDatabase``` class to insert or update the database table. To get information such as current job, number of jobs, the ```Job``` class has the corresponding operations to perform these actions. 
+\
+A similar flow to the above is used when the user enters job offers. One difference is the flow after the user has entered the job offer. The ```System``` class will call into the getCurrentJob() operation in the ```Job``` class to determine if a current job exists so the compare with current job button can be disabled accordingly.
+\
+When the user adjusts the comparison settings, the ```System``` class will take the new weights the user passed from the frontend Activity class to the ```ComparisonSettings``` class. The ```ComparisonSettings``` class will update the weights in the database using the ```COMPARISON_SETTINGS_WEIGHT``` and ```AppDatabase``` classes. The ```ComparisonSettings``` class also offers operations such as setting the default weight on system initialize and returning all weights to be pre-populated on the frontend.
+\
+For ranking job offers, this is done by a database query called from the getAllJobs() operation in the ```Job``` class. This operation returns a ranked list of ```JOB_DETAILS``` in descending job score order and is not shown our class diagram. The number of job offers is checked using the getNumberOfJobs() operation in the ```Job``` class, called from the ```System``` getNumberOfJobs() operation, and is used to determine if the compare button should be disabled.
+\
+For comparing job offers, this is done purely via the frontend and not shown in our class diagram. This is possible because when the user is shown a list of job offers, we already issued a call to getAllJobs() operation and would have the information associated with a JOB_DETAILS.
+
 ## 4 User Interface Design v3
 <section mockups>
     <table class="gui">
