@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This simple app allows Users to enter job details and compare jobs based on salary, bonus, retirement benefits, leave time, and/or possibility of working remotely.
+This simple app allows users to enter job details and compare jobs based on salary, bonus, retirement benefits, leave time, and/or possibility of working remotely.
 
 ## Getting Started
 
@@ -102,7 +102,7 @@ View all jobs and compare two jobs in detail here.
 
 *Note: comparison feature is only available after entering two or more jobs e.g., enter current job and enter 1 job offer.*
 
-## appendix
+## Appendix
 * The calculation for job score is as follows: **AYS + AYB + (RBP * AYS) + (LT * AYS / 260) - ((260 - 52 * RWT) * (AYS / 260) / 8)**
   * **AYS** = Adjusted Yearly Salary
   * **AYB** = Adjusted Yearly Bonus 
@@ -111,4 +111,6 @@ View all jobs and compare two jobs in detail here.
   * **RWT** = Remote Work Days Per Week
 
 ## Acknowledgments
+* Professor and TAs
 * Hat tip to the lectures and piazza discussions
+* Everyone on the team!

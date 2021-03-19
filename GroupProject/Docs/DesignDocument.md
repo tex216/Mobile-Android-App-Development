@@ -31,8 +31,10 @@
 
 ## 2 Architectural Design
 
-### 2.1 Component Diagram v3
+### 2.1 Component Diagram v2
 ![component diagram](./images/component_diagram.png)
+
+v1 to v2: Updated component diagram to match our final implementation
 
 We will have multiple UI components which handles the user's interaction with our application. These represent our application's frontend and control what the user will see. We have a base activity that uses the Activity API provided by Android and provides some common interface such as initializeUI for our other activity classes. The ```Enter or Edit Current Job Details``` and ```Enter Job Offers``` UI share a common ```Enter Job Details Base``` interface for common actions such as getting the input. This is convenient as job details entered by the user are common to both and will reduce duplicate code.
 \
@@ -40,8 +42,10 @@ The ```System``` component houses the business logic our application depends on.
 \
 We are using the Room library which provides an API for interactions with Android's SQLite database. We layered our own ```App Database``` interface on top of this API to house a single entry point for creating the database, getting database connections, and creating & interacting with different tables & data elements. This app database infrastructure will provide the persistence layer that our ```System``` component uses. 
 
-### 2.2 Deployment Diagram v3
+### 2.2 Deployment Diagram v2
 ![deployment diagram](./images/deployment_diagram.png)
+
+v1 to v2: Updated Room version
 
 Our app is written in Java. It uses Android SDK tools to compile classes, resources, and code along with any required data. Android depends on Linux OS for essential operating services such as security management, process management, network stack etc. The Linux kernel plays the role of an abstraction layer between the hardware and the software stack.
 \
@@ -52,6 +56,8 @@ When the app is activated by the user, it is firstly initialized by creating a n
 ### 3.1 Class Diagram v2
 
 ![class diagram](./images/class_diagram.png)
+
+v1 to v2: Updated classes to match our final implementation
 
 Our class diagram represents our backend classes and does not include Android Activity classes and persistence classes. 
 \
@@ -68,6 +74,9 @@ For ranking job offers, this is done by a database query called from the getAllJ
 For comparing job offers, this is done purely via the frontend and not shown in our class diagram. This is possible because when the user is shown a list of job offers, we already issued a call to getAllJobs() operation and would have the information associated with a JOB_DETAILS.
 
 ## 4 User Interface Design v3
+v1 to v2: Updated most designs based on implentation, included more screens for error handling and successful submission
+v2 to v3: Updated Updated screens with updated toast message for successful submission
+
 <section mockups>
     <table class="gui">
         <tr>

@@ -1,8 +1,9 @@
 # Test Plan v3
-* v2 update job score test case
-* v3 added additional tests and test results
 
 **Author**: Team 109
+
+v1 to v2: update job score test case
+v2 to v3: added additional tests and test results
 
 ## 1 Testing Strategy
 
@@ -33,8 +34,6 @@ Bugs and enhancements will be created as a Git issue. Git issues will be priorit
 
 ### 1.5 Technology
 
-
-* JUnit for unit tests.
 * Android Studio emulator for integration and system tests.
 
 ## 2 Test Cases
