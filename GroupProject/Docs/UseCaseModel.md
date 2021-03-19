@@ -6,6 +6,7 @@
 ![Use Case Model](./images/use_case_model.png)
 
 v1 to v2: Design of use case model changed
+\
 v2 to v3: Renamed to JobCompare6300 App
 
 ## 2 Use Case Descriptions
