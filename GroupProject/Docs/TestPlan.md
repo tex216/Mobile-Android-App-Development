@@ -2,9 +2,9 @@
 
 **Author**: Team 109
 
-v1 to v2: update job score test case
+v1 to v2: Updated job score test case
 \
-v2 to v3: added additional tests and test results
+v2 to v3: Added additional tests and test results
 
 ## 1 Testing Strategy
 

@@ -76,7 +76,7 @@ For comparing job offers, this is done purely via the frontend and not shown in 
 ## 4 User Interface Design v3
 v1 to v2: Updated most designs based on implentation, included more screens for error handling and successful submission
 \
-v2 to v3: Updated Updated screens with updated toast message for successful submission
+v2 to v3: Updated screens with updated toast message for successful submission
 
 <section mockups>
     <table class="gui">
