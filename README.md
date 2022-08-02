@@ -15,5 +15,4 @@ Developed an Android app for job offers comparison. Insides of the **GroupProjec
 
 This is a Team Project, credits to all team members, see TeamInfo.txt.
 
-<img src="main_menu_compare_enabled.png" alt= "login" width= 250px/> 
-<img src="after_entering_job_offers_compare_enabled.png" alt= "save" width= 250px/>
+<img src="main_menu_compare_enabled.png" alt= "login" width= 250px/> <img src="after_entering_job_offers_compare_enabled.png" alt= "save" width= 250px/>
