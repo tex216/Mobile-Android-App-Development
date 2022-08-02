@@ -11,6 +11,6 @@ Developed an Android app for job offers comparison. Insides of the **GroupProjec
 **Docs** Folder: Design Document, User Manual, Project Plan, Test Plan, Extra Requirements 
 
 
-**JobCompare6300** Folder: Implement the Android App, built a GUI to connect with the backend SQLite Database in Android Studio.
+**JobCompare6300** Folder: Implemented the Android app, built a GUI to connect with the backend SQLite Database in Android Studio.
 
 This is a Team Project, credits to all team members, see TeamInfo.txt.
