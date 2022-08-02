@@ -14,3 +14,5 @@ Developed an Android app for job offers comparison. Insides of the **GroupProjec
 **JobCompare6300** Folder: Implemented the Android app, built a GUI to connect with the backend SQLite Database in Android Studio.
 
 This is a Team Project, credits to all team members, see TeamInfo.txt.
+
+<img src="main_menu_compare_enabled.png" alt= "login" width= “160%”/> <img src="after_entering_job_offers_compare_enabled.png" alt= "save" width= “160%”/>
