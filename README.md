@@ -1,14 +1,14 @@
 # Mobile Android App Development
 
-Developed an Android app for job offers comparison. Insides of the **GroupProject** Folder are:
+Developed an Android app for job offers comparison. 
 
-**APK** Folder: Deployed and released the alpha version product.
-
-
-**Design-Team** Folder: UML class diagrams design by gathering and analyzing users requirements.
+**All-Documents** Folder: Design Document, User Manual, Project Plan, Test Plan, Extra Requirements 
 
 
-**Docs** Folder: Design Document, User Manual, Project Plan, Test Plan, Extra Requirements 
+**Alpha-APK** Folder: Deployed and released the alpha version product.
+
+
+**Design-Team** Folder: UML class diagrams design by gathering and analyzing users requirements. 
 
 
 **JobCompare6300** Folder: Implemented the Android app, built a GUI to connect with the backend SQLite Database in Android Studio.
